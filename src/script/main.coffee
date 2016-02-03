@@ -1,7 +1,7 @@
 # This is the resolution of the iPhone 4/4s
 GameResolution =
   width: 640
-  height: 960
+  height: 480
 
 game = null
 
