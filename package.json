@@ -1,0 +1,28 @@
+{
+  "name": "PhaserGame",
+  "version": "1.0.0",
+  "description": "A 2D game using the Phaser game engine.",
+  "scripts": {
+    "start": "gulp --require coffee-script/register",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelReiter/PhaserGame.git"
+  },
+  "author": "Michael Reiter",
+  "license": "MIT",
+  "homepage": "https://github.com/MichaelReiter/PhaserGame",
+  "dependencies": {
+    "clone": "^1.0.0",
+    "coffee-script": "^1.9.0",
+    "gulp": "^3.8.11",
+    "gulp-changed": "^1.1.1",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.5.0",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-minify-html": "^0.1.8",
+    "gulp-sass": "^1.3.2",
+    "gulp-util": "^3.0.3"
+  }
+}
