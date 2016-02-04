@@ -40,7 +40,7 @@ htmlSrc = './src/*.html';
 
 htmlDst = './build/';
 
-styleSrc = './src/scss/*.scss';
+styleSrc = './src/styles/*.scss';
 
 styleDst = './build/css';
 
