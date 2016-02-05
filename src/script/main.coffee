@@ -3,6 +3,7 @@ GameResolution =
   height: 600
 
 game = null
+platforms = null
 
 main = () ->
   game = new Phaser.Game(GameResolution.width, GameResolution.height, Phaser.AUTO, '', {preload: preload, create: create, update: update})
@@ -20,7 +21,25 @@ preload = () ->
   return
 
 create = () ->
-  game.add.sprite(0, 0, 'star')
+  # Enable game physics
+  game.physics.startSystem(Phaser.Physics.ARCADE)
+
+  # Add background
+  game.add.sprite(0, 0, 'sky')
+
+  platforms = game.add.group()
+  platforms.enableBody = true
+
+  # Add ground and ledges
+  ground = platforms.create(0, game.world.height - 64, 'ground')
+  ground.scale.setTo(2, 2)
+  ground.body.immovable = true
+
+  ledge = platforms.create(400, 400, 'ground')
+  ledge.body.immovable = true
+
+  ledge = platforms.create(-150, 250, 'ground')
+  ledge.body.immovable = true
   return
 
 update = () ->
