@@ -5,6 +5,7 @@ GameResolution =
 game = null
 platforms = null
 player = null
+cursors = null
 
 main = () ->
   game = new Phaser.Game(GameResolution.width, GameResolution.height, Phaser.AUTO, '', {preload: preload, create: create, update: update})
@@ -51,7 +52,28 @@ create = () ->
   player.animations.add('left', [0, 1, 2, 3], 10, true)
   player.animations.add('right', [5, 6, 7, 8], 10, true)
 
+  # Create input cursors for keyboard
+  cursors = game.input.keyboard.createCursorKeys()
   return
 
 update = () ->
+  game.physics.arcade.collide(player, platforms)
+
+  player.body.velocity.x = 0
+
+  # Handle left/right movement
+  if cursors.left.isDown
+    player.body.velocity.x = -150
+    player.animations.play('left')
+  else if cursors.right.isDown
+    player.body.velocity.x = 150
+    player.animations.play('right')
+  else
+    player.animations.stop()
+    player.frame = 4
+
+  # enable jump if player is touching the ground
+  if cursors.up.isDown and player.body.touching.down
+    player.body.velocity.y = -350
+
   return
