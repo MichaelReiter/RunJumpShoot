@@ -43,7 +43,7 @@ main = function() {
 };
 
 preload = function() {
-  game.load.image('background', 'img/sky.png');
+  game.load.image('background', 'img/background.png');
   game.load.image('platform', 'img/platform.png');
   game.load.image('star', 'img/star.png');
   game.load.image('bullet', 'img/bullet.png');
