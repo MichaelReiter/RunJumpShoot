@@ -1,6 +1,6 @@
 # Add player, configure physics and animations
 playerInit = () ->
-  player = game.add.sprite(32, game.world.height - 250, 'player')
+  player = game.add.sprite(32, game.world.height - 100, 'player')
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale)
   player.smoothed = false
   player.anchor.setTo(.5, 1)
@@ -20,12 +20,14 @@ playerMovement = () ->
 
   # Handle left/right movement
   if keyboard.left.isDown
+    PlayerVariables.facing = "left"
     player.body.velocity.x = -PlayerVariables.movementSpeed
     if player.body.touching.down
       player.animations.play('walking')
     if player.scale.x > 0
       player.scale.x *= -1
   else if keyboard.right.isDown
+    PlayerVariables.facing = "right"
     player.body.velocity.x = PlayerVariables.movementSpeed
     if player.body.touching.down
       player.animations.play('walking')
@@ -39,21 +41,22 @@ playerMovement = () ->
   if player.body.touching.down and keyboard.up.isDown
     player.body.velocity.y = -PlayerVariables.jumpSpeed
     player.animations.play('jumping')
-  if spacebar.isDown
-    shoot(player.x, player.y, 300)
+  if game.time.now - PlayerVariables.lastFired > 1000 / PlayerVariables.fireRate and spacebar.isDown
+    PlayerVariables.lastFired = game.time.now
+    shoot()
 
   return
 
 
-shoot = (x, y, velocity) ->
-  projectile = stars.create(x, y-50, 'star')
-  direction = player.body.velocity.x / Math.abs(PlayerVariables.movementSpeed)
-  if direction is 0
-    
+shoot = () ->
+  if PlayerVariables.facing is "right"
+    projectile = bullets.create(player.x+15, player.y-24, 'bullet')
+    projectileVector = PlayerVariables.bulletSpeed
   else
-    projectileVector = velocity * direction
+    projectile = bullets.create(player.x-20, player.y-24, 'bullet')
+    projectileVector = -PlayerVariables.bulletSpeed
+
   projectile.body.velocity.x = projectileVector
-  projectile.body.gravity.y = 300
   return
 
 

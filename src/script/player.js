@@ -3,7 +3,7 @@ var collectStar, playerInit, playerMovement, shoot;
 
 playerInit = function() {
   var player;
-  player = game.add.sprite(32, game.world.height - 250, 'player');
+  player = game.add.sprite(32, game.world.height - 100, 'player');
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale);
   player.smoothed = false;
   player.anchor.setTo(.5, 1);
@@ -17,6 +17,7 @@ playerInit = function() {
 playerMovement = function() {
   player.body.velocity.x = 0;
   if (keyboard.left.isDown) {
+    PlayerVariables.facing = "left";
     player.body.velocity.x = -PlayerVariables.movementSpeed;
     if (player.body.touching.down) {
       player.animations.play('walking');
@@ -25,6 +26,7 @@ playerMovement = function() {
       player.scale.x *= -1;
     }
   } else if (keyboard.right.isDown) {
+    PlayerVariables.facing = "right";
     player.body.velocity.x = PlayerVariables.movementSpeed;
     if (player.body.touching.down) {
       player.animations.play('walking');
@@ -40,22 +42,22 @@ playerMovement = function() {
     player.body.velocity.y = -PlayerVariables.jumpSpeed;
     player.animations.play('jumping');
   }
-  if (spacebar.isDown) {
-    shoot(player.x, player.y, 300);
+  if (game.time.now - PlayerVariables.lastFired > 1000 / PlayerVariables.fireRate && spacebar.isDown) {
+    PlayerVariables.lastFired = game.time.now;
+    shoot();
   }
 };
 
-shoot = function(x, y, velocity) {
-  var direction, projectile, projectileVector;
-  projectile = stars.create(x, y - 50, 'star');
-  direction = player.body.velocity.x / Math.abs(PlayerVariables.movementSpeed);
-  if (direction === 0) {
-
+shoot = function() {
+  var projectile, projectileVector;
+  if (PlayerVariables.facing === "right") {
+    projectile = bullets.create(player.x + 15, player.y - 24, 'bullet');
+    projectileVector = PlayerVariables.bulletSpeed;
   } else {
-    projectileVector = velocity * direction;
+    projectile = bullets.create(player.x - 20, player.y - 24, 'bullet');
+    projectileVector = -PlayerVariables.bulletSpeed;
   }
   projectile.body.velocity.x = projectileVector;
-  projectile.body.gravity.y = 300;
 };
 
 collectStar = function(player, star) {

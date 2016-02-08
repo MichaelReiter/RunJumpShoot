@@ -5,7 +5,11 @@ GameResolution =
 PlayerVariables =
   movementSpeed: 150
   jumpSpeed: 300
+  bulletSpeed: 300
   playerScale: 1
+  facing: "right"
+  fireRate: 3 # in bullets/second
+  lastFired: 0
 
 game = null
 platforms = null
@@ -13,6 +17,7 @@ player = null
 keyboard = null
 spacebar = null
 stars = null
+bullets = null
 score = 0
 scoreText = null
 
@@ -25,6 +30,7 @@ preload = () ->
   game.load.image('background', 'img/sky.png')
   game.load.image('platform', 'img/platform.png')
   game.load.image('star', 'img/star.png')
+  game.load.image('bullet', 'img/bullet.png')
   game.load.spritesheet('player', 'img/player.png', 39, 34)
   return
 
@@ -35,6 +41,10 @@ create = () ->
 
   levelInit()
   playerInit()
+
+  # Initialize bullets
+  bullets = game.add.group()
+  bullets.enableBody = true
 
   # Add collectable stars
   stars = game.add.group()
