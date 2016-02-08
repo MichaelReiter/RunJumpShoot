@@ -9,7 +9,7 @@ GameResolution = {
 PlayerVariables = {
   movementSpeed: 150,
   jumpSpeed: 300,
-  playerScale: 2
+  playerScale: 1
 };
 
 game = null;
@@ -40,7 +40,7 @@ preload = function() {
   game.load.image('background', 'img/sky.png');
   game.load.image('platform', 'img/platform.png');
   game.load.image('star', 'img/star.png');
-  game.load.spritesheet('player', 'img/contra.png', 39, 39);
+  game.load.spritesheet('player', 'img/player.png', 39, 34);
 };
 
 create = function() {
@@ -53,7 +53,6 @@ create = function() {
   for (i = j = 1; j <= 12; i = ++j) {
     star = stars.create(i * 70, 0, 'star');
     star.body.gravity.y = 300;
-    star.body.bounce.y = 0.7 + Math.random() * 0.2;
   }
   scoreText = game.add.text(16, 16, 'Score: 0', {
     fontSize: '32px',
