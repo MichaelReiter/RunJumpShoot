@@ -1,3 +1,14 @@
+player = null
+
+PlayerVariables =
+  movementSpeed: 150
+  jumpSpeed: 300
+  bulletSpeed: 300
+  playerScale: 1
+  facing: "right"
+  fireRate: 3     # in bullets/second
+  lastFired: 0
+
 # Add player, configure physics and animations
 playerInit = () ->
   player = game.add.sprite(32, game.world.height - 100, 'player')
@@ -11,7 +22,6 @@ playerInit = () ->
 
   player.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
   player.animations.add('jumping', [6, 7, 8, 9], 12, true)
-
   return
 
 
@@ -37,11 +47,13 @@ playerMovement = () ->
     player.animations.stop()
     player.frame = 6
 
-  # enable jump if player is touching the ground
+  # Enable jumping if player is touching the ground
   if player.body.touching.down and keyboard.up.isDown
     player.body.velocity.y = -PlayerVariables.jumpSpeed
     player.animations.play('jumping')
-  if game.time.now - PlayerVariables.lastFired > 1000 / PlayerVariables.fireRate and spacebar.isDown
+
+  # Enable shooting
+  if (game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) and spacebar.isDown
     PlayerVariables.lastFired = game.time.now
     shoot()
 
