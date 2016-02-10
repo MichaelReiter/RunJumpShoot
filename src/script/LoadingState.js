@@ -9,10 +9,11 @@ LoadingState = {
     return game.scale.refresh();
   },
   setScaling: function() {
+    console.log(game.scale);
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+    console.log(game.scale);
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
-    console.log(game);
     game.scale.setResizeCallback(this.resizeGame, this);
     return this.resizeGame();
   },
@@ -25,6 +26,7 @@ LoadingState = {
   },
   load: function() {},
   create: function() {
+    this.setScaling();
     game.state.start('Gameplay');
   },
   update: function() {}

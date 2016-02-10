@@ -7,12 +7,11 @@ LoadingState =
 
 
   setScaling: () ->
+    console.log game.scale
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE
+    console.log game.scale
     game.scale.pageAlignHorizontally = true
     game.scale.pageAlignVertically = true
-
-    console.log game
-
     game.scale.setResizeCallback(this.resizeGame, this)
     this.resizeGame()
 
@@ -30,7 +29,7 @@ LoadingState =
 
 
   create: () ->
-    # this.setScaling()
+    this.setScaling()
     game.state.start('Gameplay')
     return
 
