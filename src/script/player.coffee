@@ -1,4 +1,5 @@
 player = null
+bullets = null
 
 PlayerVariables =
   movementSpeed: 150
@@ -11,7 +12,7 @@ PlayerVariables =
 
 # Add player, configure physics and animations
 playerInit = () ->
-  player = game.add.sprite(32, game.world.height - 100, 'player')
+  player = game.add.sprite(32, 100, 'player')
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale)
   player.smoothed = false
   player.anchor.setTo(.5, 1)
@@ -19,6 +20,10 @@ playerInit = () ->
   game.physics.arcade.enable(player)
   player.body.gravity.y = 300
   player.body.collideWorldBounds = true
+
+  # Initialize bullets
+  bullets = game.add.group()
+  bullets.enableBody = true
 
   player.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
   player.animations.add('jumping', [6, 7, 8, 9], 12, true)
@@ -69,11 +74,4 @@ shoot = () ->
     projectileVector = -PlayerVariables.bulletSpeed
 
   projectile.body.velocity.x = projectileVector
-  return
-
-
-collectStar = (player, star) ->
-  star.kill()
-  score += 10
-  scoreText.text = 'Score: ' + score
   return

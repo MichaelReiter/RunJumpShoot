@@ -8,7 +8,7 @@ levelInit = function() {
   game.add.sprite(0, 0, 'background');
   platforms = game.add.group();
   platforms.enableBody = true;
-  ground = platforms.create(0, game.world.height - 64, 'platform');
+  ground = platforms.create(0, game.world.height - 352, 'platform');
   ground.smoothed = false;
   ground.scale.setTo(2, 2);
   ground.body.immovable = true;
