@@ -10,7 +10,7 @@ levelInit = function() {
   platforms.enableBody = true;
   ground = platforms.create(0, game.world.height - 352, 'platform');
   ground.smoothed = false;
-  ground.scale.setTo(2, 2);
+  ground.scale.setTo(2, 1);
   ground.body.immovable = true;
   ledge = platforms.create(400, 400, 'platform');
   ledge.smoothed = false;

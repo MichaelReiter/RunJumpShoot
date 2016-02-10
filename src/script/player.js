@@ -6,10 +6,10 @@ player = null;
 bullets = null;
 
 PlayerVariables = {
-  movementSpeed: 150,
+  movementSpeed: 200,
   jumpSpeed: 300,
   bulletSpeed: 300,
-  playerScale: 1,
+  playerScale: 2,
   facing: "right",
   fireRate: 3,
   lastFired: 0
@@ -66,10 +66,10 @@ playerMovement = function() {
 shoot = function() {
   var projectile, projectileVector;
   if (PlayerVariables.facing === "right") {
-    projectile = bullets.create(player.x + 15, player.y - 24, 'bullet');
+    projectile = bullets.create(player.x + 30, player.y - 46, 'bullet');
     projectileVector = PlayerVariables.bulletSpeed;
   } else {
-    projectile = bullets.create(player.x - 20, player.y - 24, 'bullet');
+    projectile = bullets.create(player.x - 40, player.y - 46, 'bullet');
     projectileVector = -PlayerVariables.bulletSpeed;
   }
   projectile.body.velocity.x = projectileVector;

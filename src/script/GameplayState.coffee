@@ -13,7 +13,7 @@ GameplayState =
     inputInit()
     scoreInit()
     collectablesInit()
-
+    
     return
 
 
