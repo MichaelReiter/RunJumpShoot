@@ -35,37 +35,57 @@ playerMovement = () ->
 
   # Handle left/right movement
   if keyboard.left.isDown
-    PlayerVariables.facing = "left"
-    player.body.velocity.x = -PlayerVariables.movementSpeed
-    if player.body.touching.down
-      player.animations.play('walking')
-    if player.scale.x > 0
-      player.scale.x *= -1
+    moveLeft()
   else if keyboard.right.isDown
-    PlayerVariables.facing = "right"
-    player.body.velocity.x = PlayerVariables.movementSpeed
-    if player.body.touching.down
-      player.animations.play('walking')
-    if player.scale.x < 0
-      player.scale.x *= -1
+    moveRight()
   else
-    player.animations.stop()
-    player.frame = 6
+    playerIdle()
 
   # Enable jumping if player is touching the ground
   if player.body.touching.down and keyboard.up.isDown
-    player.body.velocity.y = -PlayerVariables.jumpSpeed
-    player.animations.play('jumping')
+    jump()
 
   # Enable shooting
   if (game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) and spacebar.isDown
-    PlayerVariables.lastFired = game.time.now
     shoot()
 
   return
 
 
+moveLeft = () ->
+  PlayerVariables.facing = "left"
+  player.body.velocity.x = -PlayerVariables.movementSpeed
+  if player.body.touching.down
+    player.animations.play('walking')
+  if player.scale.x > 0
+    player.scale.x *= -1
+  return
+
+
+moveRight = () ->
+  PlayerVariables.facing = "right"
+  player.body.velocity.x = PlayerVariables.movementSpeed
+  if player.body.touching.down
+    player.animations.play('walking')
+  if player.scale.x < 0
+    player.scale.x *= -1
+  return
+
+
+jump = () ->
+  player.body.velocity.y = -PlayerVariables.jumpSpeed
+  player.animations.play('jumping')
+  return
+
+
+playerIdle = () ->
+  player.animations.stop()
+  player.frame = 6
+  return
+
+
 shoot = () ->
+  PlayerVariables.lastFired = game.time.now
   if PlayerVariables.facing is "right"
     projectile = bullets.create(player.x+30, player.y-46, 'bullet')
     projectileVector = PlayerVariables.bulletSpeed

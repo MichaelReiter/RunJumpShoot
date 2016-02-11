@@ -13,11 +13,12 @@ levelInit = () ->
   ground.scale.setTo(2, 1)
   ground.body.immovable = true
 
-  ledge = platforms.create(400, 400, 'platform')
+  ledge = platforms.create(400, 470, 'platform')
   ledge.smoothed = false
   ledge.body.immovable = true
 
-  ledge = platforms.create(-150, 250, 'platform')
+  ledge = platforms.create(-150, 350, 'platform')
+  ledge.smoothed = false
   ledge.body.immovable = true
 
   return

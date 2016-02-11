@@ -1,12 +1,6 @@
 keyboard = null
 spacebar = null
 
-# InputKeys =
-#   left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT)
-#   right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)
-#   jump: game.input.keyboard.addKey(Phaser.Keyboard.UP)
-#   shoot: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
-
 inputInit = () ->
   # Create inputs for keyboard
   keyboard = game.input.keyboard.createCursorKeys()
@@ -19,12 +13,24 @@ inputInit = () ->
 
   return
 
-# handleInput = () ->
-#   if keyboard.left.isDown
-#     InputKeys.left = true
-#   else if keyboard.right.isDown
-#     InputKeys.right = true
-#   else if keyboard.up.isDown
-#     InputKeys.jummp = true
-#   else if spacebar.isDown
-#     InputKeys.shoot = true
+
+keyboardMovement = () ->
+  player.body.velocity.x = 0
+
+  # Handle left/right movement
+  if keyboard.left.isDown
+    moveLeft()
+  else if keyboard.right.isDown
+    moveRight()
+  else
+    playerIdle()
+
+  # Enable jumping if player is touching the ground
+  if player.body.touching.down and keyboard.up.isDown
+    jump()
+
+  # Enable shooting
+  if (game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) and spacebar.isDown
+    shoot()
+
+  return
