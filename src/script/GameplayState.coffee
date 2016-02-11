@@ -24,5 +24,6 @@ GameplayState =
     game.physics.arcade.overlap(player, stars, collectStar, null, this)
 
     keyboardMovement()
+    buttonMovement()
     
     return
