@@ -1,11 +1,11 @@
 # PhaserGame
-
-## About
 A 2D shooter game written in CoffeeScript with the Phaser game engine.
 
-## How to Play
-You can play the game in a modern web browser or on a mobile phone.
+## About
+You play as a nameless hero with a gun and no shirt. Are you a bad enough dude to survive?
 
+## How to Play
+You can play the game in any modern web browser, although it was designed to be played on a mobile phone.
 You can play online [here](http://michaelreiter.github.io/PhaserGame/) or you can build it and host it on your own webserver.
 
 ## Requirements
