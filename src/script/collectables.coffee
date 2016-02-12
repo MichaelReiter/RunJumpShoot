@@ -11,7 +11,7 @@ collectablesInit = () ->
   return
 
 collectStar = (player, star) ->
-  star.kill()
+  star.destroy()
   score += 10
   scoreText.text = 'Score: ' + score
   return

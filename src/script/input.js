@@ -31,6 +31,10 @@ inputInit = function() {
   button_right.inputEnabled = true;
   button_jump.inputEnabled = true;
   button_shoot.inputEnabled = true;
+  button_left.fixedToCamera = true;
+  button_right.fixedToCamera = true;
+  button_jump.fixedToCamera = true;
+  button_shoot.fixedToCamera = true;
 };
 
 keyboardMovement = function() {

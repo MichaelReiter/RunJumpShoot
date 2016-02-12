@@ -5,7 +5,9 @@ GameplayState =
   load: () ->
 
   create: () ->
-    # Enable game physics
+
+    game.world.setBounds(0, 0, 2000, GameResolution.height)
+
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
     levelInit()

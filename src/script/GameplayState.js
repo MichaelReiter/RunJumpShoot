@@ -5,6 +5,7 @@ GameplayState = {
   preload: function() {},
   load: function() {},
   create: function() {
+    game.world.setBounds(0, 0, 2000, GameResolution.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     levelInit();
     playerInit();

@@ -14,7 +14,7 @@ collectablesInit = function() {
 };
 
 collectStar = function(player, star) {
-  star.kill();
+  star.destroy();
   score += 10;
   scoreText.text = 'Score: ' + score;
 };

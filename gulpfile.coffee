@@ -40,7 +40,7 @@ gulp.task 'img', ->
   return
 
 # Copy fonts
-gulp.task 'font', ->
+gulp.task 'fonts', ->
   gulp.src(fontsSrc).pipe gulp.dest(fontsDst)
   return
 
@@ -62,7 +62,7 @@ gulp.task 'default', [
   'img'
   'html'
   'style'
-  'font'
+  'fonts'
 ], ->
   # watch for changes in CoffeeScript files
   gulp.watch coffeeSrc, [ 'coffee' ]
@@ -72,4 +72,6 @@ gulp.task 'default', [
   gulp.watch htmlSrc, [ 'html' ]
   # watch for changes in stylesheets
   gulp.watch styleSrc, [ 'style' ]
+  # watch for changes in fonts
+  gulp.watch styleSrc, [ 'fonts' ]
   return

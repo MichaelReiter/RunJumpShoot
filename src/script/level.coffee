@@ -12,6 +12,7 @@ levelInit = () ->
   ground.smoothed = false
   ground.scale.setTo(2, 1)
   ground.body.immovable = true
+  ground.fixedToCamera = true
 
   ledge = platforms.create(400, 470, 'platform')
   ledge.smoothed = false

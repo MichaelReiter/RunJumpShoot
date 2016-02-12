@@ -12,11 +12,13 @@ PlayerVariables =
 
 # Add player, configure physics and animations
 playerInit = () ->
-  player = game.add.sprite(32, 100, 'player')
+  player = game.add.sprite(32, GameResolution.height/2, 'player')
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale)
   player.smoothed = false
   player.anchor.setTo(.5, 1)
   player.frame = 6
+
+  game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER)
 
   game.physics.arcade.enable(player)
   player.body.gravity.y = 300
@@ -73,4 +75,6 @@ shoot = () ->
     projectileVector = -PlayerVariables.bulletSpeed
 
   projectile.body.velocity.x = projectileVector
+  projectile.checkWorldBounds = true
+  projectile.outOfBoundsKill = true
   return
