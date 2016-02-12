@@ -5,7 +5,7 @@ GameplayState = {
   preload: function() {},
   load: function() {},
   create: function() {
-    game.world.setBounds(0, 0, 2000, GameResolution.height);
+    game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     levelInit();
     playerInit();
@@ -14,6 +14,7 @@ GameplayState = {
     collectablesInit();
   },
   update: function() {
+    background.tilePosition.x = 2;
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(stars, platforms);
     game.physics.arcade.overlap(player, stars, collectStar, null, this);

@@ -6,8 +6,9 @@ score = 0;
 scoreText = null;
 
 scoreInit = function() {
-  return scoreText = game.add.text(16, 4, 'Score: 0', {
+  scoreText = game.add.text(16, 4, 'Score: 0', {
     font: '32px invasion2000',
     fill: '#fff'
   });
+  return scoreText.fixedToCamera = true;
 };

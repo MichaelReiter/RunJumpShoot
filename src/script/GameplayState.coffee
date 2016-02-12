@@ -6,7 +6,7 @@ GameplayState =
 
   create: () ->
 
-    game.world.setBounds(0, 0, 2000, GameResolution.height)
+    game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
 
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
@@ -20,6 +20,8 @@ GameplayState =
 
 
   update: () ->
+    background.tilePosition.x = 2
+
     game.physics.arcade.collide(player, platforms)
     game.physics.arcade.collide(stars, platforms)
 

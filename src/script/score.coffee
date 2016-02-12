@@ -6,3 +6,4 @@ scoreInit = () ->
     font: '32px invasion2000',
     fill: '#fff'
   })
+  scoreText.fixedToCamera = true

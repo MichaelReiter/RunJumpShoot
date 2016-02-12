@@ -73,6 +73,7 @@ shoot = function() {
     projectile = bullets.create(player.x - 40, player.y - 46, 'bullet');
     projectileVector = -PlayerVariables.bulletSpeed;
   }
+  projectile.scale.setTo(1.5, 1.5);
   projectile.body.velocity.x = projectileVector;
   projectile.checkWorldBounds = true;
   projectile.outOfBoundsKill = true;
