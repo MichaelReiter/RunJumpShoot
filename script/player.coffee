@@ -9,7 +9,7 @@ PlayerVariables =
   facing: "right"
   fireRate: 3     # in bullets/second
   lastFired: 0
-
+pu
 # Add player, configure physics and animations
 playerInit = () ->
   player = game.add.sprite(32, 100, 'player')

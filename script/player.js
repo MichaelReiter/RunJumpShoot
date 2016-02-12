@@ -15,6 +15,8 @@ PlayerVariables = {
   lastFired: 0
 };
 
+pu;
+
 playerInit = function() {
   player = game.add.sprite(32, 100, 'player');
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale);
