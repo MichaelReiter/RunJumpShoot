@@ -3,7 +3,7 @@
 /* The following gulpfile compiles coffeescript and places it in the build folder along with minified game assets. */
 
 /* Gulp and processing plugins. */
-var changed, coffee, coffeeDst, coffeeSrc, concat, gulp, gutil, htmlDst, htmlSrc, imagemin, imgDst, imgSrc, libDst, libSrc, minifyHTML, sass, styleDst, styleSrc;
+var changed, coffee, coffeeDst, coffeeSrc, concat, fontsDst, fontsSrc, gulp, gutil, htmlDst, htmlSrc, imagemin, imgDst, imgSrc, libDst, libSrc, minifyHTML, sass, styleDst, styleSrc;
 
 gulp = require('gulp');
 
@@ -36,6 +36,10 @@ imgSrc = './src/img/*';
 
 imgDst = './build/img';
 
+fontsSrc = './src/fonts/*';
+
+fontsDst = './build/fonts';
+
 htmlSrc = './src/*.html';
 
 htmlDst = './build/';
@@ -58,6 +62,10 @@ gulp.task('img', function() {
   gulp.src(imgSrc).pipe(gulp.dest(imgDst));
 });
 
+gulp.task('font', function() {
+  gulp.src(fontsSrc).pipe(gulp.dest(fontsDst));
+});
+
 gulp.task('html', function() {
   gulp.src(htmlSrc).pipe(minifyHTML()).pipe(gulp.dest(htmlDst));
   gulp.src('./src/favicon/*').pipe(gulp.dest('./build'));
@@ -67,7 +75,7 @@ gulp.task('style', function() {
   gulp.src(styleSrc).pipe(sass()).pipe(gulp.dest(styleDst));
 });
 
-gulp.task('default', ['coffee', 'lib', 'img', 'html', 'style'], function() {
+gulp.task('default', ['coffee', 'lib', 'img', 'html', 'style', 'font'], function() {
   gulp.watch(coffeeSrc, ['coffee']);
   gulp.watch(imgSrc, ['img']);
   gulp.watch(htmlSrc, ['html']);

@@ -17,6 +17,8 @@ libSrc = './src/lib/*.js'
 libDst = './build/lib'
 imgSrc = './src/img/*'
 imgDst = './build/img'
+fontsSrc = './src/fonts/*'
+fontsDst = './build/fonts'
 htmlSrc = './src/*.html'
 htmlDst = './build/'
 styleSrc = './src/styles/*.scss'
@@ -37,6 +39,11 @@ gulp.task 'img', ->
   gulp.src(imgSrc).pipe gulp.dest(imgDst)
   return
 
+# Copy fonts
+gulp.task 'font', ->
+  gulp.src(fontsSrc).pipe gulp.dest(fontsDst)
+  return
+
 # Copy html files
 gulp.task 'html', ->
   gulp.src(htmlSrc).pipe(minifyHTML()).pipe gulp.dest(htmlDst)
@@ -55,6 +62,7 @@ gulp.task 'default', [
   'img'
   'html'
   'style'
+  'font'
 ], ->
   # watch for changes in CoffeeScript files
   gulp.watch coffeeSrc, [ 'coffee' ]
