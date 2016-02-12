@@ -37,7 +37,7 @@ keyboardMovement = () ->
     moveLeft()
   else if keyboard.right.isDown or Buttons.right
     moveRight()
-  else
+  else if player.body.touching.down
     playerIdle()
 
   # Enable jumping if player is touching the ground

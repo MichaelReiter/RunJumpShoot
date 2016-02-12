@@ -39,7 +39,7 @@ keyboardMovement = function() {
     moveLeft();
   } else if (keyboard.right.isDown || Buttons.right) {
     moveRight();
-  } else {
+  } else if (player.body.touching.down) {
     playerIdle();
   }
   if (player.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
