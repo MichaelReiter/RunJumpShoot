@@ -11,7 +11,7 @@ PlayerVariables =
   lastFired: 0
 
 # Add player, configure physics and animations
-playerInit = () ->
+playerInit = ->
   player = game.add.sprite(32, GameResolution.height/2, 'player')
   player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale)
   player.smoothed = false
@@ -33,7 +33,7 @@ playerInit = () ->
   return
 
 
-moveLeft = () ->
+moveLeft = ->
   PlayerVariables.facing = "left"
   player.body.velocity.x = -PlayerVariables.movementSpeed
   if player.body.touching.down
@@ -43,7 +43,7 @@ moveLeft = () ->
   return
 
 
-moveRight = () ->
+moveRight = ->
   PlayerVariables.facing = "right"
   player.body.velocity.x = PlayerVariables.movementSpeed
   if player.body.touching.down
@@ -53,19 +53,19 @@ moveRight = () ->
   return
 
 
-jump = () ->
+jump = ->
   player.body.velocity.y = -PlayerVariables.jumpSpeed
   player.animations.play('jumping')
   return
 
 
-playerIdle = () ->
+playerIdle = ->
   player.animations.stop()
   player.frame = 6
   return
 
 
-shoot = () ->
+shoot = ->
   PlayerVariables.lastFired = game.time.now
   if PlayerVariables.facing is "right"
     projectile = bullets.create(player.x+30, player.y-48, 'bullet')

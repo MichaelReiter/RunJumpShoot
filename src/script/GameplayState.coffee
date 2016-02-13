@@ -1,10 +1,10 @@
 GameplayState =
 
-  preload: () ->
+  preload: ->
 
-  load: () ->
+  load: ->
 
-  create: () ->
+  create: ->
 
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
 
@@ -19,7 +19,7 @@ GameplayState =
     return
 
 
-  update: () ->
+  update: ->
     game.physics.arcade.collide(player, platforms)
     game.physics.arcade.collide(stars, platforms)
 

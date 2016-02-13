@@ -11,7 +11,7 @@ Buttons =
   jump: false
   shoot: false
 
-inputInit = () ->
+inputInit = ->
   # Create inputs for keyboard
   keyboard = game.input.keyboard.createCursorKeys()
   spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
@@ -34,7 +34,7 @@ inputInit = () ->
   return
 
 
-keyboardMovement = () ->
+keyboardMovement = ->
   player.body.velocity.x = 0
 
   # Handle left/right movement
@@ -56,7 +56,7 @@ keyboardMovement = () ->
   return
 
 
-buttonMovement = () ->
+buttonMovement = ->
   button_left.events.onInputDown.add(buttonSetLeft, this)
   button_right.events.onInputDown.add(buttonSetRight, this)
   button_jump.events.onInputDown.add(buttonSetJump, this)
@@ -69,41 +69,41 @@ buttonMovement = () ->
   return
 
 
-buttonSetLeft = () ->
+buttonSetLeft = ->
   Buttons.left = true
   return
 
 
-buttonSetRight = () ->
+buttonSetRight = ->
   Buttons.right = true
   return
 
 
-buttonSetJump = () ->
+buttonSetJump = ->
   Buttons.jump = true
   return
 
 
-buttonSetShoot = () ->
+buttonSetShoot = ->
   Buttons.shoot = true
   return
 
 
-buttonSetLeftOff = () ->
+buttonSetLeftOff = ->
   Buttons.left = false
   return
 
 
-buttonSetRightOff = () ->
+buttonSetRightOff = ->
   Buttons.right = false
   return
 
 
-buttonSetJumpOff = () ->
+buttonSetJumpOff = ->
   Buttons.jump = false
   return
 
 
-buttonSetShootOff = () ->
+buttonSetShootOff = ->
   Buttons.shoot = false
   return

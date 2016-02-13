@@ -5,7 +5,7 @@ GameWorld =
   height: GameResolution.height
   width: 2000
 
-levelInit = () ->
+levelInit = ->
   # Add background
   background = game.add.sprite(0, 0, 'background')
   background.scale.setTo(GameResolution.width, 1)

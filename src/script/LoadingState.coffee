@@ -1,12 +1,12 @@
 LoadingState =
 
-  resizeGame: () ->
+  resizeGame: ->
     scale = Math.min(window.innerWidth / GameResolution.width, window.innerHeight / GameResolution.height)
     game.scale.setUserScale(scale, scale)
     game.scale.refresh()
 
 
-  setScaling: () ->
+  setScaling: ->
     game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE
     game.scale.pageAlignHorizontally = true
     game.scale.pageAlignVertically = true
@@ -14,7 +14,7 @@ LoadingState =
     this.resizeGame()
 
 
-  preload: () ->
+  preload: ->
     game.load.image('background', 'img/background.png')
     game.load.image('platform', 'img/platform.png')
     game.load.image('star', 'img/star.png')
@@ -28,13 +28,13 @@ LoadingState =
     return
 
 
-  load: () ->
+  load: ->
 
 
-  create: () ->
+  create: ->
     this.setScaling()
     game.state.start('Gameplay')
     return
 
 
-  update: () ->
+  update: ->
