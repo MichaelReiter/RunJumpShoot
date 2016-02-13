@@ -12,7 +12,8 @@ GameWorld = {
 
 levelInit = function() {
   var ground, ledge;
-  background = game.add.tileSprite(0, 0, 640, 960, 'background');
+  background = game.add.sprite(0, 0, 'background');
+  background.scale.setTo(GameResolution.width, 1);
   platforms = game.add.group();
   platforms.enableBody = true;
   ground = platforms.create(-game.world.height.width / 2, game.world.height - 352, 'platform');

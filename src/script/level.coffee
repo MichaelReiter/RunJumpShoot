@@ -7,7 +7,8 @@ GameWorld =
 
 levelInit = () ->
   # Add background
-  background = game.add.tileSprite(0, 0, 640, 960, 'background')
+  background = game.add.sprite(0, 0, 'background')
+  background.scale.setTo(GameResolution.width, 1)
 
   platforms = game.add.group()
   platforms.enableBody = true

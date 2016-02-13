@@ -67,13 +67,13 @@ shoot = function() {
   var projectile, projectileVector;
   PlayerVariables.lastFired = game.time.now;
   if (PlayerVariables.facing === "right") {
-    projectile = bullets.create(player.x + 30, player.y - 46, 'bullet');
+    projectile = bullets.create(player.x + 30, player.y - 48, 'bullet');
     projectileVector = PlayerVariables.bulletSpeed;
   } else {
-    projectile = bullets.create(player.x - 40, player.y - 46, 'bullet');
+    projectile = bullets.create(player.x - 40, player.y - 48, 'bullet');
     projectileVector = -PlayerVariables.bulletSpeed;
   }
-  projectile.scale.setTo(1.5, 1.5);
+  projectile.scale.setTo(2, 2);
   projectile.body.velocity.x = projectileVector;
   projectile.checkWorldBounds = true;
   projectile.outOfBoundsKill = true;
