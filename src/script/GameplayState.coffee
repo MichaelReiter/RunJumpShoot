@@ -13,9 +13,12 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
     levelInit()
-    player = new Player(32, GameResolution.height/2, 'player')
+
+    player = new Player(300, GameResolution.height/2, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
-    # enemy = new Enemy(100, GameResolution.height/2, 'enemy')
+
+    enemyHandler = new EnemyHandler()
+
     inputInit()
     scoreInit()
     collectablesInit()
@@ -25,6 +28,7 @@ GameplayState =
 
   update: ->
     game.physics.arcade.collide(player.ref, platforms)
+    game.physics.arcade.collide(enemies, platforms)
     game.physics.arcade.collide(stars, platforms)
 
     game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)
