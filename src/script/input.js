@@ -38,19 +38,19 @@ inputInit = function() {
 };
 
 keyboardMovement = function() {
-  player.body.velocity.x = 0;
+  player.ref.body.velocity.x = 0;
   if (keyboard.left.isDown || Buttons.left) {
-    moveLeft();
+    player.moveLeft();
   } else if (keyboard.right.isDown || Buttons.right) {
-    moveRight();
-  } else if (player.body.touching.down) {
-    playerIdle();
+    player.moveRight();
+  } else if (player.ref.body.touching.down) {
+    player.idle();
   }
-  if (player.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
-    jump();
+  if (player.ref.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
+    player.jump();
   }
-  if ((game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) && (spacebar.isDown || Buttons.shoot)) {
-    shoot();
+  if ((game.time.now - player.lastFired) > (1000 / player.fireRate) && (spacebar.isDown || Buttons.shoot)) {
+    player.shoot();
   }
 };
 

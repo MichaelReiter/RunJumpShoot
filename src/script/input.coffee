@@ -35,23 +35,23 @@ inputInit = ->
 
 
 keyboardMovement = ->
-  player.body.velocity.x = 0
+  player.ref.body.velocity.x = 0
 
   # Handle left/right movement
   if keyboard.left.isDown or Buttons.left
-    moveLeft()
+    player.moveLeft()
   else if keyboard.right.isDown or Buttons.right
-    moveRight()
-  else if player.body.touching.down
-    playerIdle()
+    player.moveRight()
+  else if player.ref.body.touching.down
+    player.idle()
 
   # Enable jumping if player is touching the ground
-  if player.body.touching.down and (keyboard.up.isDown or Buttons.jump)
-    jump()
+  if player.ref.body.touching.down and (keyboard.up.isDown or Buttons.jump)
+    player.jump()
 
   # Enable shooting
-  if (game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) and (spacebar.isDown or Buttons.shoot)
-    shoot()
+  if (game.time.now - player.lastFired) > (1000 / player.fireRate) and (spacebar.isDown or Buttons.shoot)
+    player.shoot()
 
   return
 
