@@ -1,4 +1,5 @@
 player = null
+enemy = null
 
 GameplayState =
 
@@ -13,7 +14,8 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
     levelInit()
-    player = new Player()
+    player = new Player(32, GameResolution.height/2, 'player')
+    enemy = new Enemy(100, GameResolution.height/2, 'enemy')
     inputInit()
     scoreInit()
     collectablesInit()
