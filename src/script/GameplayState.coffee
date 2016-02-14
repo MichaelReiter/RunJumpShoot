@@ -1,5 +1,4 @@
 player = null
-enemy = null
 
 GameplayState =
 
@@ -15,7 +14,8 @@ GameplayState =
 
     levelInit()
     player = new Player(32, GameResolution.height/2, 'player')
-    enemy = new Enemy(100, GameResolution.height/2, 'enemy')
+    game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
+    # enemy = new Enemy(100, GameResolution.height/2, 'enemy')
     inputInit()
     scoreInit()
     collectablesInit()

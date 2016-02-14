@@ -9,7 +9,6 @@ Player = (function(superClass) {
   extend(Player, superClass);
 
   function Player(x, y, sprite) {
-    game.camera.follow(this.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     bullets = game.add.group();
     bullets.enableBody = true;
     Player.__super__.constructor.call(this, x, y, sprite);
