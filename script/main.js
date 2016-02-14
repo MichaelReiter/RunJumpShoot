@@ -1,20 +1,26 @@
-var Buttons, GameResolution, GameplayState, LoadingState, PlayerVariables, bullets, buttonMovement, buttonSetJump, buttonSetJumpOff, buttonSetLeft, buttonSetLeftOff, buttonSetRight, buttonSetRightOff, buttonSetShoot, buttonSetShootOff, button_jump, button_left, button_right, button_shoot, collectStar, collectablesInit, game, inputInit, jump, keyboard, keyboardMovement, levelInit, main, moveLeft, moveRight, platforms, player, playerIdle, playerInit, playerMovement, score, scoreInit, scoreText, shoot, spacebar, stars;
+var Buttons, Enemy, Entity, GameResolution, GameWorld, GameplayState, LoadingState, Player, background, bullets, buttonMovement, buttonSetJump, buttonSetJumpOff, buttonSetLeft, buttonSetLeftOff, buttonSetRight, buttonSetRightOff, buttonSetShoot, buttonSetShootOff, button_jump, button_left, button_right, button_shoot, collectStar, collectablesInit, enemy, game, inputInit, keyboard, keyboardMovement, levelInit, main, platforms, player, score, scoreInit, scoreText, spacebar, stars,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
+
+player = null;
 
 GameplayState = {
   preload: function() {},
   load: function() {},
   create: function() {
+    game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     levelInit();
-    playerInit();
+    player = new Player(32, GameResolution.height / 2, 'player');
+    game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     inputInit();
     scoreInit();
     collectablesInit();
   },
   update: function() {
-    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(player.ref, platforms);
     game.physics.arcade.collide(stars, platforms);
-    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    game.physics.arcade.overlap(player.ref, stars, collectStar, null, this);
     keyboardMovement();
     buttonMovement();
   }
@@ -44,6 +50,7 @@ LoadingState = {
     game.load.image('button_jump', 'img/button_jump.png');
     game.load.image('button_shoot', 'img/button_shoot.png');
     game.load.spritesheet('player', 'img/player.png', 39, 34);
+    game.load.spritesheet('enemy', 'img/enemy.png', 39, 34);
   },
   load: function() {},
   create: function() {
@@ -66,6 +73,88 @@ main = function() {
   return game.state.add('Loading', LoadingState, true);
 };
 
+Entity = (function() {
+  Entity.prototype.movementSpeed = 200;
+
+  Entity.prototype.jumpSpeed = 300;
+
+  Entity.prototype.bulletSpeed = 300;
+
+  Entity.prototype.scale = 2;
+
+  Entity.prototype.facing = "right";
+
+  Entity.prototype.fireRate = 3;
+
+  Entity.prototype.lastFired = 0;
+
+  Entity.prototype.ref = null;
+
+  function Entity(x, y, sprite) {
+    this.ref = game.add.sprite(x, y, sprite);
+    this.ref.scale.setTo(this.scale, this.scale);
+    this.ref.smoothed = false;
+    this.ref.anchor.setTo(.5, 1);
+    this.ref.frame = 6;
+    game.physics.arcade.enable(this.ref);
+    this.ref.body.gravity.y = 300;
+    this.ref.body.collideWorldBounds = true;
+    this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
+    this.ref.animations.add('jumping', [6, 7, 8, 9], 12, true);
+  }
+
+  Entity.prototype.moveLeft = function() {
+    this.facing = "left";
+    this.ref.body.velocity.x = -this.movementSpeed;
+    if (this.ref.body.touching.down) {
+      this.ref.animations.play('walking');
+    }
+    if (this.ref.scale.x > 0) {
+      this.ref.scale.x *= -1;
+    }
+  };
+
+  Entity.prototype.moveRight = function() {
+    this.facing = "right";
+    this.ref.body.velocity.x = this.movementSpeed;
+    if (this.ref.body.touching.down) {
+      this.ref.animations.play('walking');
+    }
+    if (this.ref.scale.x < 0) {
+      this.ref.scale.x *= -1;
+    }
+  };
+
+  Entity.prototype.jump = function() {
+    this.ref.body.velocity.y = -this.jumpSpeed;
+    this.ref.animations.play('jumping');
+  };
+
+  Entity.prototype.idle = function() {
+    this.ref.animations.stop();
+    this.ref.frame = 6;
+  };
+
+  Entity.prototype.shoot = function() {
+    var projectile, projectileVector;
+    this.lastFired = game.time.now;
+    if (this.facing === "right") {
+      projectile = bullets.create(this.ref.x + 30, this.ref.y - 48, 'bullet');
+      projectileVector = this.bulletSpeed;
+    } else {
+      projectile = bullets.create(this.ref.x - 40, this.ref.y - 48, 'bullet');
+      projectileVector = -this.bulletSpeed;
+    }
+    projectile.scale.setTo(2, 2);
+    projectile.body.velocity.x = projectileVector;
+    projectile.checkWorldBounds = true;
+    projectile.outOfBoundsKill = true;
+  };
+
+  return Entity;
+
+})();
+
 stars = null;
 
 collectablesInit = function() {
@@ -79,10 +168,23 @@ collectablesInit = function() {
 };
 
 collectStar = function(player, star) {
-  star.kill();
+  star.destroy();
   score += 10;
   scoreText.text = 'Score: ' + score;
 };
+
+enemy = null;
+
+Enemy = (function(superClass) {
+  extend(Enemy, superClass);
+
+  function Enemy() {
+    return Enemy.__super__.constructor.apply(this, arguments);
+  }
+
+  return Enemy;
+
+})(Entity);
 
 keyboard = null;
 
@@ -114,22 +216,26 @@ inputInit = function() {
   button_right.inputEnabled = true;
   button_jump.inputEnabled = true;
   button_shoot.inputEnabled = true;
+  button_left.fixedToCamera = true;
+  button_right.fixedToCamera = true;
+  button_jump.fixedToCamera = true;
+  button_shoot.fixedToCamera = true;
 };
 
 keyboardMovement = function() {
-  player.body.velocity.x = 0;
+  player.ref.body.velocity.x = 0;
   if (keyboard.left.isDown || Buttons.left) {
-    moveLeft();
+    player.moveLeft();
   } else if (keyboard.right.isDown || Buttons.right) {
-    moveRight();
-  } else {
-    playerIdle();
+    player.moveRight();
+  } else if (player.ref.body.touching.down) {
+    player.idle();
   }
-  if (player.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
-    jump();
+  if (player.ref.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
+    player.jump();
   }
-  if ((game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) && (spacebar.isDown || Buttons.shoot)) {
-    shoot();
+  if ((game.time.now - player.lastFired) > (1000 / player.fireRate) && (spacebar.isDown || Buttons.shoot)) {
+    player.shoot();
   }
 };
 
@@ -178,15 +284,24 @@ buttonSetShootOff = function() {
 
 platforms = null;
 
+background = null;
+
+GameWorld = {
+  height: GameResolution.height,
+  width: 2000
+};
+
 levelInit = function() {
   var ground, ledge;
-  game.add.sprite(0, 0, 'background');
+  background = game.add.sprite(0, 0, 'background');
+  background.scale.setTo(GameResolution.width, 1);
   platforms = game.add.group();
   platforms.enableBody = true;
-  ground = platforms.create(0, game.world.height - 352, 'platform');
+  ground = platforms.create(-game.world.height.width / 2, game.world.height - 352, 'platform');
   ground.smoothed = false;
-  ground.scale.setTo(2, 1);
+  ground.scale.setTo(10, 1);
   ground.body.immovable = true;
+  ground.fixedToCamera = true;
   ledge = platforms.create(400, 470, 'platform');
   ledge.smoothed = false;
   ledge.body.immovable = true;
@@ -195,103 +310,29 @@ levelInit = function() {
   ledge.body.immovable = true;
 };
 
-player = null;
-
 bullets = null;
 
-PlayerVariables = {
-  movementSpeed: 200,
-  jumpSpeed: 300,
-  bulletSpeed: 300,
-  playerScale: 2,
-  facing: "right",
-  fireRate: 3,
-  lastFired: 0
-};
+Player = (function(superClass) {
+  extend(Player, superClass);
 
-playerInit = function() {
-  player = game.add.sprite(32, 100, 'player');
-  player.scale.setTo(PlayerVariables.playerScale, PlayerVariables.playerScale);
-  player.smoothed = false;
-  player.anchor.setTo(.5, 1);
-  game.physics.arcade.enable(player);
-  player.body.gravity.y = 300;
-  player.body.collideWorldBounds = true;
-  bullets = game.add.group();
-  bullets.enableBody = true;
-  player.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
-  player.animations.add('jumping', [6, 7, 8, 9], 12, true);
-};
+  function Player(x, y, sprite) {
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    Player.__super__.constructor.call(this, x, y, sprite);
+  }
 
-playerMovement = function() {
-  player.body.velocity.x = 0;
-  if (keyboard.left.isDown) {
-    moveLeft();
-  } else if (keyboard.right.isDown) {
-    moveRight();
-  } else {
-    playerIdle();
-  }
-  if (player.body.touching.down && keyboard.up.isDown) {
-    jump();
-  }
-  if ((game.time.now - PlayerVariables.lastFired) > (1000 / PlayerVariables.fireRate) && spacebar.isDown) {
-    shoot();
-  }
-};
+  return Player;
 
-moveLeft = function() {
-  PlayerVariables.facing = "left";
-  player.body.velocity.x = -PlayerVariables.movementSpeed;
-  if (player.body.touching.down) {
-    player.animations.play('walking');
-  }
-  if (player.scale.x > 0) {
-    player.scale.x *= -1;
-  }
-};
-
-moveRight = function() {
-  PlayerVariables.facing = "right";
-  player.body.velocity.x = PlayerVariables.movementSpeed;
-  if (player.body.touching.down) {
-    player.animations.play('walking');
-  }
-  if (player.scale.x < 0) {
-    player.scale.x *= -1;
-  }
-};
-
-jump = function() {
-  player.body.velocity.y = -PlayerVariables.jumpSpeed;
-  player.animations.play('jumping');
-};
-
-playerIdle = function() {
-  player.animations.stop();
-  player.frame = 6;
-};
-
-shoot = function() {
-  var projectile, projectileVector;
-  PlayerVariables.lastFired = game.time.now;
-  if (PlayerVariables.facing === "right") {
-    projectile = bullets.create(player.x + 30, player.y - 46, 'bullet');
-    projectileVector = PlayerVariables.bulletSpeed;
-  } else {
-    projectile = bullets.create(player.x - 40, player.y - 46, 'bullet');
-    projectileVector = -PlayerVariables.bulletSpeed;
-  }
-  projectile.body.velocity.x = projectileVector;
-};
+})(Entity);
 
 score = 0;
 
 scoreText = null;
 
 scoreInit = function() {
-  return scoreText = game.add.text(16, 16, 'Score: 0', {
-    fontSize: '32px',
+  scoreText = game.add.text(16, 4, 'Score: 0', {
+    font: '32px invasion2000',
     fill: '#fff'
   });
+  return scoreText.fixedToCamera = true;
 };
