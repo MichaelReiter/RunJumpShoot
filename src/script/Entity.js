@@ -64,6 +64,10 @@ Entity = (function() {
     this.ref.frame = 6;
   };
 
+  Entity.prototype.canShoot = function() {
+    return (game.time.now - this.lastFired) > (1000 / this.fireRate);
+  };
+
   Entity.prototype.shoot = function() {
     var projectile, projectileVector;
     this.lastFired = game.time.now;

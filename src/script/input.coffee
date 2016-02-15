@@ -50,7 +50,7 @@ keyboardMovement = ->
     player.jump()
 
   # Enable shooting
-  if (game.time.now - player.lastFired) > (1000 / player.fireRate) and (spacebar.isDown or Buttons.shoot)
+  if player.canShoot() and (spacebar.isDown or Buttons.shoot)
     player.shoot()
 
   return

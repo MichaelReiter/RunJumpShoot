@@ -6,21 +6,41 @@ var Enemy,
 Enemy = (function(superClass) {
   extend(Enemy, superClass);
 
-  Enemy.prototype.approachDistance = 150;
+  Enemy.prototype.difficultyScale = 0.75;
+
+  Enemy.prototype.approachDeltaX = 200;
+
+  Enemy.prototype.shootDeltaY = 50;
 
   function Enemy() {
+    this.scaleDifficulty();
     Enemy.__super__.constructor.apply(this, arguments);
   }
 
+  Enemy.prototype.scaleDifficulty = function() {
+    this.movementSpeed = player.movementSpeed * this.difficultyScale;
+    this.fireRate = player.fireRate * this.difficultyScale / 4;
+    this.bulletSpeed = player.bulletSpeed * this.difficultyScale;
+  };
+
+  Enemy.prototype.AI = function() {
+    this.followPlayer();
+    this.shootPlayer();
+  };
+
   Enemy.prototype.followPlayer = function() {
-    if (player.ref.x - this.ref.x > this.approachDistance) {
-      console.log("right");
+    if (player.ref.x - this.ref.x > this.approachDeltaX) {
       this.moveRight();
-    } else if (player.ref.x - this.ref.x < -this.approachDistance) {
+    } else if (player.ref.x - this.ref.x < -this.approachDeltaX) {
       this.moveLeft();
     } else {
-      console.log("idle");
       this.idle();
+    }
+  };
+
+  Enemy.prototype.shootPlayer = function() {
+    if (Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY && this.canShoot()) {
+      this.shoot();
     }
   };
 

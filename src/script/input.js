@@ -49,7 +49,7 @@ keyboardMovement = function() {
   if (player.ref.body.touching.down && (keyboard.up.isDown || Buttons.jump)) {
     player.jump();
   }
-  if ((game.time.now - player.lastFired) > (1000 / player.fireRate) && (spacebar.isDown || Buttons.shoot)) {
+  if (player.canShoot() && (spacebar.isDown || Buttons.shoot)) {
     player.shoot();
   }
 };

@@ -36,6 +36,6 @@ GameplayState =
     keyboardMovement()
     buttonMovement()
 
-    enemy?.followPlayer()
+    enemy?.AI()
     
     return

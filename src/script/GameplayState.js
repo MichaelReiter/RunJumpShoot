@@ -26,7 +26,7 @@ GameplayState = {
     keyboardMovement();
     buttonMovement();
     if (typeof enemy !== "undefined" && enemy !== null) {
-      enemy.followPlayer();
+      enemy.AI();
     }
   }
 };

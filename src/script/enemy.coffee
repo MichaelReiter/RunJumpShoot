@@ -1,19 +1,39 @@
 class Enemy extends Entity
 
-  approachDistance: 150
+  difficultyScale: 0.75
+  approachDeltaX: 200
+  shootDeltaY: 50
 
   constructor: ->
+    this.scaleDifficulty()
     super
   
+
+  scaleDifficulty: ->
+    this.movementSpeed = player.movementSpeed * this.difficultyScale
+    this.fireRate = player.fireRate * this.difficultyScale/4
+    this.bulletSpeed = player.bulletSpeed * this.difficultyScale
+    return
+
+
+  AI: ->
+    this.followPlayer()
+    this.shootPlayer()
+    return
+
+
   followPlayer: ->
     # this.facing = player.facing
-    if player.ref.x - this.ref.x > this.approachDistance
-      console.log "right"
+    if player.ref.x - this.ref.x > this.approachDeltaX
       this.moveRight()
-    else if player.ref.x - this.ref.x < -this.approachDistance
+    else if player.ref.x - this.ref.x < -this.approachDeltaX
       this.moveLeft()
     else
-      console.log "idle"
       this.idle()
+    return
 
+
+  shootPlayer: ->
+    if Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY and this.canShoot()
+      this.shoot()
     return

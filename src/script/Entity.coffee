@@ -58,6 +58,10 @@ class Entity
     return
 
 
+  canShoot: ->
+    return (game.time.now - this.lastFired) > (1000 / this.fireRate)
+
+
   shoot: ->
     this.lastFired = game.time.now
     if this.facing is "right"
