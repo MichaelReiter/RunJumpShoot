@@ -37,9 +37,7 @@ Entity = (function() {
     if (this.ref.body.touching.down) {
       this.ref.animations.play('walking');
     }
-    if (this.ref.scale.x > 0) {
-      this.ref.scale.x *= -1;
-    }
+    this.setFacingDirection();
   };
 
   Entity.prototype.moveRight = function() {
@@ -48,9 +46,7 @@ Entity = (function() {
     if (this.ref.body.touching.down) {
       this.ref.animations.play('walking');
     }
-    if (this.ref.scale.x < 0) {
-      this.ref.scale.x *= -1;
-    }
+    this.setFacingDirection();
   };
 
   Entity.prototype.jump = function() {
@@ -62,6 +58,14 @@ Entity = (function() {
     this.ref.body.velocity.x = 0;
     this.ref.animations.stop();
     this.ref.frame = 6;
+  };
+
+  Entity.prototype.setFacingDirection = function() {
+    if (this.facing === "right" && this.ref.scale.x < 0) {
+      this.ref.scale.x *= -1;
+    } else if (this.facing === "left" && this.ref.scale.x > 0) {
+      this.ref.scale.x *= -1;
+    }
   };
 
   Entity.prototype.canShoot = function() {

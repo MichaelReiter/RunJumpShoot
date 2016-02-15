@@ -30,8 +30,7 @@ class Entity
     this.ref.body.velocity.x = -this.movementSpeed
     if this.ref.body.touching.down
       this.ref.animations.play('walking')
-    if this.ref.scale.x > 0
-      this.ref.scale.x *= -1
+    this.setFacingDirection()
     return
 
 
@@ -40,8 +39,7 @@ class Entity
     this.ref.body.velocity.x = this.movementSpeed
     if this.ref.body.touching.down
       this.ref.animations.play('walking')
-    if this.ref.scale.x < 0
-      this.ref.scale.x *= -1
+    this.setFacingDirection()
     return
 
 
@@ -55,6 +53,14 @@ class Entity
     this.ref.body.velocity.x = 0
     this.ref.animations.stop()
     this.ref.frame = 6
+    return
+
+
+  setFacingDirection: ->
+    if this.facing is "right" and this.ref.scale.x < 0
+      this.ref.scale.x *= -1
+    else if this.facing is "left" and this.ref.scale.x > 0
+      this.ref.scale.x *= -1
     return
 
 

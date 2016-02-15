@@ -29,6 +29,10 @@ Enemy = (function(superClass) {
   };
 
   Enemy.prototype.followPlayer = function() {
+    if (Math.abs(player.ref.x - this.ref.x) < 3) {
+      this.facing = player.facing;
+      this.setFacingDirection();
+    }
     if (player.ref.x - this.ref.x > this.approachDeltaX) {
       this.moveRight();
     } else if (player.ref.x - this.ref.x < -this.approachDeltaX) {
