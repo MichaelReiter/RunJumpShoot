@@ -59,6 +59,7 @@ Entity = (function() {
   };
 
   Entity.prototype.idle = function() {
+    this.ref.body.velocity.x = 0;
     this.ref.animations.stop();
     this.ref.frame = 6;
   };

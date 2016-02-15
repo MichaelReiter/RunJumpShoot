@@ -52,6 +52,7 @@ class Entity
 
 
   idle: ->
+    this.ref.body.velocity.x = 0
     this.ref.animations.stop()
     this.ref.frame = 6
     return

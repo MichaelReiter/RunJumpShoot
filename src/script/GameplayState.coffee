@@ -35,5 +35,7 @@ GameplayState =
 
     keyboardMovement()
     buttonMovement()
+
+    enemy?.followPlayer()
     
     return

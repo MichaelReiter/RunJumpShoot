@@ -25,5 +25,8 @@ GameplayState = {
     game.physics.arcade.overlap(player.ref, stars, collectStar, null, this);
     keyboardMovement();
     buttonMovement();
+    if (typeof enemy !== "undefined" && enemy !== null) {
+      enemy.followPlayer();
+    }
   }
 };

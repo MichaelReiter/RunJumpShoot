@@ -1,4 +1,5 @@
 enemies = null
+enemy = null
 
 class EnemyHandler
 
