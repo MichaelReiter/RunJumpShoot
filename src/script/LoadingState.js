@@ -20,6 +20,7 @@ LoadingState = {
     game.load.image('platform', 'img/platform.png');
     game.load.image('star', 'img/star.png');
     game.load.image('bullet', 'img/bullet.png');
+    game.load.image('heart', 'img/heart.png');
     game.load.image('button_left', 'img/button_left.png');
     game.load.image('button_right', 'img/button_right.png');
     game.load.image('button_jump', 'img/button_jump.png');

@@ -1,4 +1,5 @@
 player = null
+healthManager = null
 
 GameplayState =
 
@@ -13,12 +14,14 @@ GameplayState =
 
     levelInit()
 
+    healthManager = new HealthManager()
+
     player = new Player(300, GameResolution.height/2, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
-    enemyHandler = new EnemyHandler()
-    enemyHandler.spawn(100, GameResolution.height/2)
-    # enemyHandler.spawn(400, GameResolution.height/2)
+    enemyManager = new EnemyManager()
+    enemyManager.spawn(100, GameResolution.height/2)
+    # enemyManager.spawn(400, GameResolution.height/2)
 
     inputInit()
     scoreInit()

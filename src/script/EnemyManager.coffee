@@ -1,7 +1,7 @@
 enemies = null
 enemyList = []
 
-class EnemyHandler
+class EnemyManager
 
   constructor: ->
     enemies = game.add.group()

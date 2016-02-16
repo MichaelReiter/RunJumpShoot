@@ -5,39 +5,39 @@ class Enemy extends Entity
   shootDeltaY: 50
 
   constructor: ->
-    this.scaleDifficulty()
-    # this.setFacingDirection()
+    @scaleDifficulty()
+    # @setFacingDirection()
     super
   
 
   scaleDifficulty: ->
-    this.movementSpeed = player.movementSpeed * this.difficultyScale
-    this.fireRate = player.fireRate * this.difficultyScale/4
-    this.bulletSpeed = player.bulletSpeed * this.difficultyScale
+    @movementSpeed = player.movementSpeed * @difficultyScale
+    @fireRate = player.fireRate * @difficultyScale/4
+    @bulletSpeed = player.bulletSpeed * @difficultyScale
     return
 
 
   AI: ->
-    this.followPlayer()
-    this.shootPlayer()
+    @followPlayer()
+    @shootPlayer()
     return
 
 
   followPlayer: ->
-    if Math.abs(player.ref.x - this.ref.x) < 3
-      this.facing = player.facing
-      this.setFacingDirection()
+    if Math.abs(player.ref.x - @ref.x) < 3
+      @facing = player.facing
+      @setFacingDirection()
 
-    if player.ref.x - this.ref.x > this.approachDeltaX
-      this.moveRight()
-    else if player.ref.x - this.ref.x < -this.approachDeltaX
-      this.moveLeft()
+    if player.ref.x - @ref.x > @approachDeltaX
+      @moveRight()
+    else if player.ref.x - @ref.x < -@approachDeltaX
+      @moveLeft()
     else
-      this.idle()
+      @idle()
     return
 
 
   shootPlayer: ->
-    if Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY and this.canShoot()
-      this.shoot()
+    if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot()
+      @shoot()
     return
