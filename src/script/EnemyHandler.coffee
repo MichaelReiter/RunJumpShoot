@@ -1,5 +1,5 @@
 enemies = null
-enemy = null
+enemyList = []
 
 class EnemyHandler
 
@@ -7,5 +7,9 @@ class EnemyHandler
     enemies = game.add.group()
     enemies.enableBody = true
 
-    enemy = new Enemy(100, GameResolution.height/2, 'enemy')
+
+  spawn: (x, y) ->
+    enemy = new Enemy(x, y, 'enemy')
     enemies.add(enemy.ref)
+    enemyList.push(enemy)
+    return

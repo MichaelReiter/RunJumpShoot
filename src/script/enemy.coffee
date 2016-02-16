@@ -6,6 +6,7 @@ class Enemy extends Entity
 
   constructor: ->
     this.scaleDifficulty()
+    # this.setFacingDirection()
     super
   
 

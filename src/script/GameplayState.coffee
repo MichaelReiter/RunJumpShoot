@@ -17,6 +17,8 @@ GameplayState =
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     enemyHandler = new EnemyHandler()
+    enemyHandler.spawn(100, GameResolution.height/2)
+    # enemyHandler.spawn(400, GameResolution.height/2)
 
     inputInit()
     scoreInit()
@@ -35,6 +37,7 @@ GameplayState =
     keyboardMovement()
     buttonMovement()
 
-    enemy?.AI()
+    for enemy in enemyList
+      enemy.AI()
     
     return
