@@ -28,6 +28,7 @@ GameplayState = {
     for (i = 0, len = enemyList.length; i < len; i++) {
       enemy = enemyList[i];
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this);
+      game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this);
     }
     keyboardMovement();
     buttonMovement();

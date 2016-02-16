@@ -2,6 +2,7 @@ playerBullets = null
 
 class Player extends Entity
 
-  takeDamage: ->
+  hit: (entity, bullet) ->
     healthManager.loseHealth()
+    super
     return

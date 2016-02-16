@@ -33,8 +33,10 @@ GameplayState =
   update: ->
     game.physics.arcade.collide(player.ref, platforms)
     game.physics.arcade.collide(enemies, platforms)
+
     for enemy in enemyList
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)
+      game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this)
 
     # game.physics.arcade.collide(stars, platforms)
     # game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)

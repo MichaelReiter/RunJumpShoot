@@ -94,7 +94,6 @@ Entity = (function() {
 
   Entity.prototype.hit = function(entity, bullet) {
     bullet.destroy();
-    player.takeDamage();
   };
 
   return Entity;

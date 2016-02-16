@@ -41,3 +41,9 @@ class Enemy extends Entity
     if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot()
       @shoot()
     return
+
+
+  hit: (entity, bullet) ->
+    entity.kill()
+    super
+    return

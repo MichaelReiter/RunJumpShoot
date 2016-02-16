@@ -12,8 +12,9 @@ Player = (function(superClass) {
     return Player.__super__.constructor.apply(this, arguments);
   }
 
-  Player.prototype.takeDamage = function() {
+  Player.prototype.hit = function(entity, bullet) {
     healthManager.loseHealth();
+    Player.__super__.hit.apply(this, arguments);
   };
 
   return Player;

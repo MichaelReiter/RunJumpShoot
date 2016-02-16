@@ -89,5 +89,4 @@ class Entity
 
   hit: (entity, bullet) ->
     bullet.destroy()
-    player.takeDamage()
     return

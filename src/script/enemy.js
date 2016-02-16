@@ -48,6 +48,11 @@ Enemy = (function(superClass) {
     }
   };
 
+  Enemy.prototype.hit = function(entity, bullet) {
+    entity.kill();
+    Enemy.__super__.hit.apply(this, arguments);
+  };
+
   return Enemy;
 
 })(Entity);
