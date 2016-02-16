@@ -22,7 +22,7 @@ class Enemy extends Entity
     if @alive
       @followPlayer()
       @shootPlayer()
-      return
+    return
 
 
   followPlayer: ->

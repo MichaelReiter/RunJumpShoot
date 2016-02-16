@@ -90,9 +90,3 @@ class Entity
   hit: (entity, bullet) ->
     bullet.destroy()
     return
-
-
-  cleanUp: ->
-    # @bullets.destroy()
-    # @destroy()
-    return

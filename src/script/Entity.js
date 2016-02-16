@@ -96,8 +96,6 @@ Entity = (function() {
     bullet.destroy();
   };
 
-  Entity.prototype.cleanUp = function() {};
-
   return Entity;
 
 })();
