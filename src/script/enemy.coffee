@@ -3,6 +3,7 @@ class Enemy extends Entity
   difficultyScale: 0.75
   approachDeltaX: 200
   shootDeltaY: 50
+  alive: true
 
   constructor: ->
     @scaleDifficulty()
@@ -18,9 +19,10 @@ class Enemy extends Entity
 
 
   AI: ->
-    @followPlayer()
-    @shootPlayer()
-    return
+    if @alive
+      @followPlayer()
+      @shootPlayer()
+      return
 
 
   followPlayer: ->
@@ -43,7 +45,8 @@ class Enemy extends Entity
     return
 
 
-  hit: (entity, bullet) ->
-    entity.kill()
+  hit: (entity, bullet) =>
+    this.alive = false
+    entity.destroy()
     super
     return
