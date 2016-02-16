@@ -17,21 +17,22 @@ GameplayState = {
     player = new Player(300, GameResolution.height / 2, 'player');
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     enemyManager = new EnemyManager();
-    enemyManager.spawn(100, GameResolution.height / 2);
+    enemyManager.spawn(400, GameResolution.height / 2);
     inputInit();
     scoreInit();
-    collectablesInit();
   },
   update: function() {
-    var enemy, i, len;
+    var enemy, i, j, len, len1;
     game.physics.arcade.collide(player.ref, platforms);
     game.physics.arcade.collide(enemies, platforms);
-    game.physics.arcade.collide(stars, platforms);
-    game.physics.arcade.overlap(player.ref, stars, collectStar, null, this);
-    keyboardMovement();
-    buttonMovement();
     for (i = 0, len = enemyList.length; i < len; i++) {
       enemy = enemyList[i];
+      game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this);
+    }
+    keyboardMovement();
+    buttonMovement();
+    for (j = 0, len1 = enemyList.length; j < len1; j++) {
+      enemy = enemyList[j];
       enemy.AI();
     }
   }

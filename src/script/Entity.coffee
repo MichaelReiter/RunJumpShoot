@@ -7,6 +7,7 @@ class Entity
   facing: "right"
   fireRate: 3     # in bullets/second
   lastFired: 0
+  bullets: null
   ref: null
 
   # Add entity, configure physics and animations
@@ -24,6 +25,8 @@ class Entity
     @ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
     @ref.animations.add('jumping', [6, 7, 8, 9], 12, true)
 
+    @bullets = game.add.group()
+    @bullets.enableBody = true
 
   moveLeft: ->
     @facing = "left"
@@ -71,14 +74,20 @@ class Entity
   shoot: ->
     @lastFired = game.time.now
     if @facing is "right"
-      projectile = bullets.create(@ref.x+30, @ref.y-48, 'bullet')
+      projectile = @bullets.create(@ref.x+30, @ref.y-48, 'bullet')
       projectileVector = @bulletSpeed
     else
-      projectile = bullets.create(@ref.x-40, @ref.y-48, 'bullet')
+      projectile = @bullets.create(@ref.x-40, @ref.y-48, 'bullet')
       projectileVector = -@bulletSpeed
 
     projectile.scale.setTo(2, 2)
     projectile.body.velocity.x = projectileVector
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill = true
+    return
+
+
+  hit: (entity, bullet) ->
+    bullet.destroy()
+    player.takeDamage()
     return

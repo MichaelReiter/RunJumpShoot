@@ -20,12 +20,12 @@ GameplayState =
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     enemyManager = new EnemyManager()
-    enemyManager.spawn(100, GameResolution.height/2)
-    # enemyManager.spawn(400, GameResolution.height/2)
+    # enemyManager.spawn(100, GameResolution.height/2)
+    enemyManager.spawn(400, GameResolution.height/2)
 
     inputInit()
     scoreInit()
-    collectablesInit()
+    # collectablesInit()
     
     return
 
@@ -33,9 +33,11 @@ GameplayState =
   update: ->
     game.physics.arcade.collide(player.ref, platforms)
     game.physics.arcade.collide(enemies, platforms)
-    game.physics.arcade.collide(stars, platforms)
+    for enemy in enemyList
+      game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)
 
-    game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)
+    # game.physics.arcade.collide(stars, platforms)
+    # game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)
 
     keyboardMovement()
     buttonMovement()

@@ -16,6 +16,8 @@ Entity = (function() {
 
   Entity.prototype.lastFired = 0;
 
+  Entity.prototype.bullets = null;
+
   Entity.prototype.ref = null;
 
   function Entity(x, y, sprite) {
@@ -29,6 +31,8 @@ Entity = (function() {
     this.ref.body.collideWorldBounds = true;
     this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
     this.ref.animations.add('jumping', [6, 7, 8, 9], 12, true);
+    this.bullets = game.add.group();
+    this.bullets.enableBody = true;
   }
 
   Entity.prototype.moveLeft = function() {
@@ -76,16 +80,21 @@ Entity = (function() {
     var projectile, projectileVector;
     this.lastFired = game.time.now;
     if (this.facing === "right") {
-      projectile = bullets.create(this.ref.x + 30, this.ref.y - 48, 'bullet');
+      projectile = this.bullets.create(this.ref.x + 30, this.ref.y - 48, 'bullet');
       projectileVector = this.bulletSpeed;
     } else {
-      projectile = bullets.create(this.ref.x - 40, this.ref.y - 48, 'bullet');
+      projectile = this.bullets.create(this.ref.x - 40, this.ref.y - 48, 'bullet');
       projectileVector = -this.bulletSpeed;
     }
     projectile.scale.setTo(2, 2);
     projectile.body.velocity.x = projectileVector;
     projectile.checkWorldBounds = true;
     projectile.outOfBoundsKill = true;
+  };
+
+  Entity.prototype.hit = function(entity, bullet) {
+    bullet.destroy();
+    player.takeDamage();
   };
 
   return Entity;
