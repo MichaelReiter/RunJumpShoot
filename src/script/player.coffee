@@ -8,6 +8,7 @@ class Player extends Entity
     super
     return
 
+
   hurtTint: ->
     @ref.tint = 0xff0000
     game.time.events.add(Phaser.Timer.SECOND * 0.05, @resetTint, this)

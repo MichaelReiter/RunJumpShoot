@@ -25,6 +25,10 @@ class Enemy extends Entity
     return
 
 
+  canShoot: ->
+    return (game.time.now - @lastFired) > (1000 / @fireRate)
+
+
   followPlayer: ->
     if Math.abs(player.ref.x - @ref.x) < 3
       @facing = player.facing
@@ -40,9 +44,14 @@ class Enemy extends Entity
 
 
   shootPlayer: ->
-    if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot()
+    if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot() and @facingPlayer()
       @shoot()
+      # game.time.events.add(Phaser.Timer.SECOND * 0.3, @shoot, this)
     return
+
+
+  facingPlayer: ->
+    (player.ref.x - @ref.x > 0 and @facing == "right") or (player.ref.x - @ref.x < 0 and @facing == "left")
 
 
   hit: (entity, bullet) =>

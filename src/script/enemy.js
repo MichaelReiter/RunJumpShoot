@@ -34,6 +34,10 @@ Enemy = (function(superClass) {
     }
   };
 
+  Enemy.prototype.canShoot = function() {
+    return (game.time.now - this.lastFired) > (1000 / this.fireRate);
+  };
+
   Enemy.prototype.followPlayer = function() {
     if (Math.abs(player.ref.x - this.ref.x) < 3) {
       this.facing = player.facing;
@@ -49,9 +53,13 @@ Enemy = (function(superClass) {
   };
 
   Enemy.prototype.shootPlayer = function() {
-    if (Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY && this.canShoot()) {
+    if (Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY && this.canShoot() && this.facingPlayer()) {
       this.shoot();
     }
+  };
+
+  Enemy.prototype.facingPlayer = function() {
+    return (player.ref.x - this.ref.x > 0 && this.facing === "right") || (player.ref.x - this.ref.x < 0 && this.facing === "left");
   };
 
   Enemy.prototype.hit = function(entity, bullet) {
