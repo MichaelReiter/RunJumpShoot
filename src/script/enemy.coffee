@@ -4,6 +4,7 @@ class Enemy extends Entity
   approachDeltaX: 200
   shootDeltaY: 50
   alive: true
+  scoreValue: 10
 
   constructor: ->
     @scaleDifficulty()
@@ -63,6 +64,7 @@ class Enemy extends Entity
   hit: (entity, bullet) =>
     this.alive = false
     entity.destroy()
+    scoreManager.increment(@scoreValue)
     super
     return
 

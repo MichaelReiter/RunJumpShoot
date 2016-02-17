@@ -15,6 +15,8 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.alive = true;
 
+  Enemy.prototype.scoreValue = 10;
+
   function Enemy() {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();
@@ -73,6 +75,7 @@ Enemy = (function(superClass) {
   Enemy.prototype.hit = function(entity, bullet) {
     this.alive = false;
     entity.destroy();
+    scoreManager.increment(this.scoreValue);
     Enemy.__super__.hit.apply(this, arguments);
   };
 

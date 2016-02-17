@@ -1,5 +1,6 @@
 player = null
 healthManager = null
+scoreManager = null
 
 GameplayState =
 
@@ -16,15 +17,17 @@ GameplayState =
 
     healthManager = new HealthManager()
 
-    player = new Player(300, GameResolution.height/2, 'player')
+    player = new Player(300, GameWorld.groundHeight, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     enemyManager = new EnemyManager()
-    enemyManager.spawn(100, GameResolution.height/2)
-    # enemyManager.spawn(400, GameResolution.height/2)
+    # enemyManager.spawn(100, GameWorld.groundHeight)
+    enemyManager.spawn(800, GameWorld.groundHeight)
+
+    scoreManager = new ScoreManager()
 
     inputInit()
-    scoreInit()
+    # scoreInit()
     # collectablesInit()
     
     return

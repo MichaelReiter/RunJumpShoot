@@ -4,6 +4,7 @@ background = null
 GameWorld =
   height: GameResolution.height
   width: 2000
+  groundHeight: 608
 
 levelInit = ->
   # Add background
