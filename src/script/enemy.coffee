@@ -8,13 +8,12 @@ class Enemy extends Entity
   constructor: ->
     @scaleDifficulty()
     super
-    console.log @ref.scale
     @facePlayer()
   
 
   scaleDifficulty: ->
     @movementSpeed = player.movementSpeed * @difficultyScale
-    @fireRate = player.fireRate * @difficultyScale/4
+    @fireRate = player.fireRate * @difficultyScale/2
     @bulletSpeed = player.bulletSpeed * @difficultyScale
     return
 
@@ -42,8 +41,8 @@ class Enemy extends Entity
 
   shootPlayer: ->
     if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot() and @facingPlayer()
-      @shoot()
-      # game.time.events.add(Phaser.Timer.SECOND * 0.3, @shoot, this)
+      @lastFired = game.time.now
+      game.time.events.add(Phaser.Timer.SECOND * 0.5, @shoot, this)
     return
 
 
@@ -65,4 +64,12 @@ class Enemy extends Entity
     this.alive = false
     entity.destroy()
     super
+    return
+
+
+  shoot: ->
+    if @alive
+      super
+      for bullet in @bullets.children
+        bullet.tint = 0
     return

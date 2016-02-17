@@ -19,13 +19,12 @@ Enemy = (function(superClass) {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();
     Enemy.__super__.constructor.apply(this, arguments);
-    console.log(this.ref.scale);
     this.facePlayer();
   }
 
   Enemy.prototype.scaleDifficulty = function() {
     this.movementSpeed = player.movementSpeed * this.difficultyScale;
-    this.fireRate = player.fireRate * this.difficultyScale / 4;
+    this.fireRate = player.fireRate * this.difficultyScale / 2;
     this.bulletSpeed = player.bulletSpeed * this.difficultyScale;
   };
 
@@ -52,7 +51,8 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.shootPlayer = function() {
     if (Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY && this.canShoot() && this.facingPlayer()) {
-      this.shoot();
+      this.lastFired = game.time.now;
+      game.time.events.add(Phaser.Timer.SECOND * 0.5, this.shoot, this);
     }
   };
 
@@ -74,6 +74,18 @@ Enemy = (function(superClass) {
     this.alive = false;
     entity.destroy();
     Enemy.__super__.hit.apply(this, arguments);
+  };
+
+  Enemy.prototype.shoot = function() {
+    var bullet, i, len, ref;
+    if (this.alive) {
+      Enemy.__super__.shoot.apply(this, arguments);
+      ref = this.bullets.children;
+      for (i = 0, len = ref.length; i < len; i++) {
+        bullet = ref[i];
+        bullet.tint = 0;
+      }
+    }
   };
 
   return Enemy;
