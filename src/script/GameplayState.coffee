@@ -1,6 +1,7 @@
 player = null
 healthManager = null
 scoreManager = null
+inputManager = null
 
 GameplayState =
 
@@ -26,9 +27,7 @@ GameplayState =
 
     scoreManager = new ScoreManager()
 
-    inputInit()
-    # scoreInit()
-    # collectablesInit()
+    inputManager = new InputManager()
     
     return
 
@@ -44,8 +43,8 @@ GameplayState =
     # game.physics.arcade.collide(stars, platforms)
     # game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)
 
-    keyboardMovement()
-    buttonMovement()
+    inputManager.keyboardMovement()
+    inputManager.buttonMovement()
 
     for enemy in enemyList
       enemy.AI()
