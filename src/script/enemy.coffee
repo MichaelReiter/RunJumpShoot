@@ -7,8 +7,9 @@ class Enemy extends Entity
 
   constructor: ->
     @scaleDifficulty()
-    # @setFacingDirection()
     super
+    console.log @ref.scale
+    @facePlayer()
   
 
   scaleDifficulty: ->
@@ -23,10 +24,6 @@ class Enemy extends Entity
       @followPlayer()
       @shootPlayer()
     return
-
-
-  canShoot: ->
-    return (game.time.now - @lastFired) > (1000 / @fireRate)
 
 
   followPlayer: ->
@@ -52,6 +49,16 @@ class Enemy extends Entity
 
   facingPlayer: ->
     (player.ref.x - @ref.x > 0 and @facing == "right") or (player.ref.x - @ref.x < 0 and @facing == "left")
+
+
+  facePlayer: ->
+    if player.ref.x - @ref.x > 0 and @facing != "right"
+      @facing = "right"
+      @ref.scale.x *= -1
+    else if player.ref.x - @ref.x < 0 and @facing != "left"
+      @facing = "left"
+      @ref.scale.x *= -1
+    return
 
 
   hit: (entity, bullet) =>

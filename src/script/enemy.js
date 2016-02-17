@@ -19,6 +19,8 @@ Enemy = (function(superClass) {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();
     Enemy.__super__.constructor.apply(this, arguments);
+    console.log(this.ref.scale);
+    this.facePlayer();
   }
 
   Enemy.prototype.scaleDifficulty = function() {
@@ -32,10 +34,6 @@ Enemy = (function(superClass) {
       this.followPlayer();
       this.shootPlayer();
     }
-  };
-
-  Enemy.prototype.canShoot = function() {
-    return (game.time.now - this.lastFired) > (1000 / this.fireRate);
   };
 
   Enemy.prototype.followPlayer = function() {
@@ -60,6 +58,16 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.facingPlayer = function() {
     return (player.ref.x - this.ref.x > 0 && this.facing === "right") || (player.ref.x - this.ref.x < 0 && this.facing === "left");
+  };
+
+  Enemy.prototype.facePlayer = function() {
+    if (player.ref.x - this.ref.x > 0 && this.facing !== "right") {
+      this.facing = "right";
+      this.ref.scale.x *= -1;
+    } else if (player.ref.x - this.ref.x < 0 && this.facing !== "left") {
+      this.facing = "left";
+      this.ref.scale.x *= -1;
+    }
   };
 
   Enemy.prototype.hit = function(entity, bullet) {

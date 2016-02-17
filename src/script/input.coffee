@@ -29,8 +29,7 @@ inputInit = ->
   button_left.fixedToCamera = true
   button_right.fixedToCamera = true
   button_jump.fixedToCamera = true
-  button_shoot.fixedToCamera = true  
-
+  button_shoot.fixedToCamera = true
   return
 
 

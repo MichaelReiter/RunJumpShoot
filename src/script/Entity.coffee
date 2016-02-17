@@ -68,7 +68,7 @@ class Entity
 
 
   canShoot: ->
-    return (game.time.now - @lastFired) > (1000 / @fireRate)
+    (game.time.now - @lastFired) > (1000 / @fireRate)
 
 
   shoot: ->
