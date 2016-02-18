@@ -46,9 +46,14 @@ InputManager = (function() {
       player.moveRight();
     } else if (player.ref.body.touching.down) {
       player.idle();
+      player.midJump = false;
     }
     if (player.ref.body.touching.down && (this.keyboard.up.isDown || this.Buttons.jump)) {
       player.jump();
+      player.midJump = true;
+    }
+    if (this.keyboard.up.isDown || this.Buttons.jump) {
+      player.extendJump();
     }
     if (player.canShoot() && (this.spacebar.isDown || this.Buttons.shoot)) {
       player.shoot();

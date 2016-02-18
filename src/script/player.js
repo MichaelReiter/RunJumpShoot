@@ -14,6 +14,10 @@ Player = (function(superClass) {
     return Player.__super__.constructor.apply(this, arguments);
   }
 
+  Player.prototype.midJump = true;
+
+  Player.prototype.jumpExtendFactor = 0;
+
   Player.prototype.hit = function(entity, bullet) {
     healthManager.loseHealth();
     this.hurtTint();
@@ -27,6 +31,20 @@ Player = (function(superClass) {
 
   Player.prototype.resetTint = function() {
     this.ref.tint = 0xffffff;
+  };
+
+  Player.prototype.jump = function() {
+    Player.__super__.jump.apply(this, arguments);
+    this.jumpExtendFactor = 1;
+  };
+
+  Player.prototype.extendJump = function() {
+    this.ref.body.velocity.y -= this.jumpSpeed * 0.1 * this.jumpExtendFactor;
+    if (this.jumpExtendFactor > 0.1) {
+      this.jumpExtendFactor *= 0.9;
+    } else {
+      this.jumpExtendFactor = 0;
+    }
   };
 
   return Player;

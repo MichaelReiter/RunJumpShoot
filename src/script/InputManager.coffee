@@ -44,10 +44,15 @@ class InputManager
       player.moveRight()
     else if player.ref.body.touching.down
       player.idle()
+      player.midJump = false
 
     # Enable jumping if player is touching the ground
     if player.ref.body.touching.down and (@keyboard.up.isDown or @Buttons.jump)
       player.jump()
+      player.midJump = true
+
+    if (@keyboard.up.isDown or @Buttons.jump)
+      player.extendJump()
 
     # Enable shooting
     if player.canShoot() and (@spacebar.isDown or @Buttons.shoot)

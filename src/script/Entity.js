@@ -4,7 +4,7 @@ var Entity;
 Entity = (function() {
   Entity.prototype.movementSpeed = 200;
 
-  Entity.prototype.jumpSpeed = 300;
+  Entity.prototype.jumpSpeed = 220;
 
   Entity.prototype.bulletSpeed = 300;
 
@@ -27,7 +27,7 @@ Entity = (function() {
     this.ref.anchor.setTo(.5, 1);
     this.ref.frame = 6;
     game.physics.arcade.enable(this.ref);
-    this.ref.body.gravity.y = 300;
+    this.ref.body.gravity.y = 500;
     this.ref.body.collideWorldBounds = true;
     this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
     this.ref.animations.add('jumping', [7, 8, 9], 12, true);

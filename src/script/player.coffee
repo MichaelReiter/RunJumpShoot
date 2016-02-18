@@ -2,6 +2,9 @@ playerBullets = null
 
 class Player extends Entity
 
+  midJump: true
+  jumpExtendFactor: 0
+
   hit: (entity, bullet) =>
     healthManager.loseHealth()
     @hurtTint()
@@ -17,4 +20,21 @@ class Player extends Entity
 
   resetTint: ->
     @ref.tint = 0xffffff
+    return
+
+
+  jump: ->
+    super
+    @jumpExtendFactor = 1
+    return
+
+
+  extendJump: ->
+    @ref.body.velocity.y -= @jumpSpeed * 0.1 * @jumpExtendFactor
+
+    if @jumpExtendFactor > 0.1
+      @jumpExtendFactor *= 0.9
+    else
+      @jumpExtendFactor = 0
+
     return

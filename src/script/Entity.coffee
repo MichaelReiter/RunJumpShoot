@@ -1,7 +1,7 @@
 class Entity
   
   movementSpeed: 200
-  jumpSpeed: 300
+  jumpSpeed: 220
   bulletSpeed: 300
   scale: 2
   facing: "right"
@@ -19,7 +19,7 @@ class Entity
     @ref.frame = 6
 
     game.physics.arcade.enable(@ref)
-    @ref.body.gravity.y = 300
+    @ref.body.gravity.y = 500
     @ref.body.collideWorldBounds = true
 
     @ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
