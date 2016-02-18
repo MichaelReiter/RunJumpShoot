@@ -14,8 +14,6 @@ Player = (function(superClass) {
     return Player.__super__.constructor.apply(this, arguments);
   }
 
-  Player.prototype.midJump = true;
-
   Player.prototype.jumpExtendFactor = 0;
 
   Player.prototype.hit = function(entity, bullet) {

@@ -2,18 +2,6 @@
 var InputManager;
 
 InputManager = (function() {
-  InputManager.prototype.keyboard = null;
-
-  InputManager.prototype.spacebar = null;
-
-  InputManager.prototype.button_left = null;
-
-  InputManager.prototype.button_right = null;
-
-  InputManager.prototype.button_jump = null;
-
-  InputManager.prototype.button_shoot = null;
-
   InputManager.prototype.Buttons = {
     left: false,
     right: false,
@@ -46,11 +34,9 @@ InputManager = (function() {
       player.moveRight();
     } else if (player.ref.body.touching.down) {
       player.idle();
-      player.midJump = false;
     }
     if (player.ref.body.touching.down && (this.keyboard.up.isDown || this.Buttons.jump)) {
       player.jump();
-      player.midJump = true;
     }
     if (this.keyboard.up.isDown || this.Buttons.jump) {
       player.extendJump();

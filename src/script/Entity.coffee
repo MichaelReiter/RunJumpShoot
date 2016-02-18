@@ -7,8 +7,6 @@ class Entity
   facing: "right"
   fireRate: 3     # in bullets/second
   lastFired: 0
-  bullets: null
-  ref: null
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->

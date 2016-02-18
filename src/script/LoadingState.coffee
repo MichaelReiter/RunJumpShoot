@@ -20,6 +20,7 @@ LoadingState =
     game.load.image('star', 'img/star.png')
     game.load.image('bullet', 'img/bullet.png')
     game.load.image('heart', 'img/heart.png')
+    game.load.spritesheet('button_general', 'img/button_general.png', 384, 128)
     game.load.image('button_left', 'img/button_left.png')
     game.load.image('button_right', 'img/button_right.png')
     game.load.image('button_jump', 'img/button_jump.png')
@@ -34,7 +35,7 @@ LoadingState =
 
   create: ->
     @setScaling()
-    game.state.start('Gameplay')
+    game.state.start('Menu')
     return
 
 

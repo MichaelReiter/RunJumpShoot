@@ -16,10 +16,6 @@ Entity = (function() {
 
   Entity.prototype.lastFired = 0;
 
-  Entity.prototype.bullets = null;
-
-  Entity.prototype.ref = null;
-
   function Entity(x, y, sprite) {
     this.ref = game.add.sprite(x, y, sprite);
     this.ref.scale.setTo(this.scale, this.scale);
