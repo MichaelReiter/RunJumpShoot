@@ -37,7 +37,7 @@ Entity = (function() {
     if (this.ref.body.touching.down) {
       this.ref.animations.play('walking');
     }
-    this.setFacingDirection();
+    return this.setFacingDirection();
   };
 
   Entity.prototype.moveRight = function() {
@@ -46,25 +46,25 @@ Entity = (function() {
     if (this.ref.body.touching.down) {
       this.ref.animations.play('walking');
     }
-    this.setFacingDirection();
+    return this.setFacingDirection();
   };
 
   Entity.prototype.jump = function() {
     this.ref.body.velocity.y = -this.jumpSpeed;
-    this.ref.animations.play('jumping');
+    return this.ref.animations.play('jumping');
   };
 
   Entity.prototype.idle = function() {
     this.ref.body.velocity.x = 0;
     this.ref.animations.stop();
-    this.ref.frame = 6;
+    return this.ref.frame = 6;
   };
 
   Entity.prototype.setFacingDirection = function() {
     if (this.facing === "right" && this.ref.scale.x < 0) {
-      this.ref.scale.x *= -1;
+      return this.ref.scale.x *= -1;
     } else if (this.facing === "left" && this.ref.scale.x > 0) {
-      this.ref.scale.x *= -1;
+      return this.ref.scale.x *= -1;
     }
   };
 
@@ -82,14 +82,14 @@ Entity = (function() {
       projectile = this.bullets.create(this.ref.x - 40, this.ref.y - 48, 'bullet');
       projectileVector = -this.bulletSpeed;
     }
-    projectile.scale.setTo(2, 2);
+    projectile.scale.setTo(this.scale, this.scale);
     projectile.body.velocity.x = projectileVector;
     projectile.checkWorldBounds = true;
-    projectile.outOfBoundsKill = true;
+    return projectile.outOfBoundsKill = true;
   };
 
   Entity.prototype.hit = function(entity, bullet) {
-    bullet.destroy();
+    return bullet.destroy();
   };
 
   return Entity;

@@ -2,11 +2,8 @@
 var ScoreManager;
 
 ScoreManager = (function() {
-  ScoreManager.prototype.score = 0;
-
-  ScoreManager.prototype.scoreText = null;
-
   function ScoreManager() {
+    this.score = 0;
     this.scoreText = game.add.text(16, 4, 'Score: 0', {
       font: '32px invasion2000',
       fill: 'white'
@@ -16,7 +13,7 @@ ScoreManager = (function() {
 
   ScoreManager.prototype.increment = function(amount) {
     this.score += amount;
-    this.scoreText.text = 'Score: ' + this.score;
+    return this.scoreText.text = 'Score: ' + this.score;
   };
 
   return ScoreManager;

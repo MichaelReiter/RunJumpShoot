@@ -28,8 +28,6 @@ GameplayState =
     scoreManager = new ScoreManager()
 
     inputManager = new InputManager()
-    
-    return
 
 
   update: ->
@@ -40,13 +38,8 @@ GameplayState =
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)
       game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this)
 
-    # game.physics.arcade.collide(stars, platforms)
-    # game.physics.arcade.overlap(player.ref, stars, collectStar, null, this)
-
     inputManager.keyboardMovement()
     inputManager.buttonMovement()
 
     for enemy in enemyList
       enemy.AI()
-    
-    return

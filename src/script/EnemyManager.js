@@ -15,7 +15,7 @@ EnemyManager = (function() {
     var enemy;
     enemy = new Enemy(x, y, 'enemy');
     enemies.add(enemy.ref);
-    enemyList.push(enemy);
+    return enemyList.push(enemy);
   };
 
   return EnemyManager;

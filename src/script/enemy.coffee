@@ -16,14 +16,12 @@ class Enemy extends Entity
     @movementSpeed = player.movementSpeed * @difficultyScale
     @fireRate = player.fireRate * @difficultyScale/2
     @bulletSpeed = player.bulletSpeed * @difficultyScale
-    return
 
 
   AI: ->
     if @alive
       @followPlayer()
       @shootPlayer()
-    return
 
 
   followPlayer: ->
@@ -37,14 +35,12 @@ class Enemy extends Entity
       @moveLeft()
     else
       @idle()
-    return
 
 
   shootPlayer: ->
     if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot() and @facingPlayer()
       @lastFired = game.time.now
       game.time.events.add(Phaser.Timer.SECOND * 0.5, @shoot, this)
-    return
 
 
   facingPlayer: ->
@@ -58,7 +54,6 @@ class Enemy extends Entity
     else if player.ref.x - @ref.x < 0 and @facing != "left"
       @facing = "left"
       @ref.scale.x *= -1
-    return
 
 
   hit: (entity, bullet) =>
@@ -66,7 +61,6 @@ class Enemy extends Entity
     entity.destroy()
     scoreManager.increment(@scoreValue)
     super
-    return
 
 
   shoot: ->
@@ -74,4 +68,3 @@ class Enemy extends Entity
       super
       for bullet in @bullets.children
         bullet.tint = 0
-    return

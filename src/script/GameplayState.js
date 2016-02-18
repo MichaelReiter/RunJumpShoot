@@ -23,10 +23,10 @@ GameplayState = {
     enemyManager = new EnemyManager();
     enemyManager.spawn(800, GameWorld.groundHeight);
     scoreManager = new ScoreManager();
-    inputManager = new InputManager();
+    return inputManager = new InputManager();
   },
   update: function() {
-    var enemy, i, j, len, len1;
+    var enemy, i, j, len, len1, results;
     game.physics.arcade.collide(player.ref, platforms);
     game.physics.arcade.collide(enemies, platforms);
     for (i = 0, len = enemyList.length; i < len; i++) {
@@ -36,9 +36,11 @@ GameplayState = {
     }
     inputManager.keyboardMovement();
     inputManager.buttonMovement();
+    results = [];
     for (j = 0, len1 = enemyList.length; j < len1; j++) {
       enemy = enemyList[j];
-      enemy.AI();
+      results.push(enemy.AI());
     }
+    return results;
   }
 };

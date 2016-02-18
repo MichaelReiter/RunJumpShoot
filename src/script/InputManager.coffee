@@ -42,14 +42,12 @@ class InputManager
     if player.ref.body.touching.down and (@keyboard.up.isDown or @Buttons.jump)
       player.jump()
 
-    if (@keyboard.up.isDown or @Buttons.jump)
+    if @keyboard.up.isDown or @Buttons.jump
       player.extendJump()
 
     # Enable shooting
     if player.canShoot() and (@spacebar.isDown or @Buttons.shoot)
       player.shoot()
-
-    return
 
 
   buttonMovement: ->
@@ -62,44 +60,35 @@ class InputManager
     @button_right.events.onInputUp.add(@buttonSetRightOff, this)
     @button_jump.events.onInputUp.add(@buttonSetJumpOff, this)
     @button_shoot.events.onInputUp.add(@buttonSetShootOff, this)
-    return
 
 
   buttonSetLeft: ->
     @Buttons.left = true
-    return
 
 
   buttonSetRight: ->
     @Buttons.right = true
-    return
 
 
   buttonSetJump: ->
     @Buttons.jump = true
-    return
 
 
   buttonSetShoot: ->
     @Buttons.shoot = true
-    return
 
 
   buttonSetLeftOff: ->
     @Buttons.left = false
-    return
 
 
   buttonSetRightOff: ->
     @Buttons.right = false
-    return
 
 
   buttonSetJumpOff: ->
     @Buttons.jump = false
-    return
 
 
   buttonSetShootOff: ->
     @Buttons.shoot = false
-    return

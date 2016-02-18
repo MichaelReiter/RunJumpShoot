@@ -26,13 +26,13 @@ class Entity
     @bullets = game.add.group()
     @bullets.enableBody = true
 
+
   moveLeft: ->
     @facing = "left"
     @ref.body.velocity.x = -@movementSpeed
     if @ref.body.touching.down
       @ref.animations.play('walking')
     @setFacingDirection()
-    return
 
 
   moveRight: ->
@@ -41,20 +41,17 @@ class Entity
     if @ref.body.touching.down
       @ref.animations.play('walking')
     @setFacingDirection()
-    return
 
 
   jump: ->
     @ref.body.velocity.y = -@jumpSpeed
     @ref.animations.play('jumping')
-    return
 
 
   idle: ->
     @ref.body.velocity.x = 0
     @ref.animations.stop()
     @ref.frame = 6
-    return
 
 
   setFacingDirection: ->
@@ -62,7 +59,6 @@ class Entity
       @ref.scale.x *= -1
     else if @facing is "left" and @ref.scale.x > 0
       @ref.scale.x *= -1
-    return
 
 
   canShoot: ->
@@ -78,13 +74,11 @@ class Entity
       projectile = @bullets.create(@ref.x-40, @ref.y-48, 'bullet')
       projectileVector = -@bulletSpeed
 
-    projectile.scale.setTo(2, 2)
+    projectile.scale.setTo(@scale, @scale)
     projectile.body.velocity.x = projectileVector
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill = true
-    return
 
 
   hit: (entity, bullet) ->
     bullet.destroy()
-    return

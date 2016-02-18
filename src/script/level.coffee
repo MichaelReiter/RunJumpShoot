@@ -29,5 +29,3 @@ levelInit = ->
   ledge = platforms.create(-150, 350, 'platform')
   ledge.smoothed = false
   ledge.body.immovable = true
-
-  return

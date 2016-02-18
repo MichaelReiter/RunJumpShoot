@@ -27,13 +27,13 @@ Enemy = (function(superClass) {
   Enemy.prototype.scaleDifficulty = function() {
     this.movementSpeed = player.movementSpeed * this.difficultyScale;
     this.fireRate = player.fireRate * this.difficultyScale / 2;
-    this.bulletSpeed = player.bulletSpeed * this.difficultyScale;
+    return this.bulletSpeed = player.bulletSpeed * this.difficultyScale;
   };
 
   Enemy.prototype.AI = function() {
     if (this.alive) {
       this.followPlayer();
-      this.shootPlayer();
+      return this.shootPlayer();
     }
   };
 
@@ -43,18 +43,18 @@ Enemy = (function(superClass) {
       this.setFacingDirection();
     }
     if (player.ref.x - this.ref.x > this.approachDeltaX) {
-      this.moveRight();
+      return this.moveRight();
     } else if (player.ref.x - this.ref.x < -this.approachDeltaX) {
-      this.moveLeft();
+      return this.moveLeft();
     } else {
-      this.idle();
+      return this.idle();
     }
   };
 
   Enemy.prototype.shootPlayer = function() {
     if (Math.abs(player.ref.y - this.ref.y) < this.shootDeltaY && this.canShoot() && this.facingPlayer()) {
       this.lastFired = game.time.now;
-      game.time.events.add(Phaser.Timer.SECOND * 0.5, this.shoot, this);
+      return game.time.events.add(Phaser.Timer.SECOND * 0.5, this.shoot, this);
     }
   };
 
@@ -65,10 +65,10 @@ Enemy = (function(superClass) {
   Enemy.prototype.facePlayer = function() {
     if (player.ref.x - this.ref.x > 0 && this.facing !== "right") {
       this.facing = "right";
-      this.ref.scale.x *= -1;
+      return this.ref.scale.x *= -1;
     } else if (player.ref.x - this.ref.x < 0 && this.facing !== "left") {
       this.facing = "left";
-      this.ref.scale.x *= -1;
+      return this.ref.scale.x *= -1;
     }
   };
 
@@ -76,18 +76,20 @@ Enemy = (function(superClass) {
     this.alive = false;
     entity.destroy();
     scoreManager.increment(this.scoreValue);
-    Enemy.__super__.hit.apply(this, arguments);
+    return Enemy.__super__.hit.apply(this, arguments);
   };
 
   Enemy.prototype.shoot = function() {
-    var bullet, i, len, ref;
+    var bullet, i, len, ref, results;
     if (this.alive) {
       Enemy.__super__.shoot.apply(this, arguments);
       ref = this.bullets.children;
+      results = [];
       for (i = 0, len = ref.length; i < len; i++) {
         bullet = ref[i];
-        bullet.tint = 0;
+        results.push(bullet.tint = 0);
       }
+      return results;
     }
   };
 
