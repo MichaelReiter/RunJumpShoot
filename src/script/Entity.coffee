@@ -23,7 +23,7 @@ class Entity
     @ref.body.collideWorldBounds = true
 
     @ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
-    @ref.animations.add('jumping', [6, 7, 8, 9], 12, true)
+    @ref.animations.add('jumping', [7, 8, 9], 12, true)
 
     @bullets = game.add.group()
     @bullets.enableBody = true

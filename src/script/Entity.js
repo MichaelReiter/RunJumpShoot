@@ -30,7 +30,7 @@ Entity = (function() {
     this.ref.body.gravity.y = 300;
     this.ref.body.collideWorldBounds = true;
     this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
-    this.ref.animations.add('jumping', [6, 7, 8, 9], 12, true);
+    this.ref.animations.add('jumping', [7, 8, 9], 12, true);
     this.bullets = game.add.group();
     this.bullets.enableBody = true;
   }
