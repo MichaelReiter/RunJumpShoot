@@ -1,10 +1,13 @@
 class Enemy extends Entity
 
   difficultyScale: 0.75
-  approachDeltaX: 200
+  approachDeltaX: 175
   shootDeltaY: 50
+  jumpDeltaY: 100
   alive: true
-  scoreValue: 10
+  scoreValue: 100
+  gravity: 300
+  jumpSpeed: 300
 
   constructor: ->
     @scaleDifficulty()
@@ -33,8 +36,10 @@ class Enemy extends Entity
       @moveRight()
     else if player.ref.x - @ref.x < -@approachDeltaX
       @moveLeft()
-    else
-      @idle()
+
+
+    if @ref.body.touching.down and (@ref.y - player.ref.y) > @jumpDeltaY and Math.random() < 0.05
+      @jump()
 
 
   shootPlayer: ->

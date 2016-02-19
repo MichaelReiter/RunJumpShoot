@@ -9,13 +9,19 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.difficultyScale = 0.75;
 
-  Enemy.prototype.approachDeltaX = 200;
+  Enemy.prototype.approachDeltaX = 175;
 
   Enemy.prototype.shootDeltaY = 50;
 
+  Enemy.prototype.jumpDeltaY = 100;
+
   Enemy.prototype.alive = true;
 
-  Enemy.prototype.scoreValue = 10;
+  Enemy.prototype.scoreValue = 100;
+
+  Enemy.prototype.gravity = 300;
+
+  Enemy.prototype.jumpSpeed = 300;
 
   function Enemy() {
     this.hit = bind(this.hit, this);
@@ -43,11 +49,12 @@ Enemy = (function(superClass) {
       this.setFacingDirection();
     }
     if (player.ref.x - this.ref.x > this.approachDeltaX) {
-      return this.moveRight();
+      this.moveRight();
     } else if (player.ref.x - this.ref.x < -this.approachDeltaX) {
-      return this.moveLeft();
-    } else {
-      return this.idle();
+      this.moveLeft();
+    }
+    if (this.ref.body.touching.down && (this.ref.y - player.ref.y) > this.jumpDeltaY && Math.random() < 0.05) {
+      return this.jump();
     }
   };
 

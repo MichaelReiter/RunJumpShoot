@@ -16,6 +16,8 @@ Entity = (function() {
 
   Entity.prototype.lastFired = 0;
 
+  Entity.prototype.gravity = 500;
+
   function Entity(x, y, sprite) {
     this.ref = game.add.sprite(x, y, sprite);
     this.ref.scale.setTo(this.scale, this.scale);
@@ -23,7 +25,7 @@ Entity = (function() {
     this.ref.anchor.setTo(.5, 1);
     this.ref.frame = 6;
     game.physics.arcade.enable(this.ref);
-    this.ref.body.gravity.y = 500;
+    this.ref.body.gravity.y = this.gravity;
     this.ref.body.collideWorldBounds = true;
     this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
     this.ref.animations.add('jumping', [7, 8, 9], 12, true);

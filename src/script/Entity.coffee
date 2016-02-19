@@ -7,6 +7,7 @@ class Entity
   facing: "right"
   fireRate: 3     # in bullets/second
   lastFired: 0
+  gravity: 500
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->
@@ -17,7 +18,7 @@ class Entity
     @ref.frame = 6
 
     game.physics.arcade.enable(@ref)
-    @ref.body.gravity.y = 500
+    @ref.body.gravity.y = @gravity
     @ref.body.collideWorldBounds = true
 
     @ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
