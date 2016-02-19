@@ -23,6 +23,8 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.jumpSpeed = 300;
 
+  Enemy.prototype.health = 3;
+
   function Enemy() {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();
@@ -80,9 +82,13 @@ Enemy = (function(superClass) {
   };
 
   Enemy.prototype.hit = function(entity, bullet) {
-    this.alive = false;
-    entity.destroy();
-    scoreManager.increment(this.scoreValue);
+    this.health--;
+    this.hurtTint();
+    if (this.health <= 0) {
+      this.alive = false;
+      entity.destroy();
+      scoreManager.increment(this.scoreValue);
+    }
     return Enemy.__super__.hit.apply(this, arguments);
   };
 

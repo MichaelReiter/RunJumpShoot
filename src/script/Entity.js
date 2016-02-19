@@ -94,6 +94,15 @@ Entity = (function() {
     return bullet.destroy();
   };
 
+  Entity.prototype.hurtTint = function() {
+    this.ref.tint = 0xff0000;
+    return game.time.events.add(Phaser.Timer.SECOND * 0.05, this.resetTint, this);
+  };
+
+  Entity.prototype.resetTint = function() {
+    return this.ref.tint = 0xffffff;
+  };
+
   return Entity;
 
 })();

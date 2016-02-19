@@ -8,15 +8,6 @@ class Player extends Entity
     super
 
 
-  hurtTint: ->
-    @ref.tint = 0xff0000
-    game.time.events.add(Phaser.Timer.SECOND * 0.05, @resetTint, this)
-
-
-  resetTint: ->
-    @ref.tint = 0xffffff
-
-
   jump: ->
     super
     @jumpExtendFactor = 1

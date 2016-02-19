@@ -20,15 +20,6 @@ Player = (function(superClass) {
     return Player.__super__.hit.apply(this, arguments);
   };
 
-  Player.prototype.hurtTint = function() {
-    this.ref.tint = 0xff0000;
-    return game.time.events.add(Phaser.Timer.SECOND * 0.05, this.resetTint, this);
-  };
-
-  Player.prototype.resetTint = function() {
-    return this.ref.tint = 0xffffff;
-  };
-
   Player.prototype.jump = function() {
     Player.__super__.jump.apply(this, arguments);
     return this.jumpExtendFactor = 1;

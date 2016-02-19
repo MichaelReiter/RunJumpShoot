@@ -8,6 +8,7 @@ class Enemy extends Entity
   scoreValue: 100
   gravity: 300
   jumpSpeed: 300
+  health: 3
 
   constructor: ->
     @scaleDifficulty()
@@ -62,9 +63,12 @@ class Enemy extends Entity
 
 
   hit: (entity, bullet) =>
-    this.alive = false
-    entity.destroy()
-    scoreManager.increment(@scoreValue)
+    @health--
+    @hurtTint()
+    if @health <= 0
+      @alive = false
+      entity.destroy()
+      scoreManager.increment(@scoreValue)
     super
 
 
