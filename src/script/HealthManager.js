@@ -17,9 +17,11 @@ HealthManager = (function() {
   }
 
   HealthManager.prototype.loseHealth = function() {
+    this.currentHealth--;
     if (this.currentHealth > 0) {
-      this.hearts.children[this.currentHealth - 1].destroy();
-      this.currentHealth--;
+      return this.hearts.children[this.currentHealth].destroy();
+    } else {
+      return game.state.start('Menu');
     }
   };
 

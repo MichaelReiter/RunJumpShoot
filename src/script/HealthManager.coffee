@@ -13,7 +13,8 @@ class HealthManager
 
 
   loseHealth: ->
+    @currentHealth--
     if @currentHealth > 0
-      @hearts.children[@currentHealth-1].destroy()
-      @currentHealth--
-    return
+      @hearts.children[@currentHealth].destroy()
+    else
+      game.state.start('Menu')
