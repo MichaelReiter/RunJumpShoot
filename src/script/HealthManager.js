@@ -2,24 +2,22 @@
 var HealthManager;
 
 HealthManager = (function() {
-  HealthManager.prototype.hearts = null;
-
-  HealthManager.prototype.currentHealth = 3;
+  HealthManager.prototype.heartScale = 0.08;
 
   function HealthManager() {
-    var heart, i, j;
+    var heart, i, j, ref;
     this.hearts = game.add.group();
-    for (i = j = 1; j <= 3; i = ++j) {
+    for (i = j = 1, ref = player.health; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
       heart = this.hearts.create(GameResolution.width - 60 * i, 15, 'heart');
-      heart.scale.setTo(0.08, 0.08);
+      heart.scale.setTo(this.heartScale, this.heartScale);
       heart.fixedToCamera = true;
     }
   }
 
   HealthManager.prototype.loseHealth = function() {
-    this.currentHealth--;
-    if (this.currentHealth > 0) {
-      return this.hearts.children[this.currentHealth].destroy();
+    player.health--;
+    if (player.health > 0) {
+      return this.hearts.children[player.health].destroy();
     } else {
       return game.state.start('Menu');
     }

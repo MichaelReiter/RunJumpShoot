@@ -23,8 +23,6 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.jumpSpeed = 300;
 
-  Enemy.prototype.health = 3;
-
   function Enemy() {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();

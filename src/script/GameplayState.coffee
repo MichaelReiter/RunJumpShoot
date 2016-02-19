@@ -16,8 +16,6 @@ GameplayState =
 
     levelInit()
 
-    healthManager = new HealthManager()
-
     player = new Player(300, GameWorld.groundHeight, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
@@ -25,8 +23,8 @@ GameplayState =
     # enemyManager.spawn(100, GameWorld.groundHeight)
     enemyManager.spawn(800, GameWorld.groundHeight)
 
+    healthManager = new HealthManager()
     scoreManager = new ScoreManager()
-
     inputManager = new InputManager()
 
 

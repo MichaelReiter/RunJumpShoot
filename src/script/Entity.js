@@ -18,6 +18,8 @@ Entity = (function() {
 
   Entity.prototype.gravity = 500;
 
+  Entity.prototype.health = 3;
+
   function Entity(x, y, sprite) {
     this.ref = game.add.sprite(x, y, sprite);
     this.ref.scale.setTo(this.scale, this.scale);

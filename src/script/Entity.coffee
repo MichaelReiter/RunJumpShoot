@@ -8,6 +8,7 @@ class Entity
   fireRate: 3     # in bullets/second
   lastFired: 0
   gravity: 500
+  health: 3
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->

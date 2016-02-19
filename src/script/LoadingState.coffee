@@ -26,13 +26,12 @@ LoadingState =
     game.load.image('button_right', 'img/button_right.png')
     game.load.image('button_jump', 'img/button_jump.png')
     game.load.image('button_shoot', 'img/button_shoot.png')
-    
+
     game.load.spritesheet('player', 'img/player.png', 39, 34)
     game.load.spritesheet('enemy', 'img/enemy.png', 39, 34)
 
 
   load: ->
-
 
   create: ->
     @setScaling()
@@ -42,6 +41,5 @@ LoadingState =
       align: 'center'
     })
     game.state.start('Menu')
-
 
   update: ->

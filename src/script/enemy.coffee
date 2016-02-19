@@ -8,7 +8,6 @@ class Enemy extends Entity
   scoreValue: 100
   gravity: 300
   jumpSpeed: 300
-  health: 3
 
   constructor: ->
     @scaleDifficulty()

@@ -17,11 +17,11 @@ GameplayState = {
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     levelInit();
-    healthManager = new HealthManager();
     player = new Player(300, GameWorld.groundHeight, 'player');
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     enemyManager = new EnemyManager();
     enemyManager.spawn(800, GameWorld.groundHeight);
+    healthManager = new HealthManager();
     scoreManager = new ScoreManager();
     return inputManager = new InputManager();
   },

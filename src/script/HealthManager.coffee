@@ -1,20 +1,19 @@
 class HealthManager
 
-  hearts: null
-  currentHealth: 3
+  heartScale: 0.08
 
   constructor: ->
     @hearts = game.add.group()
 
-    for i in [1..3]
+    for i in [1..player.health]
       heart = @hearts.create(GameResolution.width - 60*i, 15, 'heart')
-      heart.scale.setTo(0.08, 0.08)
+      heart.scale.setTo(@heartScale, @heartScale)
       heart.fixedToCamera = true
 
 
   loseHealth: ->
-    @currentHealth--
-    if @currentHealth > 0
-      @hearts.children[@currentHealth].destroy()
+    player.health--
+    if player.health > 0
+      @hearts.children[player.health].destroy()
     else
       game.state.start('Menu')
