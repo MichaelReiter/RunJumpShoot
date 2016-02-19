@@ -106,6 +106,14 @@ Enemy = (function(superClass) {
     }
   };
 
+  Enemy.prototype.animate = function() {
+    if (this.ref.body.touching.down) {
+      if (this.ref.body.velocity.x !== 0) {
+        return this.ref.animations.play('walking');
+      }
+    }
+  };
+
   return Enemy;
 
 })(Entity);
