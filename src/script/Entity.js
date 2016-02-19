@@ -38,24 +38,17 @@ Entity = (function() {
   Entity.prototype.moveLeft = function() {
     this.facing = "left";
     this.ref.body.velocity.x = -this.movementSpeed;
-    if (this.ref.body.touching.down) {
-      this.ref.animations.play('walking');
-    }
     return this.setFacingDirection();
   };
 
   Entity.prototype.moveRight = function() {
     this.facing = "right";
     this.ref.body.velocity.x = this.movementSpeed;
-    if (this.ref.body.touching.down) {
-      this.ref.animations.play('walking');
-    }
     return this.setFacingDirection();
   };
 
   Entity.prototype.jump = function() {
-    this.ref.body.velocity.y = -this.jumpSpeed;
-    return this.ref.animations.play('jumping');
+    return this.ref.body.velocity.y = -this.jumpSpeed;
   };
 
   Entity.prototype.idle = function() {

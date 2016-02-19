@@ -32,22 +32,17 @@ class Entity
   moveLeft: ->
     @facing = "left"
     @ref.body.velocity.x = -@movementSpeed
-    if @ref.body.touching.down
-      @ref.animations.play('walking')
     @setFacingDirection()
 
 
   moveRight: ->
     @facing = "right"
     @ref.body.velocity.x = @movementSpeed
-    if @ref.body.touching.down
-      @ref.animations.play('walking')
     @setFacingDirection()
 
 
   jump: ->
     @ref.body.velocity.y = -@jumpSpeed
-    @ref.animations.play('jumping')
 
 
   idle: ->
