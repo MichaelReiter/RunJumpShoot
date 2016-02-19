@@ -40,6 +40,7 @@ GameplayState =
 
     inputManager.keyboardMovement()
     inputManager.buttonMovement()
+    player.animate()
 
     for enemy in enemyList
       enemy.AI()

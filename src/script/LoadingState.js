@@ -27,12 +27,18 @@ LoadingState = {
     game.load.image('button_jump', 'img/button_jump.png');
     game.load.image('button_shoot', 'img/button_shoot.png');
     game.load.spritesheet('player', 'img/player.png', 39, 34);
-    game.load.spritesheet('enemy', 'img/enemy.png', 39, 34);
+    return game.load.spritesheet('enemy', 'img/enemy.png', 39, 34);
   },
   load: function() {},
   create: function() {
+    var loadText;
     this.setScaling();
-    game.state.start('Menu');
+    loadText = game.add.text(GameResolution.width / 2, GameResolution.height / 3, ' Run!\n Jump!\n Shoot!', {
+      font: '64px invasion2000',
+      fill: 'white',
+      align: 'center'
+    });
+    return game.state.start('Menu');
   },
   update: function() {}
 };

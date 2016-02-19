@@ -92,3 +92,11 @@ class Entity
 
   resetTint: ->
     @ref.tint = 0xffffff
+
+
+  animate: ->
+    if @ref.body.touching.down 
+      if @ref.body.velocity.x isnt 0
+        @ref.animations.play('walking')
+    else if @ref.body.velocity.y isnt 0
+      @ref.animations.play('jumping')

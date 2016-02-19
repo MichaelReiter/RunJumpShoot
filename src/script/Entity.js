@@ -103,6 +103,16 @@ Entity = (function() {
     return this.ref.tint = 0xffffff;
   };
 
+  Entity.prototype.animate = function() {
+    if (this.ref.body.touching.down) {
+      if (this.ref.body.velocity.x !== 0) {
+        return this.ref.animations.play('walking');
+      }
+    } else if (this.ref.body.velocity.y !== 0) {
+      return this.ref.animations.play('jumping');
+    }
+  };
+
   return Entity;
 
 })();

@@ -36,6 +36,7 @@ GameplayState = {
     }
     inputManager.keyboardMovement();
     inputManager.buttonMovement();
+    player.animate();
     results = [];
     for (j = 0, len1 = enemyList.length; j < len1; j++) {
       enemy = enemyList[j];

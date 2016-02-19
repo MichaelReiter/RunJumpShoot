@@ -26,6 +26,7 @@ class Enemy extends Entity
     if @alive
       @followPlayer()
       @shootPlayer()
+      @animate()
 
 
   followPlayer: ->
@@ -77,9 +78,3 @@ class Enemy extends Entity
       super
       for bullet in @bullets.children
         bullet.tint = 0
-
-
-  animate: ->
-    if @ref.body.touching.down
-      if @ref.body.velocity.x isnt 0
-        @ref.animations.play('walking')

@@ -41,7 +41,8 @@ Enemy = (function(superClass) {
   Enemy.prototype.AI = function() {
     if (this.alive) {
       this.followPlayer();
-      return this.shootPlayer();
+      this.shootPlayer();
+      return this.animate();
     }
   };
 
@@ -103,14 +104,6 @@ Enemy = (function(superClass) {
         results.push(bullet.tint = 0);
       }
       return results;
-    }
-  };
-
-  Enemy.prototype.animate = function() {
-    if (this.ref.body.touching.down) {
-      if (this.ref.body.velocity.x !== 0) {
-        return this.ref.animations.play('walking');
-      }
     }
   };
 
