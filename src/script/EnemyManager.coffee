@@ -20,5 +20,5 @@ class EnemyManager
   spawnLoop: ->
     unless @enemyOnScreen
       console.log "spawn new enemy"
-      @spawn(player.x+500, GameWorld.groundHeight)
+      @spawn(player.ref.x+500, GameWorld.groundHeight)
       # game.time.events.add(Phaser.Timer.SECOND * 0.5, @spawn, this)

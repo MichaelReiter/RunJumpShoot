@@ -24,7 +24,7 @@ EnemyManager = (function() {
   EnemyManager.prototype.spawnLoop = function() {
     if (!this.enemyOnScreen) {
       console.log("spawn new enemy");
-      return this.spawn(player.x + 500, GameWorld.groundHeight);
+      return this.spawn(player.ref.x + 500, GameWorld.groundHeight);
     }
   };
 
