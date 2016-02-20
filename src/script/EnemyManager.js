@@ -6,6 +6,8 @@ enemies = null;
 enemyList = [];
 
 EnemyManager = (function() {
+  EnemyManager.prototype.enemyOnScreen = false;
+
   function EnemyManager() {
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -13,9 +15,17 @@ EnemyManager = (function() {
 
   EnemyManager.prototype.spawn = function(x, y) {
     var enemy;
+    this.enemyOnScreen = true;
     enemy = new Enemy(x, y, 'enemy');
     enemies.add(enemy.ref);
     return enemyList.push(enemy);
+  };
+
+  EnemyManager.prototype.spawnLoop = function() {
+    if (!this.enemyOnScreen) {
+      console.log("spawn new enemy");
+      return this.spawn(player.x + 500, GameWorld.groundHeight);
+    }
   };
 
   return EnemyManager;

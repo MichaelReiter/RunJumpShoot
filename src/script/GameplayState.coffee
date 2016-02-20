@@ -2,6 +2,7 @@ player = null
 healthManager = null
 scoreManager = null
 inputManager = null
+enemyManager = null
 
 GameplayState =
 
@@ -20,8 +21,6 @@ GameplayState =
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     enemyManager = new EnemyManager()
-    # enemyManager.spawn(100, GameWorld.groundHeight)
-    enemyManager.spawn(800, GameWorld.groundHeight)
 
     healthManager = new HealthManager()
     scoreManager = new ScoreManager()
@@ -40,5 +39,6 @@ GameplayState =
     inputManager.buttonMovement()
     player.animate()
 
+    enemyManager.spawnLoop()
     for enemy in enemyList
       enemy.AI()

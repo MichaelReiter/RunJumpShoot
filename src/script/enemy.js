@@ -85,6 +85,7 @@ Enemy = (function(superClass) {
     this.hurtTint();
     if (this.health <= 0) {
       this.alive = false;
+      enemyManager.enemyOnScreen = false;
       entity.destroy();
       scoreManager.increment(this.scoreValue);
     }

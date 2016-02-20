@@ -92,7 +92,9 @@ class Entity
 
   animate: ->
     if @ref.body.touching.down 
-      if @ref.body.velocity.x isnt 0
+      if @ref.body.velocity.x is 0
+        # @idle
+      else
         @ref.animations.play('walking')
     else if @ref.body.velocity.y isnt 0
       @ref.animations.play('jumping')

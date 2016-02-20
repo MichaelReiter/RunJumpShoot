@@ -67,6 +67,7 @@ class Enemy extends Entity
     @hurtTint()
     if @health <= 0
       @alive = false
+      enemyManager.enemyOnScreen = false
       entity.destroy()
       scoreManager.increment(@scoreValue)
     super

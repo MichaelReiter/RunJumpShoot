@@ -100,7 +100,9 @@ Entity = (function() {
 
   Entity.prototype.animate = function() {
     if (this.ref.body.touching.down) {
-      if (this.ref.body.velocity.x !== 0) {
+      if (this.ref.body.velocity.x === 0) {
+
+      } else {
         return this.ref.animations.play('walking');
       }
     } else if (this.ref.body.velocity.y !== 0) {
