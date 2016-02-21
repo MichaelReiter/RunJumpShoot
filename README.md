@@ -1,5 +1,5 @@
-# PhaserGame
-A 2D shooter game written in CoffeeScript with the Phaser game engine.
+# Run! Jump! Shoot!
+A 2D platform/shooter game written in CoffeeScript with the Phaser game engine.
 
 ## About
 You play as a nameless hero with a gun and no shirt. Are you a bad enough dude to survive?
