@@ -21,7 +21,7 @@ levelInit = function() {
   ground.smoothed = false;
   ground.scale.setTo(10, 1);
   ground.body.immovable = true;
-  ledge = platforms.create(400, 470, 'platform');
+  ledge = platforms.create(300, 470, 'platform');
   ledge.smoothed = false;
   ledge.body.immovable = true;
   ledge = platforms.create(-150, 350, 'platform');

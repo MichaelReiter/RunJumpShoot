@@ -17,11 +17,10 @@ GameplayState =
 
     levelInit()
 
-    player = new Player(300, GameWorld.groundHeight, 'player')
+    player = new Player(150, GameWorld.groundHeight, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     enemyManager = new EnemyManager()
-
     healthManager = new HealthManager()
     scoreManager = new ScoreManager()
     inputManager = new InputManager()

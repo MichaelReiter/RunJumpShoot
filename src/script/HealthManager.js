@@ -15,10 +15,12 @@ HealthManager = (function() {
   }
 
   HealthManager.prototype.loseHealth = function() {
+    var enemyList;
     player.health--;
     if (player.health > 0) {
       return this.hearts.children[player.health].destroy();
     } else {
+      enemyList = [];
       return game.state.start('Menu');
     }
   };

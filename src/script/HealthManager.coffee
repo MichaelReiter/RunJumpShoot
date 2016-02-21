@@ -16,4 +16,5 @@ class HealthManager
     if player.health > 0
       @hearts.children[player.health].destroy()
     else
+      enemyList = []
       game.state.start('Menu')

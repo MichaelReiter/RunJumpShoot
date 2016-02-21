@@ -21,7 +21,7 @@ levelInit = ->
   ground.body.immovable = true
 
   # Add ledges
-  ledge = platforms.create(400, 470, 'platform')
+  ledge = platforms.create(300, 470, 'platform')
   ledge.smoothed = false
   ledge.body.immovable = true
 
