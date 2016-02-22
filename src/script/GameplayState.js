@@ -15,9 +15,12 @@ GameplayState = {
   preload: function() {},
   load: function() {},
   create: function() {
+    var levelManager;
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    levelInit();
+    levelManager = new LevelManager();
+    levelManager.createLedge(300, 470);
+    levelManager.createLedge(-150, 350);
     player = new Player(150, GameWorld.groundHeight, 'player');
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     enemyManager = new EnemyManager();
