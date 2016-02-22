@@ -6,7 +6,7 @@ You play as a nameless hero with a gun and no shirt. Are you a bad enough dude t
 
 ## How to Play
 You can play the game in any modern web browser, although it was designed to be played on a mobile phone.
-You can play online [here](http://michaelreiter.github.io/PhaserGame/) or you can build it and host it on your own webserver.
+You can play online [here](http://michaelreiter.github.io/RunJumpShoot/) or you can build it and host it on your own webserver.
 
 ## Requirements
 - Node.js
