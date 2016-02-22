@@ -16,8 +16,10 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
     levelManager = new LevelManager()
-    levelManager.createLedge(300, 470)
-    levelManager.createLedge(-150, 350)
+    levelManager.loadLevel(1)
+
+    # levelManager.createLedge(300, 470)
+    # levelManager.createLedge(-150, 350)
 
     player = new Player(150, GameWorld.groundHeight, 'player')
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)

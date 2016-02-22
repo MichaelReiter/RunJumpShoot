@@ -27,3 +27,9 @@ class LevelManager
     ledge = platforms.create(x, y, 'platform')
     ledge.smoothed = false
     ledge.body.immovable = true
+
+
+  loadLevel: (level) ->
+    for ledge in levels[level]
+      [x, y] = [ledge[0], ledge[1]]
+      @createLedge(x, y)

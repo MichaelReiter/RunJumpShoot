@@ -19,8 +19,7 @@ GameplayState = {
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     levelManager = new LevelManager();
-    levelManager.createLedge(300, 470);
-    levelManager.createLedge(-150, 350);
+    levelManager.loadLevel(1);
     player = new Player(150, GameWorld.groundHeight, 'player');
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
     enemyManager = new EnemyManager();

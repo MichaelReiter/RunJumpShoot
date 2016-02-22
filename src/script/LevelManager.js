@@ -31,6 +31,18 @@ LevelManager = (function() {
     return ledge.body.immovable = true;
   };
 
+  LevelManager.prototype.loadLevel = function(level) {
+    var i, ledge, len, ref, ref1, results, x, y;
+    ref = levels[level];
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      ledge = ref[i];
+      ref1 = [ledge[0], ledge[1]], x = ref1[0], y = ref1[1];
+      results.push(this.createLedge(x, y));
+    }
+    return results;
+  };
+
   return LevelManager;
 
 })();
