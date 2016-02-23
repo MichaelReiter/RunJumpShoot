@@ -1,13 +1,4 @@
 platforms = null
-background = null
-
-GameWorld =
-  height: GameResolution.height
-  width: 2000
-  groundHeight: 608
-  l1: 470
-  l2: 350
-  l3: 230
 
 class LevelManager
 
@@ -24,6 +15,8 @@ class LevelManager
     ground.smoothed = false
     ground.scale.setTo(10, 1)
     ground.body.immovable = true
+
+    @loadLevel(1)
 
 
   createLedge: (x, y) ->
