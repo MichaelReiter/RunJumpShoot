@@ -14,7 +14,7 @@ LevelManager = (function() {
     ground.smoothed = false;
     ground.scale.setTo(10, 1);
     ground.body.immovable = true;
-    this.loadLevel(1);
+    this.loadLevel(2);
   }
 
   LevelManager.prototype.createLedge = function(x, y) {

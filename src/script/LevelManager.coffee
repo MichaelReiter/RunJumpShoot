@@ -16,7 +16,7 @@ class LevelManager
     ground.scale.setTo(10, 1)
     ground.body.immovable = true
 
-    @loadLevel(1)
+    @loadLevel(2)
 
 
   createLedge: (x, y) ->
