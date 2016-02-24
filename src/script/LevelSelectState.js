@@ -14,7 +14,9 @@ LevelSelectState = {
       align: 'center'
     });
     title.anchor.set(0.5);
-    this.levelOne = new Phaser.Button(game, GameResolution.width * 0.2, GameResolution.height * 0.5, 'button_square', this.levelSelected, this, 0, 0, 1, 0);
+    this.levelOne = new Phaser.Button(game, GameResolution.width * 0.2, GameResolution.height * 0.5, 'button_square', this.levelSelected, {
+      level: "one"
+    }, 0, 0, 1, 0);
     this.levelOne.tint = Levels["one"].tint;
     game.add.existing(this.levelOne);
     text = game.add.text(this.levelOne.x + this.levelOne.width / 2, this.levelOne.y + this.levelOne.height / 2 - 15, '1', {
@@ -23,7 +25,9 @@ LevelSelectState = {
       align: 'center'
     });
     text.anchor.set(0.5);
-    this.levelTwo = new Phaser.Button(game, GameResolution.width * 0.6, GameResolution.height * 0.5, 'button_square', this.levelSelected, this, 0, 0, 1, 0);
+    this.levelTwo = new Phaser.Button(game, GameResolution.width * 0.6, GameResolution.height * 0.5, 'button_square', this.levelSelected, {
+      level: "two"
+    }, 0, 0, 1, 0);
     this.levelTwo.tint = Levels["two"].tint;
     game.add.existing(this.levelTwo);
     text = game.add.text(this.levelTwo.x + this.levelTwo.width / 2, this.levelTwo.y + this.levelTwo.height / 2 - 15, '2', {
@@ -32,7 +36,9 @@ LevelSelectState = {
       align: 'center'
     });
     text.anchor.set(0.5);
-    this.levelThree = new Phaser.Button(game, GameResolution.width * 0.2, GameResolution.height * 0.75, 'button_square', this.levelSelected, this, 0, 0, 1, 0);
+    this.levelThree = new Phaser.Button(game, GameResolution.width * 0.2, GameResolution.height * 0.75, 'button_square', this.levelSelected, {
+      level: "three"
+    }, 0, 0, 1, 0);
     this.levelThree.tint = Levels["three"].tint;
     game.add.existing(this.levelThree);
     text = game.add.text(this.levelThree.x + this.levelThree.width / 2, this.levelThree.y + this.levelThree.height / 2 - 15, '3', {
@@ -41,7 +47,9 @@ LevelSelectState = {
       align: 'center'
     });
     text.anchor.set(0.5);
-    this.levelFour = new Phaser.Button(game, GameResolution.width * 0.6, GameResolution.height * 0.75, 'button_square', this.levelSelected, this, 0, 0, 1, 0);
+    this.levelFour = new Phaser.Button(game, GameResolution.width * 0.6, GameResolution.height * 0.75, 'button_square', this.levelSelected, {
+      level: "four"
+    }, 0, 0, 1, 0);
     this.levelFour.tint = Levels["four"].tint;
     game.add.existing(this.levelFour);
     text = game.add.text(this.levelFour.x + this.levelFour.width / 2, this.levelFour.y + this.levelFour.height / 2 - 15, '4', {
@@ -54,7 +62,7 @@ LevelSelectState = {
   update: function() {},
   levelSelected: function() {
     var currentLevel;
-    currentLevel = "one";
+    currentLevel = this.level;
     return game.state.start('Gameplay');
   }
 };
