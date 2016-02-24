@@ -19,5 +19,5 @@ class EnemyManager
 
   spawnLoop: ->
     unless @enemyOnScreen
-      for i in [1..3]
+      for i in [1..1]
         @spawn(player.ref.x+i*200, GameWorld.groundHeight)

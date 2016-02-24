@@ -13,7 +13,7 @@ inputManager = null;
 
 enemyManager = null;
 
-currentLevel = "one";
+currentLevel = "three";
 
 GameplayState = {
   preload: function() {},

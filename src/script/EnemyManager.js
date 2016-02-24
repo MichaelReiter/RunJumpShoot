@@ -25,7 +25,7 @@ EnemyManager = (function() {
     var i, j, results;
     if (!this.enemyOnScreen) {
       results = [];
-      for (i = j = 1; j <= 3; i = ++j) {
+      for (i = j = 1; j <= 1; i = ++j) {
         results.push(this.spawn(player.ref.x + i * 200, GameWorld.groundHeight));
       }
       return results;

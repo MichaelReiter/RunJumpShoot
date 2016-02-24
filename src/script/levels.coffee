@@ -24,8 +24,9 @@ Levels =
     ]
 
   three:
-    backgroundTint: 0xe74c3c
-    platformTint: 0xc0392b
+    tint: 0xe74c3c
     platforms: [
-      
+      [200, GameWorld.l1],  [600, GameWorld.l2],
+      [1000, GameWorld.l3], [1400, GameWorld.l2],
+      [1800, GameWorld.l1], [2200, GameWorld.l2]
     ]

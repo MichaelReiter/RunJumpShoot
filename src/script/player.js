@@ -14,7 +14,7 @@ Player = (function(superClass) {
 
   Player.prototype.jumpExtendFactor = 0;
 
-  Player.prototype.health = 40;
+  Player.prototype.health = 4;
 
   Player.prototype.hit = function(entity, bullet) {
     healthManager.loseHealth();
