@@ -14,7 +14,7 @@ MenuState =
     })
     title.anchor.set(0.5)
 
-    @playButton = new Phaser.Button(game, 128, 640, 'button_general', @playPressed, this, 0, 0, 1, 0)
+    @playButton = new Phaser.Button(game, 128, 640, 'button_rectangle', @playPressed, this, 0, 0, 1, 0)
     @playButton.tint = 0x999999 #0xE74C3C #red
     game.add.existing(@playButton)
     text = game.add.text(@playButton.x + @playButton.width / 2, @playButton.y + @playButton.height / 2 - 15, 'Go!', {
@@ -27,4 +27,4 @@ MenuState =
   update: ->
 
   playPressed: ->
-    game.state.start('Gameplay')
+    game.state.start('LevelSelect')
