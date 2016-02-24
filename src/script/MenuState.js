@@ -15,7 +15,7 @@ MenuState = {
     });
     title.anchor.set(0.5);
     this.playButton = new Phaser.Button(game, 128, 640, 'button_general', this.playPressed, this, 0, 0, 1, 0);
-    this.playButton.tint = 0xE74C3C;
+    this.playButton.tint = 0x999999;
     game.add.existing(this.playButton);
     text = game.add.text(this.playButton.x + this.playButton.width / 2, this.playButton.y + this.playButton.height / 2 - 15, 'Go!', {
       font: '48px invasion2000',

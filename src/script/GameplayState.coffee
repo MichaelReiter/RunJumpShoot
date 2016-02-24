@@ -4,6 +4,7 @@ healthManager = null
 scoreManager  = null
 inputManager  = null
 enemyManager  = null
+currentLevel  = "one"
 
 GameplayState =
 

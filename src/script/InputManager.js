@@ -24,6 +24,7 @@ InputManager = (function() {
     this.button_right.fixedToCamera = true;
     this.button_jump.fixedToCamera = true;
     this.button_shoot.fixedToCamera = true;
+    this.tintButtons(currentLevel);
   }
 
   InputManager.prototype.keyboardMovement = function() {
@@ -55,6 +56,13 @@ InputManager = (function() {
     this.button_right.events.onInputUp.add(this.buttonSetRightOff, this);
     this.button_jump.events.onInputUp.add(this.buttonSetJumpOff, this);
     return this.button_shoot.events.onInputUp.add(this.buttonSetShootOff, this);
+  };
+
+  InputManager.prototype.tintButtons = function(level) {
+    this.button_left.tint = Levels[level].tint;
+    this.button_right.tint = Levels[level].tint;
+    this.button_jump.tint = Levels[level].tint;
+    return this.button_shoot.tint = Levels[level].tint;
   };
 
   InputManager.prototype.buttonSetLeft = function() {

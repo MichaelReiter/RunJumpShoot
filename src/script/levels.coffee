@@ -8,8 +8,7 @@ GameWorld =
 
 Levels =
   one: 
-    backgroundTint: 0x3498db
-    platformTint: 0x2980b9
+    tint: 0x3498db
     platforms: [
       [-150, GameWorld.l2], [250, GameWorld.l1], 
       [700, GameWorld.l2],  [1100, GameWorld.l3], 
@@ -17,8 +16,7 @@ Levels =
     ]
 
   two:
-    backgroundTint: 0x2ecc71
-    platformTint: 0x27ae60
+    tint: 0x2ecc71
     platforms: [
       [200, GameWorld.l1],  [600, GameWorld.l2],
       [1000, GameWorld.l3], [1400, GameWorld.l2],

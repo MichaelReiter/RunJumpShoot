@@ -16,7 +16,7 @@ class LevelManager
     ground.scale.setTo(10, 1)
     ground.body.immovable = true
 
-    @loadLevel("one", background)
+    @loadLevel(background)
 
 
   createLedge: (x, y) ->
@@ -28,14 +28,14 @@ class LevelManager
     ledge.body.checkCollision.right = false
 
 
-  loadLevel: (level, background) ->
-    for ledge in Levels[level].platforms
+  loadLevel: (background) ->
+    for ledge in Levels[currentLevel].platforms
       [x, y] = [ledge[0], ledge[1]]
       @createLedge(x, y)
-    @tintLevel(level, background)
+    @tintLevel(background)
 
 
-  tintLevel: (level, background) ->
-    background.tint = Levels[level].backgroundTint
+  tintLevel: (background) ->
+    background.tint = Levels[currentLevel].tint
     for platform in platforms.children
-      platform.tint = Levels[level].platformTint
+      platform.tint = Levels[currentLevel].tint

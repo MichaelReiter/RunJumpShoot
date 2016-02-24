@@ -26,6 +26,8 @@ class InputManager
     @button_jump.fixedToCamera = true
     @button_shoot.fixedToCamera = true
 
+    @tintButtons(currentLevel)
+
 
   keyboardMovement: ->
     player.ref.body.velocity.x = 0
@@ -60,6 +62,13 @@ class InputManager
     @button_right.events.onInputUp.add(@buttonSetRightOff, this)
     @button_jump.events.onInputUp.add(@buttonSetJumpOff, this)
     @button_shoot.events.onInputUp.add(@buttonSetShootOff, this)
+
+
+  tintButtons: (level) ->
+    @button_left.tint = Levels[level].tint
+    @button_right.tint = Levels[level].tint
+    @button_jump.tint = Levels[level].tint
+    @button_shoot.tint = Levels[level].tint
 
 
   buttonSetLeft: ->

@@ -14,7 +14,7 @@ LevelManager = (function() {
     ground.smoothed = false;
     ground.scale.setTo(10, 1);
     ground.body.immovable = true;
-    this.loadLevel("one", background);
+    this.loadLevel(background);
   }
 
   LevelManager.prototype.createLedge = function(x, y) {
@@ -27,25 +27,25 @@ LevelManager = (function() {
     return ledge.body.checkCollision.right = false;
   };
 
-  LevelManager.prototype.loadLevel = function(level, background) {
+  LevelManager.prototype.loadLevel = function(background) {
     var i, ledge, len, ref, ref1, x, y;
-    ref = Levels[level].platforms;
+    ref = Levels[currentLevel].platforms;
     for (i = 0, len = ref.length; i < len; i++) {
       ledge = ref[i];
       ref1 = [ledge[0], ledge[1]], x = ref1[0], y = ref1[1];
       this.createLedge(x, y);
     }
-    return this.tintLevel(level, background);
+    return this.tintLevel(background);
   };
 
-  LevelManager.prototype.tintLevel = function(level, background) {
+  LevelManager.prototype.tintLevel = function(background) {
     var i, len, platform, ref, results;
-    background.tint = Levels[level].backgroundTint;
+    background.tint = Levels[currentLevel].tint;
     ref = platforms.children;
     results = [];
     for (i = 0, len = ref.length; i < len; i++) {
       platform = ref[i];
-      results.push(platform.tint = Levels[level].platformTint);
+      results.push(platform.tint = Levels[currentLevel].tint);
     }
     return results;
   };
