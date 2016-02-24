@@ -22,8 +22,13 @@ EnemyManager = (function() {
   };
 
   EnemyManager.prototype.spawnLoop = function() {
+    var i, j, results;
     if (!this.enemyOnScreen) {
-      return this.spawn(player.ref.x + 500, GameWorld.groundHeight);
+      results = [];
+      for (i = j = 1; j <= 3; i = ++j) {
+        results.push(this.spawn(player.ref.x + i * 200, GameWorld.groundHeight));
+      }
+      return results;
     }
   };
 

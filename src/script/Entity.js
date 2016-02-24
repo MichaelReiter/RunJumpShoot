@@ -29,6 +29,7 @@ Entity = (function() {
     game.physics.arcade.enable(this.ref);
     this.ref.body.gravity.y = this.gravity;
     this.ref.body.collideWorldBounds = true;
+    this.ref.body.checkCollision.up = false;
     this.ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true);
     this.ref.animations.add('jumping', [7, 8, 9], 12, true);
     this.bullets = game.add.group();

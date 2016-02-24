@@ -31,6 +31,7 @@ GameplayState = {
     var enemy, i, j, len, len1, results;
     game.physics.arcade.collide(player.ref, platforms);
     game.physics.arcade.collide(enemies, platforms);
+    game.physics.arcade.collide(enemies, enemies);
     for (i = 0, len = enemyList.length; i < len; i++) {
       enemy = enemyList[i];
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this);

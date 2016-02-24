@@ -1,7 +1,7 @@
 class Player extends Entity
 
   jumpExtendFactor: 0
-  health: 4
+  health: 40
 
   hit: (entity, bullet) =>
     healthManager.loseHealth()

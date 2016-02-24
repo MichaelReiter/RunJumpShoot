@@ -19,5 +19,5 @@ class EnemyManager
 
   spawnLoop: ->
     unless @enemyOnScreen
-      @spawn(player.ref.x+500, GameWorld.groundHeight)
-      # game.time.events.add(Phaser.Timer.SECOND * 0.5, @spawn, this)
+      for i in [1..3]
+        @spawn(player.ref.x+i*200, GameWorld.groundHeight)
