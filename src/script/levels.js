@@ -19,10 +19,10 @@ Levels = {
     tint: 0x2ecc71,
     platforms: [[200, GameWorld.l1], [600, GameWorld.l2], [1000, GameWorld.l3], [1400, GameWorld.l2], [1800, GameWorld.l1], [2200, GameWorld.l2]]
   },
-  three: {
+  three: q({
     tint: 0xe74c3c,
     platforms: [[200, GameWorld.l1], [600, GameWorld.l2], [1000, GameWorld.l3], [1400, GameWorld.l2], [1800, GameWorld.l1], [2200, GameWorld.l2]]
-  },
+  }),
   four: {
     tint: 0x8e44ad,
     platforms: [[200, GameWorld.l1], [600, GameWorld.l2], [1000, GameWorld.l3], [1400, GameWorld.l2], [1800, GameWorld.l1], [2200, GameWorld.l2]]
