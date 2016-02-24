@@ -14,24 +14,38 @@ LevelManager = (function() {
     ground.smoothed = false;
     ground.scale.setTo(10, 1);
     ground.body.immovable = true;
-    this.loadLevel(2);
+    this.loadLevel("one", background);
   }
 
   LevelManager.prototype.createLedge = function(x, y) {
     var ledge;
     ledge = platforms.create(x, y, 'platform');
     ledge.smoothed = false;
-    return ledge.body.immovable = true;
+    ledge.body.immovable = true;
+    ledge.body.checkCollision.down = false;
+    ledge.body.checkCollision.left = false;
+    return ledge.body.checkCollision.right = false;
   };
 
-  LevelManager.prototype.loadLevel = function(level) {
-    var i, ledge, len, ref, ref1, results, x, y;
-    ref = levels[level];
-    results = [];
+  LevelManager.prototype.loadLevel = function(level, background) {
+    var i, ledge, len, ref, ref1, x, y;
+    ref = Levels[level].platforms;
     for (i = 0, len = ref.length; i < len; i++) {
       ledge = ref[i];
       ref1 = [ledge[0], ledge[1]], x = ref1[0], y = ref1[1];
-      results.push(this.createLedge(x, y));
+      this.createLedge(x, y);
+    }
+    return this.tintLevel(level, background);
+  };
+
+  LevelManager.prototype.tintLevel = function(level, background) {
+    var i, len, platform, ref, results;
+    background.tint = Levels[level].backgroundTint;
+    ref = platforms.children;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      platform = ref[i];
+      results.push(platform.tint = Levels[level].platformTint);
     }
     return results;
   };

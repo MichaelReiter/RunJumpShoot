@@ -21,7 +21,6 @@ class Entity
     game.physics.arcade.enable(@ref)
     @ref.body.gravity.y = @gravity
     @ref.body.collideWorldBounds = true
-    @ref.body.checkCollision.up = false
 
     @ref.animations.add('walking', [0, 1, 2, 3, 4, 5], 12, true)
     @ref.animations.add('jumping', [7, 8, 9], 12, true)

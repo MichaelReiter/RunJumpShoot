@@ -7,7 +7,7 @@ MenuState = {
   create: function() {
     var background, text, title;
     background = game.add.sprite(0, 0, 'background');
-    background.tint = 0x555555;
+    background.tint = 0x333333;
     title = game.add.text(GameResolution.width / 2, GameResolution.height / 3, ' Run!\n Jump!\n Shoot!', {
       font: '64px invasion2000',
       fill: 'white',
