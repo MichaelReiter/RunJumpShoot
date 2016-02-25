@@ -23,7 +23,7 @@ Levels =
       [1800, GameWorld.l1], [2200, GameWorld.l2]
     ]
 
-  three:q
+  three:
     tint: 0xe74c3c
     platforms: [
       [200, GameWorld.l1],  [600, GameWorld.l2],

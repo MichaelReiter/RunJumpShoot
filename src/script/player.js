@@ -16,9 +16,13 @@ Player = (function(superClass) {
 
   Player.prototype.health = 4;
 
+  Player.prototype.invincible = true;
+
   Player.prototype.hit = function(entity, bullet) {
-    healthManager.loseHealth();
-    this.hurtTint();
+    if (!this.invincible) {
+      healthManager.loseHealth();
+      this.hurtTint();
+    }
     return Player.__super__.hit.apply(this, arguments);
   };
 
@@ -34,6 +38,17 @@ Player = (function(superClass) {
     } else {
       return this.jumpExtendFactor = 0;
     }
+  };
+
+  Player.prototype.becomeInvincible = function() {
+    this.invincible = true;
+    player.tint = 0xffff00;
+    return game.time.events.add(Phaser.Timer.SECOND * 3, resetPowerup, this);
+  };
+
+  Player.prototype.resetPowerup = function() {
+    this.invincible = false;
+    return player.tint = 0xffffff;
   };
 
   return Player;
