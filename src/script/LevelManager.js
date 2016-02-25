@@ -12,7 +12,7 @@ LevelManager = (function() {
     platforms.enableBody = true;
     ground = platforms.create(-game.world.height.width / 2, game.world.height - 352, 'platform');
     ground.smoothed = false;
-    ground.scale.setTo(10, 1);
+    ground.scale.setTo(10, 2);
     ground.body.immovable = true;
     this.loadLevel(background);
   }
