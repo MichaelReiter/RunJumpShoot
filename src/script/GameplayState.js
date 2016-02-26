@@ -28,15 +28,19 @@ GameplayState = {
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
-    return new Invincible(player.x, player.y);
+    return new Invincible(player.ref.x + 50, player.ref.y - 100);
   },
   update: function() {
-    var enemy, i, j, len, len1, results;
+    var enemy, i, j, k, len, len1, len2, powerup, results;
     game.physics.arcade.collide(player.ref, platforms);
     game.physics.arcade.collide(enemies, platforms);
     game.physics.arcade.collide(enemies, enemies);
-    for (i = 0, len = enemyList.length; i < len; i++) {
-      enemy = enemyList[i];
+    for (i = 0, len = powerupList.length; i < len; i++) {
+      powerup = powerupList[i];
+      game.physics.arcade.overlap(player.ref, powerups, powerup.collected, null, this);
+    }
+    for (j = 0, len1 = enemyList.length; j < len1; j++) {
+      enemy = enemyList[j];
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this);
       game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this);
     }
@@ -45,8 +49,8 @@ GameplayState = {
     player.animate();
     enemyManager.spawnLoop();
     results = [];
-    for (j = 0, len1 = enemyList.length; j < len1; j++) {
-      enemy = enemyList[j];
+    for (k = 0, len2 = enemyList.length; k < len2; k++) {
+      enemy = enemyList[k];
       results.push(enemy.AI());
     }
     return results;
