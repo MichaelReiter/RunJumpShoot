@@ -18,3 +18,11 @@ class HealthManager
     else
       enemyList = []
       game.state.start('Menu')
+
+
+  tintHearts: ->
+    for heart in @hearts.children
+      if heart.tint != 0x9b59b6
+        heart.tint = 0x9b59b6
+      else
+        heart.tint = 0xffffff

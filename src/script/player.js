@@ -45,12 +45,14 @@ Player = (function(superClass) {
   Player.prototype.becomeInvincible = function() {
     this.invincible = true;
     this.ref.tint = 0x9b59b6;
+    healthManager.tintHearts();
     return game.time.events.add(Phaser.Timer.SECOND * this.powerupDuration, this.resetInvincibility, this);
   };
 
   Player.prototype.resetInvincibility = function() {
     this.invincible = false;
-    return this.ref.tint = 0xffffff;
+    this.ref.tint = 0xffffff;
+    return healthManager.tintHearts();
   };
 
   return Player;

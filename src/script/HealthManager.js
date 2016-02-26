@@ -25,6 +25,21 @@ HealthManager = (function() {
     }
   };
 
+  HealthManager.prototype.tintHearts = function() {
+    var heart, j, len, ref, results;
+    ref = this.hearts.children;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      heart = ref[j];
+      if (heart.tint !== 0x9b59b6) {
+        results.push(heart.tint = 0x9b59b6);
+      } else {
+        results.push(heart.tint = 0xffffff);
+      }
+    }
+    return results;
+  };
+
   return HealthManager;
 
 })();

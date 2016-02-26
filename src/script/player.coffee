@@ -32,9 +32,11 @@ class Player extends Entity
   becomeInvincible: ->
     @invincible = true
     @ref.tint = 0x9b59b6
+    healthManager.tintHearts()
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetInvincibility, this)
 
 
   resetInvincibility: ->
     @invincible = false
     @ref.tint = 0xffffff
+    healthManager.tintHearts()
