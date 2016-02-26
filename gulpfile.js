@@ -24,7 +24,7 @@ minifyHTML = require('gulp-minify-html');
 
 /* Source and build destination directories for files. */
 
-coffeeSrc = ['./src/script/*State.coffee', './src/script/main.coffee', './src/script/*.coffee'];
+coffeeSrc = ['./src/script/*State.coffee', './src/script/main.coffee', './src/script/Powerup.coffee', './src/script/*.coffee'];
 
 coffeeDst = './build/script';
 

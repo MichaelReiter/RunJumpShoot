@@ -11,7 +11,13 @@ imagemin = require('gulp-imagemin')
 minifyHTML = require('gulp-minify-html')
 
 ### Source and build destination directories for files. ###
-coffeeSrc = ['./src/script/*State.coffee', './src/script/main.coffee', './src/script/*.coffee']
+# The conatenation order of javascript files is important. Otherwise there will be errors
+coffeeSrc = [
+  './src/script/*State.coffee',
+  './src/script/main.coffee',
+  './src/script/Powerup.coffee',
+  './src/script/*.coffee'
+]
 coffeeDst = './build/script'
 libSrc = './src/lib/*.js'
 libDst = './build/lib'
