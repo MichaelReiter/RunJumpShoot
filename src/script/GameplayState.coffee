@@ -24,7 +24,7 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
-    new Invincible(player.ref.x+300, player.ref.y-300)
+    new RapidFire(player.ref.x+300, player.ref.y-300)
 
   update: ->
     game.physics.arcade.collide(player.ref, platforms)

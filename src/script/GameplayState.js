@@ -28,7 +28,7 @@ GameplayState = {
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
-    return new Invincible(player.ref.x + 300, player.ref.y - 300);
+    return new RapidFire(player.ref.x + 300, player.ref.y - 300);
   },
   update: function() {
     var enemy, i, j, k, len, len1, len2, powerup, results;

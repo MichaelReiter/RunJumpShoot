@@ -72,9 +72,9 @@ class Entity
       projectileVector = -@bulletSpeed
 
     projectile.scale.setTo(@scale, @scale)
-    projectile.body.velocity.x = projectileVector
+    projectile.body.velocity.x  = projectileVector
     projectile.checkWorldBounds = true
-    projectile.outOfBoundsKill = true
+    projectile.outOfBoundsKill  = true
 
 
   hit: (entity, bullet) ->

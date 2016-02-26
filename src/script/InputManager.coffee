@@ -1,9 +1,9 @@
 class InputManager
 
   Buttons:
-    left: false
+    left:  false
     right: false
-    jump: false
+    jump:  false
     shoot: false
 
   constructor: ->
@@ -16,14 +16,14 @@ class InputManager
     @button_jump = game.add.sprite(320, game.world.height-320, 'button_jump')
     @button_shoot = game.add.sprite(480, game.world.height-320, 'button_shoot')
 
-    @button_left.inputEnabled = true
-    @button_right.inputEnabled = true
-    @button_jump.inputEnabled = true
-    @button_shoot.inputEnabled = true
+    @button_left.inputEnabled   = true
+    @button_right.inputEnabled  = true
+    @button_jump.inputEnabled   = true
+    @button_shoot.inputEnabled  = true
 
-    @button_left.fixedToCamera = true
+    @button_left.fixedToCamera  = true
     @button_right.fixedToCamera = true
-    @button_jump.fixedToCamera = true
+    @button_jump.fixedToCamera  = true
     @button_shoot.fixedToCamera = true
 
     @tintButtons(currentLevel)

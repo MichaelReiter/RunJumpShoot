@@ -1,13 +1,13 @@
 ### The following gulpfile compiles coffeescript and places it in the build folder along with minified game assets. ###
 
 ### Gulp and processing plugins. ###
-gulp = require('gulp')
-gutil = require('gulp-util')
-coffee = require('gulp-coffee')
-concat = require('gulp-concat')
-sass = require('gulp-sass')
-changed = require('gulp-changed')
-imagemin = require('gulp-imagemin')
+gulp       = require('gulp')
+gutil      = require('gulp-util')
+coffee     = require('gulp-coffee')
+concat     = require('gulp-concat')
+sass       = require('gulp-sass')
+changed    = require('gulp-changed')
+imagemin   = require('gulp-imagemin')
 minifyHTML = require('gulp-minify-html')
 
 ### Source and build destination directories for files. ###
