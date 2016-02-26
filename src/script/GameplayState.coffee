@@ -14,7 +14,7 @@ GameplayState =
 
   create: ->
     levelManager  = new LevelManager()
-    player        = new Player(150, GameWorld.groundHeight, 'player')
+    player        = new Player(150, GameWorld.groundHeight)
     enemyManager  = new EnemyManager()
     healthManager = new HealthManager()
     scoreManager  = new ScoreManager()

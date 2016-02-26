@@ -23,10 +23,10 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.jumpSpeed = 300;
 
-  function Enemy() {
+  function Enemy(x, y) {
     this.hit = bind(this.hit, this);
     this.scaleDifficulty();
-    Enemy.__super__.constructor.apply(this, arguments);
+    Enemy.__super__.constructor.call(this, x, y, 'enemy');
     this.facePlayer();
   }
 

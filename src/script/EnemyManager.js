@@ -16,7 +16,7 @@ EnemyManager = (function() {
   EnemyManager.prototype.spawn = function(x, y) {
     var enemy;
     this.enemyOnScreen = true;
-    enemy = new Enemy(x, y, 'enemy');
+    enemy = new Enemy(x, y);
     enemies.add(enemy.ref);
     return enemyList.push(enemy);
   };

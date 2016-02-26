@@ -12,7 +12,7 @@ class EnemyManager
 
   spawn: (x, y) ->
     @enemyOnScreen = true
-    enemy = new Enemy(x, y, 'enemy')
+    enemy = new Enemy(x, y)
     enemies.add(enemy.ref)
     enemyList.push(enemy)
 

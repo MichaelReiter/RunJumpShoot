@@ -7,16 +7,16 @@ var Player,
 Player = (function(superClass) {
   extend(Player, superClass);
 
-  function Player() {
-    this.hit = bind(this.hit, this);
-    return Player.__super__.constructor.apply(this, arguments);
-  }
-
   Player.prototype.jumpExtendFactor = 0;
 
   Player.prototype.health = 4;
 
   Player.prototype.invincible = true;
+
+  function Player(x, y) {
+    this.hit = bind(this.hit, this);
+    Player.__super__.constructor.call(this, x, y, 'player');
+  }
 
   Player.prototype.hit = function(entity, bullet) {
     if (!this.invincible) {

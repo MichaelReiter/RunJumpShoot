@@ -4,6 +4,10 @@ class Player extends Entity
   health: 4
   invincible: true
 
+  constructor: (x, y) ->
+    super(x, y, 'player')
+
+
   hit: (entity, bullet) =>
     unless @invincible
       healthManager.loseHealth()

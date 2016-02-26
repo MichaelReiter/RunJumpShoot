@@ -9,9 +9,9 @@ class Enemy extends Entity
   gravity: 300
   jumpSpeed: 300
 
-  constructor: ->
+  constructor: (x, y) ->
     @scaleDifficulty()
-    super
+    super(x, y, 'enemy')
     @facePlayer()
   
 
