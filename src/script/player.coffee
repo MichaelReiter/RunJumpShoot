@@ -3,7 +3,7 @@ class Player extends Entity
   jumpExtendFactor: 0
   health: 4
   invincible: true
-  powerupDuration: 5 #seconds
+  powerupDuration: 10 #seconds
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -31,10 +31,10 @@ class Player extends Entity
 
   becomeInvincible: ->
     @invincible = true
-    @ref.tint = 0x34495e
-    game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetPowerup, this)
+    @ref.tint = 0x9b59b6
+    game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetInvincibility, this)
 
 
-  resetPowerup: ->
+  resetInvincibility: ->
     @invincible = false
     @ref.tint = 0xffffff

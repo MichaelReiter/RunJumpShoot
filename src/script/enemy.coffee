@@ -4,6 +4,8 @@ class Enemy extends Entity
   approachDeltaX: 175
   shootDeltaY: 50
   jumpDeltaY: 100
+  extendChaseDeltaY: 100
+  resetDeltaY: 25
   alive: true
   scoreValue: 100
   gravity: 300
@@ -38,9 +40,15 @@ class Enemy extends Entity
     else if player.ref.x - @ref.x < -@approachDeltaX
       @moveLeft()
 
-
+    # if player is above, jump
     if @ref.body.touching.down and (@ref.y - player.ref.y) > @jumpDeltaY and Math.random() < 0.05
       @jump()
+
+    if @ref.body.touching.down
+      if (player.ref.y - @ref.y) > @extendChaseDeltaY
+        @approachDeltaX = 275
+      else if Math.abs(player.ref.y - @ref.y) < @resetDeltaY
+        @approachDeltaX = 175
 
 
   shootPlayer: ->

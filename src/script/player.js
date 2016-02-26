@@ -13,7 +13,7 @@ Player = (function(superClass) {
 
   Player.prototype.invincible = true;
 
-  Player.prototype.powerupDuration = 5;
+  Player.prototype.powerupDuration = 10;
 
   function Player(x, y) {
     this.hit = bind(this.hit, this);
@@ -44,11 +44,11 @@ Player = (function(superClass) {
 
   Player.prototype.becomeInvincible = function() {
     this.invincible = true;
-    this.ref.tint = 0x34495e;
-    return game.time.events.add(Phaser.Timer.SECOND * this.powerupDuration, this.resetPowerup, this);
+    this.ref.tint = 0x9b59b6;
+    return game.time.events.add(Phaser.Timer.SECOND * this.powerupDuration, this.resetInvincibility, this);
   };
 
-  Player.prototype.resetPowerup = function() {
+  Player.prototype.resetInvincibility = function() {
     this.invincible = false;
     return this.ref.tint = 0xffffff;
   };

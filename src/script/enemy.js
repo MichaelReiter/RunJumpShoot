@@ -15,6 +15,10 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.jumpDeltaY = 100;
 
+  Enemy.prototype.extendChaseDeltaY = 100;
+
+  Enemy.prototype.resetDeltaY = 25;
+
   Enemy.prototype.alive = true;
 
   Enemy.prototype.scoreValue = 100;
@@ -55,7 +59,14 @@ Enemy = (function(superClass) {
       this.moveLeft();
     }
     if (this.ref.body.touching.down && (this.ref.y - player.ref.y) > this.jumpDeltaY && Math.random() < 0.05) {
-      return this.jump();
+      this.jump();
+    }
+    if (this.ref.body.touching.down) {
+      if ((player.ref.y - this.ref.y) > this.extendChaseDeltaY) {
+        return this.approachDeltaX = 275;
+      } else if (Math.abs(player.ref.y - this.ref.y) < this.resetDeltaY) {
+        return this.approachDeltaX = 175;
+      }
     }
   };
 
