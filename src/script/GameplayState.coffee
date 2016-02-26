@@ -24,11 +24,12 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
-    new Invincible(player.ref.x+50, player.ref.y-100)
+    new Invincible(player.ref.x+300, player.ref.y-300)
 
   update: ->
     game.physics.arcade.collide(player.ref, platforms)
     game.physics.arcade.collide(enemies, platforms)
+    game.physics.arcade.collide(powerups, platforms)
     game.physics.arcade.collide(enemies, enemies)
     
     for powerup in powerupList
