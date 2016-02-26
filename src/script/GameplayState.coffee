@@ -24,6 +24,7 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
+    test = new Powerup(player.x, player.y, 'powerup_invincible')
     # invincible = new Invincible(player.x, player.y)
 
   update: ->

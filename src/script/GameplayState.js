@@ -19,6 +19,7 @@ GameplayState = {
   preload: function() {},
   load: function() {},
   create: function() {
+    var test;
     levelManager = new LevelManager();
     player = new Player(150, GameWorld.groundHeight, 'player');
     enemyManager = new EnemyManager();
@@ -27,7 +28,8 @@ GameplayState = {
     inputManager = new InputManager();
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height);
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    return game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
+    game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER);
+    return test = new Powerup(player.x, player.y, 'powerup_invincible');
   },
   update: function() {
     var enemy, i, j, len, len1, results;
