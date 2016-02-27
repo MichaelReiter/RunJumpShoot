@@ -1,24 +1,21 @@
-powerups = null
-powerupList = []
-
 class Powerup
 
   gravity: 500
+  tint: 0xffffff
 
-  constructor: (x, y, sprite) ->
-    @ref = game.add.sprite(x, y, sprite)
+  constructor: (x, y) ->
+    @ref = game.add.sprite(x, y, 'powerup')
     @ref.scale.setTo(player.scale, player.scale)
     @ref.smoothed = false
+    @ref.tint = @tint
 
     game.physics.arcade.enable(@ref)
     @ref.body.gravity.y = @gravity
     @ref.body.collideWorldBounds = true
 
-    powerups = game.add.group()
-    powerups.enableBody = true
-
     powerups.add(@ref)
     powerupList.push(this)
+
 
   collected: (entity, powerup) ->
     powerup.destroy()

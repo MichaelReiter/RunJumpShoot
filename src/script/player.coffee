@@ -2,7 +2,7 @@ class Player extends Entity
 
   jumpExtendFactor: 0
   health: 4
-  invincible: true
+  invincible: false
   powerupDuration: 5 #seconds
 
   constructor: (x, y) ->
@@ -43,7 +43,7 @@ class Player extends Entity
 
 
   increaseFirerate: ->
-    @fireRate = 30
+    @fireRate = 15
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetFirerate, this)
 
 

@@ -1,8 +1,6 @@
 class RapidFire extends Powerup
   
-  constructor: (x, y) ->
-    super(x, y, 'powerup_invincible')
-
+  tint: 0xe74c3c #red
 
   collected: ->
     super

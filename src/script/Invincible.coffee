@@ -1,8 +1,6 @@
 class Invincible extends Powerup
   
-  constructor: (x, y) ->
-    super(x, y, 'powerup_invincible')
-
+  tint: 0x9b59b6 #purple
 
   collected: ->
     super

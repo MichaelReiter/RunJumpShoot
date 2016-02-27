@@ -1,10 +1,11 @@
-player        = null
-levelManager  = null
-healthManager = null
-scoreManager  = null
-inputManager  = null
-enemyManager  = null
-currentLevel  = null
+player         = null
+levelManager   = null
+healthManager  = null
+scoreManager   = null
+inputManager   = null
+enemyManager   = null
+powerupManager = null
+currentLevel   = null
 
 GameplayState =
 
@@ -13,18 +14,21 @@ GameplayState =
   load: ->
 
   create: ->
-    levelManager  = new LevelManager()
-    player        = new Player(150, GameWorld.groundHeight)
-    enemyManager  = new EnemyManager()
-    healthManager = new HealthManager()
-    scoreManager  = new ScoreManager()
-    inputManager  = new InputManager()
+    levelManager   = new LevelManager()
+    player         = new Player(150, GameWorld.groundHeight)
+    enemyManager   = new EnemyManager()
+    healthManager  = new HealthManager()
+    scoreManager   = new ScoreManager()
+    inputManager   = new InputManager()
+    powerupManager = new PowerupManager()
 
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
-    new RapidFire(player.ref.x+300, player.ref.y-300)
+    powerupManager.spawn("invincible", player.ref.x+100, player.ref.y-300)
+    # powerupManager.spawn("rapidfire", player.ref.x+300, player.ref.y-300)
+
 
   update: ->
     game.physics.arcade.collide(player.ref, platforms)

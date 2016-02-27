@@ -19,8 +19,7 @@ LoadingState =
     game.load.image('platform', 'img/platform.png')
     game.load.image('bullet', 'img/bullet.png')
     game.load.image('heart', 'img/heart.png')
-
-    game.load.image('powerup_invincible', 'img/powerup_invincible.png')
+    game.load.image('powerup', 'img/powerup.png')
 
     game.load.spritesheet('button_rectangle', 'img/button_rectangle.png', 384, 128)
     game.load.spritesheet('button_square', 'img/button_square.png', 128, 128)
