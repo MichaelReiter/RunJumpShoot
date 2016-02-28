@@ -60,3 +60,14 @@ class Player extends Entity
   resetSuperJump: ->
     @jumpSpeed /= 1.5
     @ref.tint   = 0xffffff
+
+
+  enableSuperSpeed: ->
+    @movementSpeed *= 1.75
+    @ref.tint   = 0xf1c40f
+    game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetSuperSpeed, this)
+
+
+  resetSuperSpeed: ->
+    @movementSpeed /= 1.75
+    @ref.tint   = 0xffffff

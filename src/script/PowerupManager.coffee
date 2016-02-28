@@ -13,3 +13,4 @@ class PowerupManager
       when "invincible" then new Invincible(x, y)
       when "rapidfire"  then new RapidFire(x, y)
       when "superjump"  then new SuperJump(x, y)
+      when "superspeed" then new SuperSpeed(x, y)
