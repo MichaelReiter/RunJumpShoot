@@ -28,6 +28,7 @@ GameplayState =
 
     powerupManager.spawn("invincible", player.ref.x+100, player.ref.y-300)
     powerupManager.spawn("rapidfire", player.ref.x+300, player.ref.y-300)
+    powerupManager.spawn("superjump", player.ref.x+500, player.ref.y-300)
 
 
   update: ->

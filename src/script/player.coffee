@@ -49,3 +49,14 @@ class Player extends Entity
 
   resetFirerate: ->
     @fireRate = 3
+
+
+  enableSuperJump: ->
+    @jumpSpeed *= 1.5
+    @ref.tint   = 0x16a085
+    game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetSuperJump, this)
+
+
+  resetSuperJump: ->
+    @jumpSpeed /= 1.5
+    @ref.tint   = 0xffffff
