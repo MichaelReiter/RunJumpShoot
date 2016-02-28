@@ -19,3 +19,7 @@ class Powerup
 
   collected: (entity, powerup) ->
     powerup.destroy()
+
+
+  checkCollisions: ->
+    game.physics.arcade.overlap(player.ref, @ref, @collected, null, this)

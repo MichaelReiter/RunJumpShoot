@@ -5,3 +5,4 @@ class RapidFire extends Powerup
   collected: ->
     super
     player.increaseFirerate()
+    console.log "rapidfire"

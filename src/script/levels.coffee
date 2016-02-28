@@ -8,7 +8,7 @@ GameWorld =
 
 Levels =
   one: 
-    tint: 0x3498DB
+    tint: 0x3498DB #blue
     platforms: [
       [-150, GameWorld.l2], [250, GameWorld.l1], 
       [700, GameWorld.l2],  [1100, GameWorld.l3], 
@@ -16,7 +16,7 @@ Levels =
     ]
 
   two:
-    tint: 0x2ECC71
+    tint: 0x2ECC71 #green
     platforms: [
       [200, GameWorld.l1],  [600, GameWorld.l2],
       [1000, GameWorld.l3], [1400, GameWorld.l2],
@@ -24,7 +24,7 @@ Levels =
     ]
 
   three:
-    tint: 0xE74C3C
+    tint: 0xE74C3C #red
     platforms: [
       [200, GameWorld.l1],  [600, GameWorld.l2],
       [1000, GameWorld.l3], [1400, GameWorld.l2],
@@ -32,7 +32,7 @@ Levels =
     ]
 
   four:
-    tint: 0xF4D03F
+    tint: 0xF4D03F #yellow
     platforms: [
       [200, GameWorld.l1],  [600, GameWorld.l2],
       [1000, GameWorld.l3], [1400, GameWorld.l2],

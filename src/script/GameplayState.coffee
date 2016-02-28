@@ -27,7 +27,7 @@ GameplayState =
     game.camera.follow(player.ref, Phaser.Camera.FOLLOW_PLATFORMER)
 
     powerupManager.spawn("invincible", player.ref.x+100, player.ref.y-300)
-    # powerupManager.spawn("rapidfire", player.ref.x+300, player.ref.y-300)
+    powerupManager.spawn("rapidfire", player.ref.x+300, player.ref.y-300)
 
 
   update: ->
@@ -37,7 +37,7 @@ GameplayState =
     game.physics.arcade.collide(enemies, enemies)
     
     for powerup in powerupList
-      game.physics.arcade.overlap(player.ref, powerups, powerup.collected, null, this)
+      powerup.checkCollisions()
 
     for enemy in enemyList
       game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)

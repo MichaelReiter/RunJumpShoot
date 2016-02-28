@@ -5,3 +5,4 @@ class Invincible extends Powerup
   collected: ->
     super
     player.becomeInvincible()
+    console.log "invincible"
