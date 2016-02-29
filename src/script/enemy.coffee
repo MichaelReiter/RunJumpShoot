@@ -18,9 +18,9 @@ class Enemy extends Entity
   
 
   scaleDifficulty: ->
-    @movementSpeed = player.movementSpeed * @difficultyScale
-    @fireRate = player.fireRate * @difficultyScale/2
-    @bulletSpeed = player.bulletSpeed * @difficultyScale * 0.8
+    @movementSpeed = player.mvmtSpd * @difficultyScale
+    @fireRate = player.fRate * @difficultyScale * 0.3
+    @bulletSpeed = player.bltSpd * @difficultyScale * 0.8
 
 
   AI: ->
@@ -54,7 +54,7 @@ class Enemy extends Entity
   shootPlayer: ->
     if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot() and @facingPlayer()
       @lastFired = game.time.now
-      game.time.events.add(Phaser.Timer.SECOND * 0.5, @shoot, this)
+      game.time.events.add(Phaser.Timer.SECOND * ((Math.random()*0.85)+0.5), @shoot, this)
 
 
   facingPlayer: ->

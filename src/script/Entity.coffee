@@ -5,7 +5,7 @@ class Entity
   bulletSpeed: 600
   scale: 2
   facing: "right"
-  fireRate: 3     # in bullets/second
+  fireRate: 3 # bullets/second
   lastFired: 0
   gravity: 500
   health: 3
