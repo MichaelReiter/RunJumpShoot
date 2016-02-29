@@ -1,8 +1,8 @@
 class Entity
   
-  movementSpeed: 200
+  movementSpeed: 250
   jumpSpeed: 220
-  bulletSpeed: 300
+  bulletSpeed: 600
   scale: 2
   facing: "right"
   fireRate: 3     # in bullets/second
@@ -65,16 +65,20 @@ class Entity
   shoot: ->
     @lastFired = game.time.now
     if @facing is "right"
-      projectile = @bullets.create(@ref.x+30, @ref.y-48, 'bullet')
+      projectile = @bullets.create(@ref.x+30, @ref.y-50, 'bullet')
       projectileVector = @bulletSpeed
     else
-      projectile = @bullets.create(@ref.x-40, @ref.y-48, 'bullet')
+      projectile = @bullets.create(@ref.x-30, @ref.y-50, 'bullet')
       projectileVector = -@bulletSpeed
 
     projectile.scale.setTo(@scale, @scale)
+    projectile.smoothed = false
     projectile.body.velocity.x  = projectileVector
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill  = true
+    if @facing is "left"
+      projectile.scale.x *= -1
+    projectile
 
 
   hit: (entity, bullet) ->

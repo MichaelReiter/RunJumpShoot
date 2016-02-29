@@ -20,7 +20,7 @@ class Enemy extends Entity
   scaleDifficulty: ->
     @movementSpeed = player.movementSpeed * @difficultyScale
     @fireRate = player.fireRate * @difficultyScale/2
-    @bulletSpeed = player.bulletSpeed * @difficultyScale
+    @bulletSpeed = player.bulletSpeed * @difficultyScale * 0.8
 
 
   AI: ->
@@ -83,6 +83,7 @@ class Enemy extends Entity
 
   shoot: ->
     if @alive
-      super
-      for bullet in @bullets.children
-        bullet.tint = 0
+      projectile = super
+      projectile.scale.setTo(projectile.scale.x/2, projectile.scale.y/2)
+      projectile.smoothed = false
+      projectile.tint = 0

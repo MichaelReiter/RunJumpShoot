@@ -17,7 +17,7 @@ LoadingState =
   preload: ->
     game.load.image('background', 'img/background.png')
     game.load.image('platform', 'img/platform.png')
-    game.load.image('bullet', 'img/bullet.png')
+    game.load.image('bullet', 'img/player_bullet.png')
     game.load.image('heart', 'img/heart.png')
     game.load.image('powerup', 'img/powerup.png')
 

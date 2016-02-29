@@ -29,6 +29,12 @@ class Player extends Entity
       @jumpExtendFactor = 0
 
 
+  shoot: ->
+    projectile = super
+    projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
+    projectile.smoothed = false
+
+
   becomeInvincible: ->
     @invincible = true
     @ref.tint   = 0x9b59b6
