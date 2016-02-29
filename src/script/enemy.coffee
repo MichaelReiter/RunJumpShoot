@@ -1,6 +1,6 @@
 class Enemy extends Entity
 
-  difficultyScale: 0.75
+  difficultyScale: 0.5
   approachDeltaX: 175
   shootDeltaY: 50
   jumpDeltaY: 100
@@ -75,7 +75,7 @@ class Enemy extends Entity
     @hurtTint()
     if @health <= 0
       @alive = false
-      enemyManager.enemyOnScreen = false
+      enemyManager.enemiesOnScreen--
       entity.destroy()
       scoreManager.increment(@scoreValue)
     super

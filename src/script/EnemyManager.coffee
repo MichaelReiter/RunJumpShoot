@@ -3,7 +3,7 @@ enemyList = []
 
 class EnemyManager
 
-  enemyOnScreen: false
+  enemiesOnScreen: 0
 
   constructor: ->
     enemies = game.add.group()
@@ -11,13 +11,13 @@ class EnemyManager
 
 
   spawn: (x, y) ->
-    @enemyOnScreen = true
+    @enemiesOnScreen++
     enemy = new Enemy(x, y)
     enemies.add(enemy.ref)
     enemyList.push(enemy)
 
 
   spawnLoop: ->
-    unless @enemyOnScreen
-      for i in [1..1]
+    if @enemiesOnScreen is 0
+      for i in [1..3]
         @spawn(player.ref.x+i*200, GameWorld.groundHeight)

@@ -64,10 +64,12 @@ class Player extends Entity
 
   enableSuperSpeed: ->
     @movementSpeed *= 1.75
+    @bulletSpeed *= 1.75
     @ref.tint   = 0xf1c40f
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetSuperSpeed, this)
 
 
   resetSuperSpeed: ->
     @movementSpeed /= 1.75
+    @bulletSpeed /= 1.75
     @ref.tint   = 0xffffff

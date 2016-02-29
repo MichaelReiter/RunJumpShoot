@@ -42,8 +42,9 @@ GameplayState =
       powerup.checkCollisions()
 
     for enemy in enemyList
-      game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)
-      game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this)
+      if enemy?
+        game.physics.arcade.overlap(player.ref, enemy.bullets, player.hit, null, this)
+        game.physics.arcade.overlap(enemy.ref, player.bullets, enemy.hit, null, this)
 
     inputManager.keyboardMovement()
     inputManager.buttonMovement()
