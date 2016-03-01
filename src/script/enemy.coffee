@@ -19,8 +19,8 @@ class Enemy extends Entity
 
   scaleDifficulty: ->
     @movementSpeed = player.mvmtSpd * @difficultyScale
-    @fireRate = player.fRate * @difficultyScale * 0.3
-    @bulletSpeed = player.bltSpd * @difficultyScale * 0.8
+    @fireRate = player.fRate * @difficultyScale * 0.2
+    @bulletSpeed = player.bltSpd * @difficultyScale * 0.5
 
 
   AI: ->
@@ -76,6 +76,7 @@ class Enemy extends Entity
     if @health <= 0
       @alive = false
       enemyManager.enemiesOnScreen--
+      new Explosion(entity.x-30, entity.y-70)
       entity.destroy()
       scoreManager.increment(@scoreValue)
     super

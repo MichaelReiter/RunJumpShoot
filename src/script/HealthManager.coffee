@@ -17,7 +17,9 @@ class HealthManager
       @hearts.children[player.health].destroy()
     else
       enemyList = []
-      game.state.start('Menu')
+      new Explosion(player.ref.x-30, player.ref.y-70)
+      player.ref.kill()
+      game.time.events.add(Phaser.Timer.SECOND * 0.5, @backToMenu, this)
 
 
   tintHearts: ->
@@ -26,3 +28,7 @@ class HealthManager
         heart.tint = 0x9b59b6
       else
         heart.tint = 0xffffff
+
+
+  backToMenu: ->
+    game.state.start('Menu')

@@ -30,6 +30,7 @@ LoadingState =
 
     game.load.spritesheet('player', 'img/player.png', 39, 34)
     game.load.spritesheet('enemy', 'img/enemy.png', 39, 34)
+    game.load.spritesheet('explosion', 'img/explosion.png', 33, 32)
 
 
   load: ->

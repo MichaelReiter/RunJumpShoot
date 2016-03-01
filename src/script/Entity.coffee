@@ -2,13 +2,14 @@ class Entity
   
   movementSpeed: 250
   jumpSpeed: 220
-  bulletSpeed: 600
+  bulletSpeed: 900
   scale: 2
   facing: "right"
-  fireRate: 3 # bullets/second
+  fireRate: 10 # bullets/second
   lastFired: 0
   gravity: 500
-  health: 3
+  health: 5
+  accuracy: 0 # lower is better
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->
@@ -74,6 +75,12 @@ class Entity
     projectile.scale.setTo(@scale, @scale)
     projectile.smoothed = false
     projectile.body.velocity.x  = projectileVector
+
+    # Random y velocity between -
+    projectile.body.velocity.y  = Math.random() * @accuracy
+    if Math.floor(Math.random()*2) is 1 then sign = 1 else sign = -1
+    projectile.body.velocity.y  *= sign
+
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill  = true
     if @facing is "left"

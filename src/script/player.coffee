@@ -5,6 +5,7 @@ class Player extends Entity
   invincible: false
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
+  accuracy: 100
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -53,12 +54,14 @@ class Player extends Entity
 
 
   increaseFirerate: ->
-    @fireRate = 15
+    @accuracy = 0
+    @fireRate *= @powerupFactor*2
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetFirerate, this)
 
 
   resetFirerate: ->
-    @fireRate = 3
+    @accuracy = 100
+    @fireRate /= @powerupFactor*2
 
 
   enableSuperJump: ->
@@ -74,12 +77,10 @@ class Player extends Entity
 
   enableSuperSpeed: ->
     @movementSpeed *= @powerupFactor
-    @bulletSpeed *= @powerupFactor
     @ref.tint   = 0xf1c40f
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetSuperSpeed, this)
 
 
   resetSuperSpeed: ->
     @movementSpeed /= @powerupFactor
-    @bulletSpeed /= @powerupFactor
     @ref.tint   = 0xffffff
