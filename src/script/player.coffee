@@ -6,7 +6,6 @@ class Player extends Entity
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
   accuracy: 100
-  alive: true
 
   constructor: (x, y) ->
     super(x, y, 'player')

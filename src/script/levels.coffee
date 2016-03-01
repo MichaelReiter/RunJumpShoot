@@ -26,9 +26,12 @@ Levels =
   three:
     tint: 0xE74C3C #red
     platforms: [
-      [200, GameWorld.l1],  [600, GameWorld.l2],
-      [1000, GameWorld.l3], [1400, GameWorld.l2],
-      [1800, GameWorld.l1], [2200, GameWorld.l2]
+      [200, GameWorld.l1],  [400, GameWorld.l1],
+      [200, GameWorld.l3],  [400, GameWorld.l3],
+      [600, GameWorld.l2],  [800, GameWorld.l2],
+      [1000, GameWorld.l1], [1200, GameWorld.l1],
+      [1000, GameWorld.l3], [1200, GameWorld.l3],
+      [1400, GameWorld.l2], [1600, GameWorld.l2]
     ]
 
   four:

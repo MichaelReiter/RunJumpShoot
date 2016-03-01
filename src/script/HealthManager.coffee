@@ -1,6 +1,7 @@
 class HealthManager
 
   heartScale: 0.08
+  tint: 0x666666
 
   constructor: ->
     @hearts = game.add.group()
@@ -25,8 +26,8 @@ class HealthManager
 
   tintHearts: ->
     for heart in @hearts.children
-      if heart.tint != 0x9b59b6
-        heart.tint = 0x9b59b6
+      if heart.tint != @tint
+        heart.tint = @tint
       else
         heart.tint = 0xffffff
 
