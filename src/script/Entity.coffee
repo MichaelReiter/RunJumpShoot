@@ -9,6 +9,7 @@ class Entity
   lastFired: 0
   gravity: 500
   health: 5
+  knockback: 5
   accuracy: 0 # lower is better
   alive: true
 
@@ -90,6 +91,8 @@ class Entity
 
 
   hit: (entity, bullet) ->
+    sign = bullet.body.velocity.x / Math.abs(bullet.body.velocity.x)
+    @ref.x += sign * @knockback
     bullet.destroy()
 
 
@@ -104,9 +107,7 @@ class Entity
 
   animate: ->
     if @ref.body.touching.down 
-      if @ref.body.velocity.x is 0
-        # @idle
-      else
+      if @ref.body.velocity.x isnt 0
         @ref.animations.play('walking')
     else if @ref.body.velocity.y isnt 0
       @ref.animations.play('jumping')

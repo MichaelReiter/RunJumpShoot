@@ -6,7 +6,6 @@ class Enemy extends Entity
   jumpDeltaY: 100
   extendChaseDeltaY: 100
   resetDeltaY: 25
-  alive: true
   scoreValue: 100
   gravity: 300
   jumpSpeed: 300
@@ -76,7 +75,8 @@ class Enemy extends Entity
     if @health <= 0
       @alive = false
       enemyManager.enemiesOnScreen--
-      new Explosion(entity.x-30, entity.y-70)
+      explosion = new Explosion(entity.x-30, entity.y-70)
+      explosion.ref.tint = 0
       entity.destroy()
       scoreManager.increment(@scoreValue)
     super
