@@ -53,3 +53,12 @@ GameplayState =
     enemyManager.spawnLoop()
     for enemy in enemyList
       enemy.AI()
+
+    if GameWorld.shake > 0
+      rand1 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
+      rand2 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
+      game.world.setBounds(rand1, rand2, GameWorld.width + rand1, GameWorld.height + rand2)
+      GameWorld.shake--
+      if GameWorld.shake is 0
+        game.world.setBounds(0, 0, GameWorld.width, GameWorld.height) #reset
+

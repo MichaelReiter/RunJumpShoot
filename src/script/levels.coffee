@@ -1,11 +1,3 @@
-GameWorld =
-  height: GameResolution.height
-  width: 2000
-  groundHeight: 608
-  l1: 470
-  l2: 350
-  l3: 230
-
 Levels =
   one: 
     tint: 0x3498DB #blue

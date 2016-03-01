@@ -15,6 +15,7 @@ minifyHTML = require('gulp-minify-html')
 coffeeSrc = [
   './src/script/*State.coffee',
   './src/script/main.coffee',
+  './src/script/GameWorld.coffee',
   './src/script/Powerup.coffee',
   './src/script/*.coffee'
 ]

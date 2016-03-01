@@ -39,6 +39,7 @@ class Player extends Entity
       projectile = super
       projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
       projectile.smoothed = false
+      GameWorld.screenshake()
 
 
   becomeInvincible: ->
@@ -55,12 +56,14 @@ class Player extends Entity
 
 
   increaseFirerate: ->
+    GameWorld.shakeMagnitude *= 2
     @accuracy = 0
     @fireRate *= @powerupFactor*2
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetFirerate, this)
 
 
   resetFirerate: ->
+    GameWorld.shakeMagnitude /= 2
     @accuracy = 100
     @fireRate /= @powerupFactor*2
 
