@@ -10,6 +10,7 @@ class Entity
   gravity: 500
   health: 5
   accuracy: 0 # lower is better
+  alive: true
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->

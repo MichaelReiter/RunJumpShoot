@@ -6,6 +6,7 @@ class Player extends Entity
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
   accuracy: 100
+  alive: true
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -35,9 +36,10 @@ class Player extends Entity
 
 
   shoot: ->
-    projectile = super
-    projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
-    projectile.smoothed = false
+    if @alive
+      projectile = super
+      projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
+      projectile.smoothed = false
 
 
   becomeInvincible: ->
