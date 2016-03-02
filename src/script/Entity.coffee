@@ -4,7 +4,7 @@ class Entity
   jumpSpeed: 220
   bulletSpeed: 900
   scale: 2
-  facing: "right"
+  facing: 'right'
   fireRate: 10 # bullets/second
   lastFired: 0
   gravity: 500
@@ -33,13 +33,13 @@ class Entity
 
 
   moveLeft: ->
-    @facing = "left"
+    @facing = 'left'
     @ref.body.velocity.x = -@movementSpeed
     @setFacingDirection()
 
 
   moveRight: ->
-    @facing = "right"
+    @facing = 'right'
     @ref.body.velocity.x = @movementSpeed
     @setFacingDirection()
 
@@ -55,9 +55,9 @@ class Entity
 
 
   setFacingDirection: ->
-    if @facing is "right" and @ref.scale.x < 0
+    if @facing is 'right' and @ref.scale.x < 0
       @ref.scale.x *= -1
-    else if @facing is "left" and @ref.scale.x > 0
+    else if @facing is 'left' and @ref.scale.x > 0
       @ref.scale.x *= -1
 
 
@@ -67,7 +67,7 @@ class Entity
 
   shoot: ->
     @lastFired = game.time.now
-    if @facing is "right"
+    if @facing is 'right'
       projectile = @bullets.create(@ref.x+30, @ref.y-50, 'bullet')
       projectileVector = @bulletSpeed
     else
@@ -85,7 +85,7 @@ class Entity
 
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill  = true
-    if @facing is "left"
+    if @facing is 'left'
       projectile.scale.x *= -1
     projectile
 
@@ -94,7 +94,7 @@ class Entity
     sign = bullet.body.velocity.x / Math.abs(bullet.body.velocity.x)
     @ref.x += sign * @knockback
     bullet.destroy()
-    audioManager.playSound("hit")
+    audioManager.playSound('hit')
 
 
   hurtTint: ->

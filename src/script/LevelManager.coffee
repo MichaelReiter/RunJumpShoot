@@ -3,7 +3,6 @@ platforms = null
 class LevelManager
 
   constructor: ->
-    # Add background
     background = game.add.sprite(-10, -10, 'background')
     background.scale.setTo(GameResolution.width, 1)
 

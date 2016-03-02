@@ -57,15 +57,15 @@ class Enemy extends Entity
 
 
   facingPlayer: ->
-    (player.ref.x - @ref.x > 0 and @facing == "right") or (player.ref.x - @ref.x < 0 and @facing == "left")
+    (player.ref.x - @ref.x > 0 and @facing == 'right') or (player.ref.x - @ref.x < 0 and @facing == 'left')
 
 
   facePlayer: ->
-    if player.ref.x - @ref.x > 0 and @facing != "right"
-      @facing = "right"
+    if player.ref.x - @ref.x > 0 and @facing != 'right'
+      @facing = 'right'
       @ref.scale.x *= -1
-    else if player.ref.x - @ref.x < 0 and @facing != "left"
-      @facing = "left"
+    else if player.ref.x - @ref.x < 0 and @facing != 'left'
+      @facing = 'left'
       @ref.scale.x *= -1
 
 
@@ -78,7 +78,7 @@ class Enemy extends Entity
       explosion = new Explosion(entity.x-30, entity.y-70)
       explosion.ref.tint = 0
       entity.destroy()
-      audioManager.playSound("explosion")
+      audioManager.playSound('explosion')
       scoreManager.increment(@scoreValue)
     super
 

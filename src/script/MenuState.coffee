@@ -8,7 +8,6 @@ MenuState =
 
   create: ->
     audioManager = new AudioManager()
-    audioManager.playSound("music")
 
     background = game.add.sprite(0, 0, 'background')
     background.tint = 0x333333
