@@ -1,7 +1,6 @@
 class Player extends Entity
 
   jumpExtendFactor: 0
-  health: 5
   invincible: false
   powerupDuration: 5 #seconds
   powerupFactor: 1.75

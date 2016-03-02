@@ -1,17 +1,17 @@
 class AudioManager
 
   constructor: ->
-    @music_audio     = game.add.audio('music')#new Phaser.Sound(game, 'music', 1, true)
-    @explosion_audio = game.add.audio('explosion')
-    @jump_audio      = game.add.audio('jump')
-    @shot_audio      = game.add.audio('shot')
-    @hit_audio       = game.add.audio('hit')
+    @music     = game.add.audio('music')#new Phaser.Sound(game, 'music', 1, true)
+    @explosion = game.add.audio('explosion')
+    @jump      = game.add.audio('jump')
+    @shot      = game.add.audio('shot')
+    @hit       = game.add.audio('hit')
 
 
   playSound: (sound) ->
     switch sound
-      when "music"     then @music_audio.play()
-      when "explosion" then @explosion_audio.play()
-      when "jump"      then @jump_audio.play()
-      when "shot"      then @shot_audio.play()
-      when "hit"       then @hit_audio.play()
+      when "music"     then @music.play()
+      when "explosion" then @explosion.play()
+      when "jump"      then @jump.play()
+      when "shot"      then @shot.play()
+      when "hit"       then @hit.play()

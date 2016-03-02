@@ -61,4 +61,3 @@ GameplayState =
       GameWorld.shake--
       if GameWorld.shake is 0
         game.world.setBounds(0, 0, GameWorld.width, GameWorld.height) #reset
-
