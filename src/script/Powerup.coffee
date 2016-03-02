@@ -19,6 +19,7 @@ class Powerup
 
   collected: (entity, powerup) ->
     powerup.destroy()
+    audioManager.playSound('powerup')
 
 
   checkCollisions: ->

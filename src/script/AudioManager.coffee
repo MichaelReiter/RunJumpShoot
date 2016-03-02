@@ -6,6 +6,7 @@ class AudioManager
     @jump      = game.add.audio('jump')
     @shot      = game.add.audio('shot')
     @hit       = game.add.audio('hit')
+    @powerup   = game.add.audio('powerup')
 
 
   playSound: (sound) ->
@@ -15,3 +16,4 @@ class AudioManager
       when "jump"      then @jump.play()
       when "shot"      then @shot.play()
       when "hit"       then @hit.play()
+      when "powerup"   then @powerup.play()

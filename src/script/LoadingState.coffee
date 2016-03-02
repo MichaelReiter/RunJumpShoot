@@ -37,6 +37,7 @@ LoadingState =
     game.load.audio('jump', 'audio/jump.wav')
     game.load.audio('shot', 'audio/shot.wav')
     game.load.audio('hit', 'audio/hit.wav')
+    game.load.audio('powerup', 'audio/powerup.wav')
 
 
   load: ->

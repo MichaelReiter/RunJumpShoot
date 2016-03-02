@@ -1,8 +1,6 @@
 TODO
 
-- Balance audio
 - Loop background music
-- Add powerup audio
 - Add level 4 platforms
 - Figure out powerup mechanic
 - Figure out main game purpose
