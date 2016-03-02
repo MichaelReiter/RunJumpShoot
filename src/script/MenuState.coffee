@@ -1,3 +1,5 @@
+audioManager = null
+
 MenuState =
 
   preload: ->
@@ -5,6 +7,9 @@ MenuState =
   load: ->
 
   create: ->
+    audioManager = new AudioManager()
+    audioManager.playSound("music")
+
     background = game.add.sprite(0, 0, 'background')
     background.tint = 0x333333
     title = game.add.text(GameResolution.width/2, GameResolution.height/3, ' Run!\n Jump!\n Shoot!', {

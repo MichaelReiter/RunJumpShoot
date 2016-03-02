@@ -94,6 +94,7 @@ class Entity
     sign = bullet.body.velocity.x / Math.abs(bullet.body.velocity.x)
     @ref.x += sign * @knockback
     bullet.destroy()
+    audioManager.playSound("hit")
 
 
   hurtTint: ->

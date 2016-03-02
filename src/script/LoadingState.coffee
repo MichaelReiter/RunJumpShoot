@@ -32,6 +32,12 @@ LoadingState =
     game.load.spritesheet('enemy', 'img/enemy.png', 39, 34)
     game.load.spritesheet('explosion', 'img/explosion.png', 33, 32)
 
+    game.load.audio('music', 'audio/music.wav')
+    game.load.audio('explosion', 'audio/explosion.wav')
+    game.load.audio('jump', 'audio/jump.wav')
+    game.load.audio('shot', 'audio/shot.wav')
+    game.load.audio('hit', 'audio/hit.wav')
+
 
   load: ->
 

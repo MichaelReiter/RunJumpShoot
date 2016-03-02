@@ -26,6 +26,8 @@ imgSrc = './src/img/*'
 imgDst = './build/img'
 fontsSrc = './src/fonts/*'
 fontsDst = './build/fonts'
+audioSrc = './src/audio/*'
+audioDst = './build/audio'
 htmlSrc = './src/*.html'
 htmlDst = './build/'
 styleSrc = './src/styles/*.scss'
@@ -51,6 +53,11 @@ gulp.task 'fonts', ->
   gulp.src(fontsSrc).pipe gulp.dest(fontsDst)
   return
 
+# Copy audio
+gulp.task 'audio', ->
+  gulp.src(audioSrc).pipe gulp.dest(audioDst)
+  return
+
 # Copy html files
 gulp.task 'html', ->
   gulp.src(htmlSrc).pipe(minifyHTML()).pipe gulp.dest(htmlDst)
@@ -67,6 +74,7 @@ gulp.task 'default', [
   'coffee'
   'lib'
   'img'
+  'audio'
   'html'
   'style'
   'fonts'
@@ -81,4 +89,6 @@ gulp.task 'default', [
   gulp.watch styleSrc, [ 'style' ]
   # watch for changes in fonts
   gulp.watch styleSrc, [ 'fonts' ]
+  # watch for changes in audio
+  gulp.watch styleSrc, [ 'audio' ]
   return

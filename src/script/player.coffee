@@ -23,6 +23,7 @@ class Player extends Entity
 
   jump: ->
     super
+    audioManager.playSound("jump")
     @jumpExtendFactor = 1
 
 
@@ -40,6 +41,7 @@ class Player extends Entity
       projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
       projectile.smoothed = false
       GameWorld.screenshake()
+      audioManager.playSound("shot")
 
 
   becomeInvincible: ->

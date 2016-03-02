@@ -20,6 +20,7 @@ class HealthManager
       enemyList = []
       new Explosion(player.ref.x-30, player.ref.y-70)
       player.ref.kill()
+      audioManager.playSound("explosion")
       player.alive = false
       game.time.events.add(Phaser.Timer.SECOND * 0.3, @backToMenu, this)
 

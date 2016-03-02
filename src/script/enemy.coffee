@@ -78,6 +78,7 @@ class Enemy extends Entity
       explosion = new Explosion(entity.x-30, entity.y-70)
       explosion.ref.tint = 0
       entity.destroy()
+      audioManager.playSound("explosion")
       scoreManager.increment(@scoreValue)
     super
 
