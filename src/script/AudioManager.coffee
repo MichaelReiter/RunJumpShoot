@@ -8,8 +8,8 @@ class AudioManager
     @hit        = game.add.audio('hit')
     @powerup    = game.add.audio('powerup')
 
-    @music.loop = true
-    @playSound('music')
+    game.time.events.loop(Phaser.Timer.SECOND * 12.387, @playMusic, this)
+    @playMusic()
 
 
   playSound: (sound) ->
@@ -20,3 +20,8 @@ class AudioManager
       when 'shot'      then @shot.play()
       when 'hit'       then @hit.play()
       when 'powerup'   then @powerup.play()
+
+
+  playMusic: ->
+    @music.play()
+    console.log "play"

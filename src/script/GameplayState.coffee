@@ -5,6 +5,7 @@ scoreManager   = null
 inputManager   = null
 enemyManager   = null
 powerupManager = null
+audioManager   = null
 currentLevel   = null
 
 GameplayState =
@@ -21,6 +22,7 @@ GameplayState =
     scoreManager   = new ScoreManager()
     inputManager   = new InputManager()
     powerupManager = new PowerupManager()
+    audioManager   = new AudioManager()
 
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
     game.physics.startSystem(Phaser.Physics.ARCADE)
@@ -55,9 +57,9 @@ GameplayState =
       enemy.AI()
 
     if GameWorld.shake > 0
-      rand1 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
-      rand2 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
-      game.world.setBounds(rand1, rand2, GameWorld.width + rand1, GameWorld.height + rand2)
+      random1 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
+      random2 = game.rnd.integerInRange(-GameWorld.shakeMagnitude, GameWorld.shakeMagnitude)
+      game.world.setBounds(random1, random2, GameWorld.width + random1, GameWorld.height + random2)
       GameWorld.shake--
       if GameWorld.shake is 0
         game.world.setBounds(0, 0, GameWorld.width, GameWorld.height) #reset

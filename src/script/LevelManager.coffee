@@ -18,8 +18,9 @@ class LevelManager
     @loadLevel(background)
 
 
-  createLedge: (x, y) ->
+  createLedge: (x, y, scale) ->
     ledge = platforms.create(x, y, 'platform')
+    ledge.scale.setTo(scale, 1)
     ledge.smoothed                  = false
     ledge.body.immovable            = true
     ledge.body.checkCollision.down  = false
@@ -29,8 +30,8 @@ class LevelManager
 
   loadLevel: (background) ->
     for ledge in Levels[currentLevel].platforms
-      [x, y] = [ledge[0], ledge[1]]
-      @createLedge(x, y)
+      [x, y, scale] = [ledge[0], ledge[1], ledge[2]]
+      @createLedge(x, y, scale)
     @tintLevel(background)
 
 
