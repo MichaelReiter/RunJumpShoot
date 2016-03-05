@@ -17,11 +17,8 @@ class HealthManager
     if player.health > 0
       @hearts.children[player.health].destroy()
     else
-      enemyList = []
-      new Explosion(player.ref.x-30, player.ref.y-70)
-      player.ref.kill()
-      audioManager.playSound('explosion')
-      player.alive = false
+      player.die()
+      scoreManager.setHighscore()
       game.time.events.add(Phaser.Timer.SECOND * 0.3, @backToMenu, this)
 
 

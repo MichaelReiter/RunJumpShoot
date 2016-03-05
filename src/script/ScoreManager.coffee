@@ -8,7 +8,19 @@ class ScoreManager
     })
     @scoreText.fixedToCamera = true
 
+    @initializeHighscore()
+
 
   increment: (amount) ->
     @score += amount
     @scoreText.text = 'Score: ' + @score
+
+
+  initializeHighscore: ->
+    if !window.localStorage['highscore']
+      window.localStorage['highscore'] = 0
+  
+
+  setHighscore: ->
+    if @score > window.localStorage['highscore']
+      window.localStorage['highscore'] = @score

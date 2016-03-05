@@ -1,8 +1,6 @@
 TODO
 
-- Add level 4 platforms
-- Loop background music
-- Add highscore
+- Loop background music beyond state changes
 - Figure out powerup mechanic
 - Figure out main game purpose
 - Add level progression?

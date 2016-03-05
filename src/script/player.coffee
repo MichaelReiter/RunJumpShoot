@@ -43,6 +43,14 @@ class Player extends Entity
       audioManager.playSound('shot')
 
 
+  die: ->
+    enemyList = []
+    new Explosion(@ref.x-30, @ref.y-70)
+    @ref.kill()
+    audioManager.playSound('explosion')
+    @alive = false
+
+
   becomeInvincible: ->
     @invincible = true
     @ref.tint   = 0x9b59b6
