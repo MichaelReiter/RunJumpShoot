@@ -24,7 +24,7 @@ MenuState =
     })
     text.anchor.set(0.5)
 
-    highscore = game.add.text(GameResolution.width*0.5, GameResolution.height*0.9, 'High Score: ' + window.localStorage['highscore'], {
+    highscore = game.add.text(GameResolution.width*0.5, GameResolution.height*0.9, 'High Score: ' + window.localStorage['highscore'] || 0, {
       font: '32px invasion2000',
       fill: 'white',
       align: 'center'

@@ -19,8 +19,8 @@ class HealthManager
     player.health--
     if player.health > 0
       # @hearts.children[player.health].destroy()
-      # console.log @hearts.children[player.health].frame = 1
-      console.log @hearts.children[player.health].frame
+      console.log @hearts.children[player.health]
+      @hearts.children[player.health].frame = 1
     else
       player.die()
       scoreManager.setHighscore()
