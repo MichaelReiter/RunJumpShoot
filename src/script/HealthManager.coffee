@@ -1,6 +1,5 @@
 class HealthManager
 
-  heartScale: 0.08
   tint: 0x666666
 
   constructor: ->
@@ -8,8 +7,7 @@ class HealthManager
 
     for i in [1..player.health]
       heart = game.add.sprite(GameResolution.width - 60*i, 15, 'heart')
-      heart.animations.add('loseHealth', [0, 1], 12, true)
-      # heart.scale.setTo(@heartScale, @heartScale)
+      # heart.animations.add('loseHealth', [0, 1], 12, true)
       heart.smoothed = false
       heart.fixedToCamera = true
       @hearts.add(heart)
@@ -17,10 +15,10 @@ class HealthManager
 
   loseHealth: ->
     player.health--
+    @hearts.children[player.health].destroy()
     if player.health > 0
-      # @hearts.children[player.health].destroy()
-      console.log @hearts.children[player.health]
-      @hearts.children[player.health].frame = 1
+      # console.log @hearts.children[player.health]
+      # @hearts.children[player.health].frame = 1
     else
       player.die()
       scoreManager.setHighscore()
