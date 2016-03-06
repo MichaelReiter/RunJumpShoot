@@ -3,7 +3,7 @@ powerupList = []
 
 class PowerupManager
 
-  spawnFrequency: 5 #seconds
+  spawnFrequency: 7 #seconds
 
   constructor: ->
     powerups = game.add.group()
@@ -20,7 +20,7 @@ class PowerupManager
       'superspeed'
     ]
     type = types[Math.floor((Math.random() * types.length))]
-    randomX = Math.floor(Math.random() * (GameWorld.width-200))
+    randomX = Math.floor(Math.random() * (player.ref.x + 300) + player.ref.x - 300)
     @spawn(type, randomX, GameWorld.groundHeight-300)
 
 

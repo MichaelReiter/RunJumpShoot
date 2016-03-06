@@ -44,11 +44,6 @@ LoadingState =
 
   create: ->
     @setScaling()
-    loadText = game.add.text(GameResolution.width/2, GameResolution.height/3, ' Run!\n Jump!\n Shoot!', {
-      font: '64px invasion2000',
-      fill: 'white',
-      align: 'center'
-    })
     game.state.start('Menu')
 
   update: ->
