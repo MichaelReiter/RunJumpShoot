@@ -18,7 +18,7 @@ LoadingState =
     game.load.image('background', 'img/background.png')
     game.load.image('platform', 'img/platform.png')
     game.load.image('bullet', 'img/player_bullet.png')
-    game.load.spritesheet('heart', 'img/heart.png', 44, 38)
+    game.load.spritesheet('heart', 'img/heart.png', 44, 38, 2)
     game.load.image('powerup', 'img/powerup.png')
 
     game.load.spritesheet('button_rectangle', 'img/button_rectangle.png', 384, 128)

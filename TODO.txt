@@ -1,6 +1,7 @@
 TODO
 
+- Fix tint reset bug
 - Loop background music beyond state changes
-- Figure out powerup mechanic
+- Add Vlambeer polish
 - Figure out main game purpose
 - Add level progression?
