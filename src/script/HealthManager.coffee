@@ -7,15 +7,20 @@ class HealthManager
     @hearts = game.add.group()
 
     for i in [1..player.health]
-      heart = @hearts.create(GameResolution.width - 60*i, 15, 'heart')
-      heart.scale.setTo(@heartScale, @heartScale)
+      heart = game.add.sprite(GameResolution.width - 60*i, 15, 'heart')
+      heart.animations.add('loseHealth', [0, 1], 12, true)
+      # heart.scale.setTo(@heartScale, @heartScale)
+      heart.smoothed = false
       heart.fixedToCamera = true
+      @hearts.add(heart)
 
 
   loseHealth: ->
     player.health--
     if player.health > 0
-      @hearts.children[player.health].destroy()
+      # @hearts.children[player.health].destroy()
+      # console.log @hearts.children[player.health].frame = 1
+      console.log @hearts.children[player.health].frame
     else
       player.die()
       scoreManager.setHighscore()
