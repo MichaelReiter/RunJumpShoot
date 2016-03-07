@@ -3,7 +3,7 @@ powerupList = []
 
 class PowerupManager
 
-  spawnFrequency: 0.07 #seconds
+  spawnFrequency: 7 #seconds
   maxPowerups: 3
 
   constructor: ->
@@ -16,10 +16,10 @@ class PowerupManager
 
   spawnWrapper: ->
     types = [
-      # 'invincible'
-      # 'rapidfire'
+      'invincible'
+      'rapidfire'
       'superjump'
-      # 'superspeed'
+      'superspeed'
     ]
     type = types[Math.floor((Math.random() * types.length))]
     randomX = Math.floor(Math.random()*(player.ref.x + 300) + player.ref.x - 300)

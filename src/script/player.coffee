@@ -52,9 +52,9 @@ class Player extends Entity
 
 
   becomeInvincible: ->
-    @invincible      = true
-    @ref.tint        = 0x9b59b6
-    @resetTintValue  = 0x9b59b6
+    @invincible     = true
+    @ref.tint       = 0x9b59b6
+    @resetTintValue = 0x9b59b6
     healthManager.tintHearts()
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetInvincibility, this)
 
@@ -93,9 +93,9 @@ class Player extends Entity
 
 
   enableSuperSpeed: ->
-    @movementSpeed  *= @powerupFactor
-    @ref.tint        = 0xf1c40f
-    @resetTintValue  = 0xf1c40f
+    @movementSpeed *= @powerupFactor
+    @ref.tint       = 0xf1c40f
+    @resetTintValue = 0xf1c40f
     game.time.events.add(Phaser.Timer.SECOND * @powerupDuration, @resetSuperSpeed, this)
 
 
