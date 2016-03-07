@@ -12,6 +12,7 @@ class Entity
   knockback: 5
   accuracy: 0 # lower is better
   alive: true
+  resetTintValue: 0xffffff
 
   # Add entity, configure physics and animations
   constructor: (x, y, sprite) ->
@@ -103,7 +104,7 @@ class Entity
 
 
   resetTint: ->
-    @ref.tint = 0xffffff
+    @ref.tint = @resetTintValue
 
 
   animate: ->
