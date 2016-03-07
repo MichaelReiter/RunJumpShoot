@@ -19,6 +19,7 @@ class Powerup
 
   collected: (entity, powerup) ->
     powerup.destroy()
+    powerupManager.powerupsOnScreen--
     audioManager.playSound('powerup')
 
 

@@ -4,8 +4,10 @@ powerupList = []
 class PowerupManager
 
   spawnFrequency: 7 #seconds
+  maxPowerups: 3
 
   constructor: ->
+    @powerupsOnScreen = 0
     powerups = game.add.group()
     powerups.enableBody = true
 
@@ -22,10 +24,11 @@ class PowerupManager
     type = types[Math.floor((Math.random() * types.length))]
     randomX = Math.floor(Math.random()*(player.ref.x + 300) + player.ref.x - 300)
     randomY = Math.floor(Math.random()*(GameWorld.groundHeight-1000) + GameWorld.groundHeight-100)
-    @spawn(type, randomX, randomY)
+    @spawn(type, randomX, randomY) if @powerupsOnScreen < @maxPowerups
 
 
   spawn: (type, x, y) ->
+    @powerupsOnScreen++
     switch type
       when 'invincible' then new Invincible(x, y)
       when 'rapidfire'  then new RapidFire(x, y)

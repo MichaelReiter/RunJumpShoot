@@ -4,7 +4,7 @@ class Player extends Entity
   invincible: false
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
-  accuracy: 100
+  accuracy: 100 #lower is better
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -61,7 +61,7 @@ class Player extends Entity
   resetInvincibility: ->
     @invincible = false
     @ref.tint   = 0xffffff
-    healthManager.tintHearts()
+    healthManager.resetHeartTint()
 
 
   increaseFirerate: ->

@@ -1,6 +1,6 @@
 TODO
 
-- Fix tint reset bug
+- Fix player tint reset bug
 - Loop background music beyond state changes
 - Add Vlambeer polish
 - Figure out main game purpose

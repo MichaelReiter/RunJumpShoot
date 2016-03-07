@@ -4,13 +4,12 @@ class HealthManager
 
   constructor: ->
     @hearts = game.add.group()
+    @hearts.fixedToCamera = true
+    @hearts.smoothed = false
 
     for i in [1..player.health]
       heart = game.add.sprite(GameResolution.width - 60*i, 15, 'heart')
       @hearts.add(heart)
-
-    @hearts.fixedToCamera = true
-    @hearts.smoothed = false
 
 
   loseHealth: ->
@@ -24,10 +23,12 @@ class HealthManager
 
   tintHearts: ->
     for heart in @hearts.children
-      if heart.tint != @tint
-        heart.tint = @tint
-      else
-        heart.tint = 0xffffff
+      heart.tint = @tint
+
+
+  resetHeartTint: ->
+    for heart in @hearts.children
+      heart.tint = 0xffffff
 
 
   backToMenu: ->
