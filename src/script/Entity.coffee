@@ -12,6 +12,7 @@ class Entity
   knockback: 5
   accuracy: 0 # lower is better
   alive: true
+  isShooting: false
   resetTintValue: 0xffffff
 
   # Add entity, configure physics and animations
@@ -108,7 +109,7 @@ class Entity
 
 
   animate: ->
-    if @ref.body.touching.down 
+    if @ref.body.touching.down
       if @ref.body.velocity.x isnt 0
         @ref.animations.play('walking')
     else if @ref.body.velocity.y isnt 0

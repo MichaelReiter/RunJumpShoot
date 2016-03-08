@@ -43,6 +43,14 @@ class Player extends Entity
       audioManager.playSound('shot')
 
 
+  shootingKnockback: ->
+    if @facing is 'right'
+      sign = -1
+    else
+      sign = 1
+    @ref.body.velocity.x += sign * 10 * @knockback
+
+
   die: ->
     enemyList = []
     new Explosion(@ref.x-30, @ref.y-70)

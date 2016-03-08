@@ -11,9 +11,9 @@ class InputManager
     @keyboard = game.input.keyboard.createCursorKeys()
     @spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
 
-    @button_left = game.add.sprite(0, game.world.height-320, 'button_left')
+    @button_left  = game.add.sprite(0,   game.world.height-320, 'button_left')
     @button_right = game.add.sprite(160, game.world.height-320, 'button_right')
-    @button_jump = game.add.sprite(320, game.world.height-320, 'button_jump')
+    @button_jump  = game.add.sprite(320, game.world.height-320, 'button_jump')
     @button_shoot = game.add.sprite(480, game.world.height-320, 'button_shoot')
 
     @button_left.inputEnabled   = true
@@ -37,7 +37,7 @@ class InputManager
       player.moveLeft()
     else if @keyboard.right.isDown or @Buttons.right
       player.moveRight()
-    else if player.ref.body.touching.down
+    else if player.ref.body.touching.down and player.isShooting is false
       player.idle()
 
     # Enable jumping if player is touching the ground
@@ -50,6 +50,12 @@ class InputManager
     # Enable shooting
     if player.canShoot() and (@spacebar.isDown or @Buttons.shoot)
       player.shoot()
+
+    if @spacebar.isDown or @Buttons.shoot
+      player.isShooting = true
+      player.shootingKnockback()
+    else
+      player.isShooting = false
 
 
   buttonMovement: ->
@@ -65,9 +71,9 @@ class InputManager
 
 
   tintButtons: (level) ->
-    @button_left.tint = Levels[level].tint
+    @button_left.tint  = Levels[level].tint
     @button_right.tint = Levels[level].tint
-    @button_jump.tint = Levels[level].tint
+    @button_jump.tint  = Levels[level].tint
     @button_shoot.tint = Levels[level].tint
 
 
