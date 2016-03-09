@@ -78,12 +78,12 @@ class Entity
 
     projectile.scale.setTo(@scale, @scale)
     projectile.smoothed = false
-    projectile.body.velocity.x  = projectileVector
+    projectile.body.velocity.x = projectileVector
 
     # Random y velocity between -
     projectile.body.velocity.y  = Math.random() * @accuracy
     if Math.floor(Math.random()*2) is 1 then sign = 1 else sign = -1
-    projectile.body.velocity.y  *= sign
+    projectile.body.velocity.y *= sign
 
     projectile.checkWorldBounds = true
     projectile.outOfBoundsKill  = true

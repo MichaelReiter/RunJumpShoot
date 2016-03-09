@@ -12,9 +12,17 @@ class HealthManager
       @hearts.add(heart)
 
 
+  updateHealthUI: ->
+    for i in [0..@hearts.children.length-1]
+      if player.health > i
+        @hearts.children[i].frame = 0
+      else
+        @hearts.children[i].frame = 1
+
+
   loseHealth: ->
     player.health--
-    @hearts.children[player.health].frame = 1
+    @updateHealthUI()
     if player.health <= 0
       player.die()
       scoreManager.setHighscore()

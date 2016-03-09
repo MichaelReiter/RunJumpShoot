@@ -20,6 +20,7 @@ class PowerupManager
       'rapidfire'
       'superjump'
       'superspeed'
+      'heart'
     ]
     type = types[Math.floor((Math.random() * types.length))]
     randomX = Math.floor(Math.random()*(player.ref.x + 300) + player.ref.x - 300)
@@ -34,3 +35,4 @@ class PowerupManager
       when 'rapidfire'  then new RapidFire(x, y)
       when 'superjump'  then new SuperJump(x, y)
       when 'superspeed' then new SuperSpeed(x, y)
+      when 'heart'      then new Heart(x, y)

@@ -1,5 +1,7 @@
 TODO
 
+- Add randomized background tiling
+- Fix player shooting knockback animation bug
 - Loop background music beyond state changes
 - Add Vlambeer polish
 - Figure out main game purpose

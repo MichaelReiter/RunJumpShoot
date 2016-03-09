@@ -5,6 +5,7 @@ class Player extends Entity
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
   accuracy: 100 #lower is better
+  maxHealth: 5
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -44,10 +45,7 @@ class Player extends Entity
 
 
   shootingKnockback: ->
-    if @facing is 'right'
-      sign = -1
-    else
-      sign = 1
+    if @facing is 'right' then sign = -1 else sign = 1
     @ref.body.velocity.x += sign * 10 * @knockback
 
 
@@ -57,6 +55,14 @@ class Player extends Entity
     @ref.kill()
     audioManager.playSound('explosion')
     @alive = false
+
+
+  collectedHeart: ->
+    if @health < @maxHealth
+      @health++
+      healthManager.updateHealthUI()
+    else
+      scoreManager.increment(1000)
 
 
   becomeInvincible: ->
