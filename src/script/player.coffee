@@ -1,7 +1,7 @@
 class Player extends Entity
 
   jumpExtendFactor: 0
-  invincible: false
+  invincible: true
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
   accuracy: 100 #lower is better

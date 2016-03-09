@@ -111,6 +111,11 @@ class Entity
   animate: ->
     if @ref.body.touching.down
       if @ref.body.velocity.x isnt 0
-        @ref.animations.play('walking')
+        # if @facing is 'right' then sign = 1 else sign = -1
+        if @isShooting and ((@ref.body.velocity.x > 0 and @facing is 'left') or (@ref.body.velocity.x < 0 and @facing is 'right'))
+          @ref.animations.stop()
+          @ref.frame = 6
+        else
+          @ref.animations.play('walking')
     else if @ref.body.velocity.y isnt 0
       @ref.animations.play('jumping')
