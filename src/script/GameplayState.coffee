@@ -6,6 +6,7 @@ inputManager   = null
 enemyManager   = null
 powerupManager = null
 audioManager   = null
+effectsManager = null
 currentLevel   = null
 
 GameplayState =
@@ -23,6 +24,7 @@ GameplayState =
     inputManager   = new InputManager()
     powerupManager = new PowerupManager()
     audioManager   = new AudioManager()
+    effectsManager = new EffectsManager()
 
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
     game.physics.startSystem(Phaser.Physics.ARCADE)
@@ -33,6 +35,7 @@ GameplayState =
     game.physics.arcade.collide(player.ref, platforms)
     game.physics.arcade.collide(enemies, platforms)
     game.physics.arcade.collide(powerups, platforms)
+    game.physics.arcade.collide(effectsManager.shells, platforms)
     game.physics.arcade.collide(enemies, enemies)
     
     for powerup in powerupList

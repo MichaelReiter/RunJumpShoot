@@ -8,8 +8,7 @@ class HealthManager
     @hearts.smoothed = false
 
     for i in [1..player.health]
-      heart = game.add.sprite(GameResolution.width - 60*i, 15, 'heart')
-      @hearts.add(heart)
+      @hearts.create(GameResolution.width - 60*i, 15, 'heart')
 
 
   updateHealthUI: ->

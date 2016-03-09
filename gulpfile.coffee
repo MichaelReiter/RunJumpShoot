@@ -13,6 +13,7 @@ minifyHTML = require('gulp-minify-html')
 ### Source and build destination directories for files. ###
 # The conatenation order of javascript files is important. Otherwise there will be errors
 coffeeSrc = [
+  './src/script/EffectsManager.coffee',
   './src/script/*State.coffee',
   './src/script/main.coffee',
   './src/script/GameWorld.coffee',

@@ -1,7 +1,7 @@
 class Player extends Entity
 
   jumpExtendFactor: 0
-  invincible: true
+  invincible: false
   powerupDuration: 5 #seconds
   powerupFactor: 1.75
   accuracy: 100 #lower is better
@@ -42,6 +42,7 @@ class Player extends Entity
       projectile.smoothed = false
       GameWorld.screenshake()
       audioManager.playSound('shot')
+      new Shell(@ref.x, @ref.y-50)
 
 
   shootingKnockback: ->
