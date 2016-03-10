@@ -1,7 +1,5 @@
 TODO
 
-- Add shells
-- Add strafing
 - Add randomized background tiling
 - Loop background music beyond state changes
 - Add Vlambeer polish

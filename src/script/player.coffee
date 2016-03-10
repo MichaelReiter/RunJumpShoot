@@ -35,6 +35,20 @@ class Player extends Entity
       @jumpExtendFactor = 0
 
 
+  moveLeft: ->
+    @ref.body.velocity.x = -@movementSpeed
+    if !@isShooting
+      @facing = 'left'
+      @setFacingDirection()
+
+
+  moveRight: ->
+    @ref.body.velocity.x = @movementSpeed
+    if !@isShooting
+      @facing = 'right'
+      @setFacingDirection()
+
+
   shoot: ->
     if @alive
       projectile = super
@@ -47,7 +61,7 @@ class Player extends Entity
 
   shootingKnockback: ->
     if @facing is 'right' then sign = -1 else sign = 1
-    @ref.body.velocity.x += sign * 10 * @knockback
+    @ref.body.velocity.x += sign * @shootingKnockbackSpeed
 
 
   die: ->
