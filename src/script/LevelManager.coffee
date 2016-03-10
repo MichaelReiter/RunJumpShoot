@@ -3,8 +3,8 @@ platforms = null
 class LevelManager
 
   constructor: ->
-    background = game.add.sprite(-10, -10, 'background')
-    background.scale.setTo(GameResolution.width, 1)
+    background = game.add.sprite(-100, -100, 'background')
+    background.scale.setTo(GameResolution.width*2, 1)
 
     platforms = game.add.group()
     platforms.enableBody = true
@@ -12,8 +12,10 @@ class LevelManager
     # Add ground just above buttons
     ground = platforms.create(-game.world.height.width/2, game.world.height - 352, 'platform')
     ground.smoothed = false
-    ground.scale.setTo(10, 2.5)
+    ground.scale.setTo(20, 2.5)
     ground.body.immovable = true
+    groundBeneath = platforms.create(-game.world.height.width/2, game.world.height - 300, 'platform')
+    groundBeneath.scale.setTo(20, -2.5)
 
     @loadLevel(background)
 

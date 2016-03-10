@@ -9,5 +9,6 @@ GameWorld =
   shake: 0
   shakeMagnitude: 1.75
 
-  screenshake: ->
-    @shake = 10
+  screenshake: (magnitude, duration) ->
+    @shakeMagnitude = magnitude
+    @shake = duration #frames

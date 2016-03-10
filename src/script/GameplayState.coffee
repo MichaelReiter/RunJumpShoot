@@ -60,4 +60,6 @@ GameplayState =
       game.world.setBounds(random1, random2, GameWorld.width + random1, GameWorld.height + random2)
       GameWorld.shake--
       if GameWorld.shake is 0
-        game.world.setBounds(0, 0, GameWorld.width, GameWorld.height) #reset
+        #reset bounds and shake magnitude
+        game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
+        GameWorld.shakeMagnitude = 1.75 

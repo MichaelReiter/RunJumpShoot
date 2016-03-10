@@ -54,7 +54,7 @@ class Player extends Entity
       projectile = super
       projectile.scale.setTo(projectile.scale.x*0.75, projectile.scale.y*0.75)
       projectile.smoothed = false
-      GameWorld.screenshake()
+      GameWorld.screenshake(1.75, 10)
       audioManager.playSound('shot')
       new Shell(@ref.x, @ref.y-50)
 
