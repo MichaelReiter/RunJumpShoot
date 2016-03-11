@@ -16,6 +16,7 @@ LoadingState =
 
   preload: ->
     game.load.image('background', 'img/background.png')
+    game.load.image('bricks', 'img/bricks.png')
     game.load.image('platform', 'img/platform.png')
     game.load.image('bullet', 'img/player_bullet.png')
     game.load.spritesheet('heart', 'img/heart.png', 44, 38, 2)

@@ -17,7 +17,9 @@ class LevelManager
     groundBeneath = platforms.create(-game.world.height.width/2, game.world.height - 300, 'platform')
     groundBeneath.scale.setTo(20, -2.5)
 
+    @addBricks()
     @loadLevel(background)
+    game.world.bringToTop(platforms)
 
 
   createLedge: (x, y, scale) ->
@@ -41,3 +43,16 @@ class LevelManager
     background.tint = Levels[currentLevel].tint
     for platform in platforms.children
       platform.tint = Levels[currentLevel].tint
+
+
+  addBricks: ->
+    i = 100
+    lastY = Math.floor(Math.random()*GameWorld.groundHeight-500 + 500)
+    randomY = Math.floor(Math.random()*GameWorld.groundHeight-500 + 500)
+    while i < GameWorld.width-100
+      while Math.abs(lastY - randomY) < 200
+        randomY = Math.floor(Math.random()*GameWorld.groundHeight-600 + 600)
+      lastY = randomY
+      bricks = game.add.sprite(i, randomY, 'bricks')
+      bricks.tint = Levels[currentLevel].tint
+      i += 100

@@ -1,7 +1,7 @@
 TODO
 
-- Add randomized background tiling
 - Loop background music beyond state changes
-- Add Vlambeer polish
+- Improve enemy spawning
+- Add powerup spawn animation
 - Figure out main game purpose
 - Add level progression?

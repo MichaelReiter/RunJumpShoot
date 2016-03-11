@@ -75,7 +75,7 @@ class Enemy extends Entity
     if @health <= 0
       @alive = false
       enemyManager.enemiesOnScreen--
-      explosion = new Explosion(entity.x-60, entity.y-90)
+      explosion = new Explosion(entity.x-60, entity.y-95)
       explosion.ref.tint = 0
       entity.destroy()
       audioManager.playSound('explosion')
