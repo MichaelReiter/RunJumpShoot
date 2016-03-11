@@ -66,7 +66,7 @@ class Player extends Entity
 
   die: ->
     enemyList = []
-    new Explosion(@ref.x-30, @ref.y-70)
+    new Explosion(@ref.x-30, @ref.y-100)
     @ref.kill()
     audioManager.playSound('explosion')
     @alive = false
