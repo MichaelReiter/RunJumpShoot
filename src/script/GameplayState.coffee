@@ -50,7 +50,6 @@ GameplayState =
     inputManager.buttonMovement()
     player.animate()
 
-    enemyManager.spawnLoop()
     for enemy in enemyList
       enemy.AI()
 

@@ -3,8 +3,8 @@ powerupList = []
 
 class PowerupManager
 
-  spawnFrequency: 7 #seconds
   maxPowerups: 3
+  spawnFrequency: 7 #seconds
 
   constructor: ->
     @powerupsOnScreen = 0
@@ -30,6 +30,7 @@ class PowerupManager
 
   spawn: (type, x, y) ->
     @powerupsOnScreen++
+    new Explosion(x-10, y+2, 0xffffff, player.scale, 5)
     switch type
       when 'invincible' then new Invincible(x, y)
       when 'rapidfire'  then new RapidFire(x, y)

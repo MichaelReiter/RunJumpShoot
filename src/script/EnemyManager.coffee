@@ -3,11 +3,15 @@ enemyList = []
 
 class EnemyManager
 
-  enemiesOnScreen: 0
+  maxEnemies: 15
+  spawnFrequency: 3 #seconds
 
   constructor: ->
+    @enemiesOnScreen = 0
     enemies = game.add.group()
     enemies.enableBody = true
+
+    game.time.events.loop(Phaser.Timer.SECOND * @spawnFrequency, @spawnWrapper, this)
 
 
   spawn: (x, y) ->
@@ -17,7 +21,11 @@ class EnemyManager
     enemyList.push(enemy)
 
 
-  spawnLoop: ->
-    if @enemiesOnScreen is 0
-      for i in [1..3]
-        @spawn(player.ref.x+i*200, GameWorld.groundHeight)
+  spawnWrapper: ->
+    if @enemiesOnScreen < @maxEnemies
+      x = Math.floor(Math.random()*(player.ref.x + 300) + player.ref.x - 300)
+      while Math.abs(player.ref.x - x) <= 175
+        x = Math.floor(Math.random()*(player.ref.x + 300) + player.ref.x - 300)
+      y = Math.floor(Math.random()*(GameWorld.groundHeight-1000) + GameWorld.groundHeight-100)
+      new Explosion(x-32, y-50, 0xffffff, player.scale, 5)
+      @spawn(x, y)
