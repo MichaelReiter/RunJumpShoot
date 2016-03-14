@@ -4,12 +4,17 @@ enemyList = []
 class EnemyManager
 
   maxEnemies: 15
-  spawnFrequency: 3 #seconds
 
   constructor: ->
     @enemiesOnScreen = 0
     enemies = game.add.group()
     enemies.enableBody = true
+
+    switch currentLevel
+      when 'one'   then @spawnFrequency = 4 #seconds
+      when 'two'   then @spawnFrequency = 3 #seconds
+      when 'three' then @spawnFrequency = 2 #seconds
+      when 'four'  then @spawnFrequency = 1 #second
 
     game.time.events.loop(Phaser.Timer.SECOND * @spawnFrequency, @spawnWrapper, this)
 
