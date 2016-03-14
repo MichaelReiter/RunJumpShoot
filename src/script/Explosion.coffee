@@ -7,6 +7,8 @@ class Explosion
     @ref.smoothed = false
     @ref.animations.add('boom', [0, 1, 2], 12, false)
     @ref.animations.play('boom')
+    game.physics.arcade.enable(@ref)
+    @ref.body.collideWorldBounds = true
     GameWorld.screenshake(magnitude, 10)
     game.time.events.add(Phaser.Timer.SECOND * 0.3, @selfdestruct, this)
 

@@ -119,5 +119,8 @@ class Entity
             @ref.animations.play('walking')
         else
           @ref.animations.play('walking')
+      else
+        @ref.animations.stop()
+        @ref.frame = 6
     else if @ref.body.velocity.y isnt 0
       @ref.animations.play('jumping')
