@@ -24,6 +24,7 @@ class EnemyManager
     enemy = new Enemy(x, y)
     enemies.add(enemy.ref)
     enemyList.push(enemy)
+    audioManager.playSound('spawn')
 
 
   spawnWrapper: ->

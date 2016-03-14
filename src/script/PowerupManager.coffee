@@ -31,6 +31,7 @@ class PowerupManager
   spawn: (type, x, y) ->
     @powerupsOnScreen++
     new Explosion(x-10, y+2, 0xffffff, player.scale, 5)
+    audioManager.playSound('spawn')
     switch type
       when 'invincible' then new Invincible(x, y)
       when 'rapidfire'  then new RapidFire(x, y)

@@ -7,6 +7,7 @@ class AudioManager
     @shot       = game.add.audio('shot')
     @hit        = game.add.audio('hit')
     @powerup    = game.add.audio('powerup')
+    @spawn      = game.add.audio('spawn')
 
     game.time.events.loop(Phaser.Timer.SECOND * 12.387, @playMusic, this)
     @playMusic()
@@ -19,6 +20,7 @@ class AudioManager
       when 'shot'      then @shot.play()
       when 'hit'       then @hit.play()
       when 'powerup'   then @powerup.play()
+      when 'spawn'     then @spawn.play()
 
 
   playMusic: ->
