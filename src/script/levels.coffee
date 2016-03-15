@@ -12,7 +12,8 @@ Levels =
     platforms: [
       [200, GameWorld.l1, 1],  [600, GameWorld.l2, 1],
       [1000, GameWorld.l3, 1], [1400, GameWorld.l2, 1],
-      [1800, GameWorld.l1, 1], [2200, GameWorld.l2, 1]
+      [1800, GameWorld.l1, 1], [2200, GameWorld.l2, 1],
+      [1000, GameWorld.l1, 1]
     ]
 
   three:

@@ -53,7 +53,7 @@ class Enemy extends Entity
   shootPlayer: ->
     if Math.abs(player.ref.y - @ref.y) < @shootDeltaY and @canShoot() and @facingPlayer()
       @lastFired = game.time.now
-      game.time.events.add(Phaser.Timer.SECOND * ((Math.random()*0.85)+0.5), @shoot, this)
+      game.time.events.add(Phaser.Timer.SECOND * ((Math.random()*0.65)+0.4), @shoot, this)
 
 
   facingPlayer: ->

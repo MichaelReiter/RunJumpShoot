@@ -8,6 +8,7 @@ GameWorld =
   l3: 230
   shake: 0
   shakeMagnitude: 1.75
+  musicIsPlaying: false
 
   screenshake: (magnitude, duration) ->
     @shakeMagnitude = magnitude

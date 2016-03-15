@@ -9,8 +9,8 @@ class AudioManager
     @powerup    = game.add.audio('powerup')
     @spawn      = game.add.audio('spawn')
 
-    game.time.events.loop(Phaser.Timer.SECOND * 12.387, @playMusic, this)
     @playMusic()
+    game.time.events.loop(Phaser.Timer.SECOND * 12.387, @playMusic, this)
 
 
   playSound: (sound) ->
