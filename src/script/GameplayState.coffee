@@ -36,7 +36,6 @@ GameplayState =
     game.physics.arcade.collide(enemies, platforms)
     game.physics.arcade.collide(powerups, platforms)
     game.physics.arcade.collide(effectsManager.shells, platforms)
-    # game.physics.arcade.collide(enemies, enemies)
     
     for powerup in powerupList
       powerup.checkCollisions()

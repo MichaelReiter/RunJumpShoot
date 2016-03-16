@@ -16,7 +16,6 @@ class EnemyManager
       when 'three' then @spawnFrequency = 2   #seconds
       when 'four'  then @spawnFrequency = 1.5 #second
 
-    # @spawnWrapper()
     game.time.events.loop(Phaser.Timer.SECOND * @spawnFrequency, @spawnWrapper, this)
 
 

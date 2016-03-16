@@ -84,6 +84,7 @@ class Enemy extends Entity
 
   shoot: ->
     if @alive
+      audioManager.playSound('enemyShot')
       projectile = super
       projectile.scale.setTo(projectile.scale.x/2, projectile.scale.y/2)
       projectile.smoothed = false
