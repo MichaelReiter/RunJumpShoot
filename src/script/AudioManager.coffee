@@ -27,3 +27,7 @@ class AudioManager
 
   playMusic: ->
     @music.play()
+
+
+  stopPlayingMusic: ->
+    @music.stop()
