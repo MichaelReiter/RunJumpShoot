@@ -6,7 +6,7 @@ class Player extends Entity
   powerupFactor: 1.75
   accuracy: 100 #lower is better
   maxHealth: 5
-  health: 1
+  # health: 1
 
   constructor: (x, y) ->
     super(x, y, 'player')

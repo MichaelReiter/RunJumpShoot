@@ -5,8 +5,8 @@ scoreManager   = null
 inputManager   = null
 enemyManager   = null
 powerupManager = null
-audioManager   = null
 effectsManager = null
+audioManager   = null
 currentLevel   = null
 
 GameplayState =
@@ -22,8 +22,8 @@ GameplayState =
     healthManager  = new HealthManager()
     scoreManager   = new ScoreManager()
     inputManager   = new InputManager()
-    powerupManager = new PowerupManager()
     audioManager   = new AudioManager()
+    powerupManager = new PowerupManager()
     effectsManager = new EffectsManager()
 
     game.world.setBounds(0, 0, GameWorld.width, GameWorld.height)
