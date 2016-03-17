@@ -6,6 +6,7 @@ class Player extends Entity
   powerupFactor: 1.75
   accuracy: 100 #lower is better
   maxHealth: 5
+  health: 1
 
   constructor: (x, y) ->
     super(x, y, 'player')
@@ -71,6 +72,7 @@ class Player extends Entity
     audioManager.stopPlayingMusic()
     audioManager.playSound('explosion')
     @alive = false
+    GameWorld.shake = 0
 
 
   collectedHeart: ->

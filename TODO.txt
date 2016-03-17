@@ -1,3 +1,4 @@
 TODO
 
-- Get player input
+- Fix audio bug
+- Get player opinions

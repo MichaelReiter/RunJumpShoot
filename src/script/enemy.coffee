@@ -23,7 +23,7 @@ class Enemy extends Entity
 
 
   AI: ->
-    if @alive
+    if @alive and @ref.body?
       @followPlayer()
       @shootPlayer()
       @animate()

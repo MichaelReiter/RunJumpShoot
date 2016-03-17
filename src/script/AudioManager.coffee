@@ -31,3 +31,4 @@ class AudioManager
 
   stopPlayingMusic: ->
     @music.stop()
+    # @music.destroy()

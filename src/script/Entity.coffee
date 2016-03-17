@@ -37,14 +37,16 @@ class Entity
 
   moveLeft: ->
     @facing = 'left'
-    @ref.body.velocity.x = -@movementSpeed
-    @setFacingDirection()
+    if @ref.body?
+      @ref.body.velocity.x = -@movementSpeed
+      @setFacingDirection()
 
 
   moveRight: ->
     @facing = 'right'
-    @ref.body.velocity.x = @movementSpeed
-    @setFacingDirection()
+    if @ref.body?
+      @ref.body.velocity.x = @movementSpeed
+      @setFacingDirection()
 
 
   jump: ->
