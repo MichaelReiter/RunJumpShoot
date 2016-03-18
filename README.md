@@ -18,3 +18,6 @@ You can play online [here](http://michaelreiter.github.io/RunJumpShoot/) or you 
 2. Start Gulp and build the game with `npm start`.
 3. Run a web server in the `build` directory.
 4. Play the game in a modern web browser.
+
+## Acknowledgements
+The player and enemy sprites are adapted from the 1987 NES game Contra. Used under Canadian fair use Copyright laws.
